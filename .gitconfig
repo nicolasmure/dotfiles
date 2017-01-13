@@ -1,0 +1,7 @@
+[user]
+	email = n.mure@local.fr
+	name = Nicolas MURE
+[core]
+	editor = vim
+[rerere]
+	enabled = true
