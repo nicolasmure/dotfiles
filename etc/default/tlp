@@ -35,8 +35,8 @@ MAX_LOST_WORK_SECS_ON_BAT=60
 #   You *must* disable your distribution's governor settings or conflicts will
 #   occur. ondemand is sufficient for *almost all* workloads, you should know
 #   what you're doing!
-#CPU_SCALING_GOVERNOR_ON_AC=powersave
-#CPU_SCALING_GOVERNOR_ON_BAT=powersave
+CPU_SCALING_GOVERNOR_ON_AC=performance
+CPU_SCALING_GOVERNOR_ON_BAT=powersave
 
 # Set the min/max frequency available for the scaling governor.
 # Possible values strongly depend on your CPU. For available frequencies see
@@ -60,8 +60,8 @@ MAX_LOST_WORK_SECS_ON_BAT=60
 # Important:
 # - This may conflict with your distribution's governor settings
 # - A value of 1 does *not* activate boosting, it just allows it
-#CPU_BOOST_ON_AC=1
-#CPU_BOOST_ON_BAT=0
+CPU_BOOST_ON_AC=1
+CPU_BOOST_ON_BAT=0
 
 # Minimize number of used CPU cores/hyper-threads under light load conditions
 SCHED_POWERSAVE_ON_AC=0
@@ -144,15 +144,15 @@ RADEON_DPM_STATE_ON_AC=performance
 RADEON_DPM_STATE_ON_BAT=battery
 
 # Radeon DPM performance level: auto, low, high; auto is recommended.
-RADEON_DPM_PERF_LEVEL_ON_AC=auto
-RADEON_DPM_PERF_LEVEL_ON_BAT=auto
+RADEON_DPM_PERF_LEVEL_ON_AC=high
+RADEON_DPM_PERF_LEVEL_ON_BAT=low
 
 # WiFi power saving mode: on=enable, off=disable; not supported by all adapters.
 WIFI_PWR_ON_AC=off
 WIFI_PWR_ON_BAT=on
 
 # Disable wake on LAN: Y/N
-WOL_DISABLE=Y
+WOL_DISABLE=N
 
 # Enable audio power saving for Intel HDA, AC97 devices (timeout in secs).
 # A value of 0 disables, >=1 enables power save.
@@ -167,7 +167,7 @@ SOUND_POWER_SAVE_CONTROLLER=Y
 # Drive can be powered on again by releasing (and reinserting) the eject lever
 # or by pressing the disc eject button on newer models.
 # Note: an UltraBay/MediaBay hard disk is never powered off.
-BAY_POWEROFF_ON_BAT=0
+BAY_POWEROFF_ON_BAT=1
 # Optical drive device to power off (default sr0).
 BAY_DEVICE="sr0"
 
@@ -225,7 +225,7 @@ RESTORE_DEVICE_STATE_ON_STARTUP=0
 
 # Radio devices to disable on shutdown: bluetooth, wifi, wwan
 # (workaround for devices that are blocking shutdown).
-#DEVICES_TO_DISABLE_ON_SHUTDOWN="bluetooth wifi wwan"
+DEVICES_TO_DISABLE_ON_SHUTDOWN="bluetooth wifi wwan"
 
 # Radio devices to enable on shutdown: bluetooth, wifi, wwan
 # (to prevent other operating systems from missing radios).
@@ -261,7 +261,7 @@ DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE="bluetooth wifi wwan"
 
 # Radio devices to disable on connect.
 #DEVICES_TO_DISABLE_ON_LAN_CONNECT="wifi wwan"
-#DEVICES_TO_DISABLE_ON_WIFI_CONNECT="wwan"
+DEVICES_TO_DISABLE_ON_WIFI_CONNECT="bluetooth wwan"
 #DEVICES_TO_DISABLE_ON_WWAN_CONNECT="wifi"
 
 # Radio devices to enable on disconnect.
