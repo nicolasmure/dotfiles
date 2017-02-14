@@ -1,7 +1,22 @@
+[user "email=nm2107@hotmail"]
+	fr = user.name=nicolasmure
 [user]
-	email = n.mure@local.fr
 	name = Nicolas MURE
+	email = n.mure@local.fr
+[push]
+	default = matching
 [core]
+	excludesfile = /home/nmure/.gitignore_global
 	editor = vim
 [rerere]
-	enabled = true
+    # If, like me, you like rerere, decomment these
+    # autoupdate = true
+    enabled = true
+
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+
