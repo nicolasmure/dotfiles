@@ -11,7 +11,8 @@ set directory=~/.vim/tmp        " Directory to put swap file
 " higlight the cursor line
 set cursorline
 set cursorcolumn
-set number  " display line number
+set number          " display line number
+set relativenumber  " display relative line number
 " Search options
 set incsearch
 set hlsearch
