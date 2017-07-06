@@ -80,6 +80,7 @@ endif
 let g:onedark_terminal_italics=1
 syntax on
 colorscheme onedark
+" Default terminal font is Monospace Regular 12pt
 " END one-dark theme
 
 
