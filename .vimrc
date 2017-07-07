@@ -33,6 +33,8 @@ set softtabstop=4
 set ttymouse=xterm2
 set clipboard=unnamed
 
+set updatetime=200 " git gutter update time (in ms)
+
 "BEGIN Powerline (sudo dnf install vim-powerline)
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
@@ -56,6 +58,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'joshdick/onedark.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'Townk/vim-autoclose'
+Plugin 'airblade/vim-gitgutter'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
