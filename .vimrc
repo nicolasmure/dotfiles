@@ -17,6 +17,8 @@ set relativenumber  " display relative line number
 set incsearch
 set hlsearch
 set ignorecase
+set hidden          " be able to open new buffer w/o saving changes to the current one
+set wildmenu        " display autocomplete possibilities in vim commands
 
 "
 " Tabs & Indentation
