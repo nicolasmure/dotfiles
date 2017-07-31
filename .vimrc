@@ -1,3 +1,9 @@
+au FileType php set tags=tags_php-src.tags,tags_php-vendor.tags
+au FileType behat set tags=tags_gherkin.tags
+au FileType javascript set tags=tags_js-lib.tags,tags_js-src.tags,tags_js-modules.tags
+au FileType typescript set tags=tags_ts-lib.tags,tags_ts-typings.tags,tags_ts-modules.tags,tags_ts-src.tags
+au FileType python set tags=tags_python.tags
+
 scriptencoding utf-8
 set encoding=utf-8
 "
@@ -65,6 +71,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'joshdick/onedark.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'sjbach/lusty'
 Plugin 'Townk/vim-autoclose'
 Plugin 'VundleVim/Vundle.vim'
 " All of your Plugins must be added before the following line
@@ -114,3 +121,6 @@ endif
 "
 map <C-n> :NERDTreeToggle<CR>
 
+
+" dnf install vim-enhanced
+let g:LustyJugglerSuppressRubyWarning = 1

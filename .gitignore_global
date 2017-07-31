@@ -1,5 +1,6 @@
 .idea/*
 .tags*
+*.tags
+.tmux.conf
 cache.properties
 npm-debug.log
-
