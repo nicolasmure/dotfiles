@@ -11,11 +11,14 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'joshdick/onedark.vim'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'Quramy/tsuquyomi'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'sjbach/lusty'
 Plugin 'Townk/vim-autoclose'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'VundleVim/Vundle.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,6 +74,9 @@ set updatetime=200 " git gutter update time (in ms)
 
 " map ctrl+w ctrl+w to tab to switch vim window
 nnoremap <tab> <c-w><c-w>
+" map autocomplete
+inoremap <c-space> <c-x><c-o>
+inoremap <c-@> <c-x><c-o>
 
 "BEGIN Powerline (sudo dnf install vim-powerline)
 python3 from powerline.vim import setup as powerline_setup
@@ -124,8 +130,23 @@ endif
 "
 " NERDTree
 "
-map <C-n> :NERDTreeToggle<CR>
+noremap <C-n> :NERDTreeToggle<CR>
 
+" edit vimrc file
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+"
+" Syntastic
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 
 " dnf install vim-enhanced
 " echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
