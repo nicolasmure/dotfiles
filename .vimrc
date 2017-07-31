@@ -37,6 +37,9 @@ set clipboard=unnamed
 
 set updatetime=200 " git gutter update time (in ms)
 
+" map ctrl+w ctrl+w to tab to switch vim window
+nnoremap <tab> <c-w><c-w>   
+
 "BEGIN Powerline (sudo dnf install vim-powerline)
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
@@ -57,6 +60,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'airblade/vim-gitgutter'
+Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'joshdick/onedark.vim'
 Plugin 'scrooloose/nerdtree'
@@ -91,4 +95,22 @@ colorscheme onedark
 " Default terminal font is Monospace Regular 12pt
 " END one-dark theme
 
+" BEGIN ctrl+p config
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+" speep up Ctrl-P
+if executable('ag')
+  if filereadable('.agignore')
+      let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  else
+      let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  endif
+let g:ctrlp_use_caching = 0
+endif
+" END ctrl+p config
+
+"
+" NERDTree
+"
+map <C-n> :NERDTreeToggle<CR>
 
