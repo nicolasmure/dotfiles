@@ -11,15 +11,14 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'joshdick/onedark.vim'
-Plugin 'leafgarland/typescript-vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'sjbach/lusty'
 Plugin 'Townk/vim-autoclose'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'w0rp/ale'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -118,6 +117,8 @@ let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 " let g:ctrlp_cmd = 'CtrlPMRU'
 " speep up Ctrl-P
 if executable('ag')
+  " change the grep program for ag which is faster
+  set grepprg=ag\ --nogroup\ --nocolor
   if filereadable('.agignore')
       let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
   else
@@ -138,15 +139,15 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 "
 " Syntastic
 "
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 
 " dnf install vim-enhanced
 " echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
