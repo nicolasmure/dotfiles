@@ -17,6 +17,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'sjbach/lusty'
 Plugin 'Townk/vim-autoclose'
+Plugin 'vim-airline/vim-airline'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'w0rp/ale'
 " All of your Plugins must be added before the following line
@@ -78,13 +79,13 @@ inoremap <c-space> <c-x><c-o>
 inoremap <c-@> <c-x><c-o>
 
 "BEGIN Powerline (sudo dnf install vim-powerline)
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-set laststatus=2 " Always display the statusline in all windows
-set showtabline=2 " Always display the tabline, even if there is only one tab
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-set t_Co=256
+"python3 from powerline.vim import setup as powerline_setup
+"python3 powerline_setup()
+"python3 del powerline_setup
+"set laststatus=2 " Always display the statusline in all windows
+"set showtabline=2 " Always display the tabline, even if there is only one tab
+"set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+"set t_Co=256
 "END Powerline
 
 
