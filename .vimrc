@@ -27,6 +27,10 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " END Vundle
 
+" system packages to install :
+" ruby ruby-devel gcc redhat-rpm-config
+" then, run gem install neovim
+
 au FileType php set tags=tags_php-src.tags,tags_php-vendor.tags
 au FileType behat set tags=tags_gherkin.tags
 au FileType javascript set tags=tags_js-lib.tags,tags_js-src.tags,tags_js-modules.tags
@@ -48,6 +52,7 @@ set cursorline
 set cursorcolumn
 set number          " display line number
 set relativenumber  " display relative line number
+set colorcolumn=80  " display a column at 80 chars
 " Search options
 set incsearch
 set hlsearch
