@@ -13,11 +13,10 @@ Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'joshdick/onedark.vim' " onedark theme (atom like)
 Plugin 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
-"Plugin 'Quramy/tsuquyomi' " typescript plugin
+Plugin 'Quramy/tsuquyomi' " typescript plugin
 Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot' " syntax plugin
-Plugin 'Shougo/deoplete.nvim' " asynchronous completion for neovim
-"Plugin 'Shougo/vimproc.vim' " asynchronous execution library
+Plugin 'Shougo/vimproc.vim' " asynchronous execution library
 Plugin 'sjbach/lusty'
 Plugin 'Townk/vim-autoclose' " autoclose parenthesis and brackets
 Plugin 'vim-airline/vim-airline' " powerline like for neovim
@@ -28,8 +27,9 @@ filetype plugin indent on    " required
 " END Vundle
 
 " system packages to install :
-" ruby ruby-devel gcc redhat-rpm-config
-" then, run gem install neovim
+" ruby ruby-devel gcc redhat-rpm-config vim-enhanced
+" run gem install neovim
+" echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
 
 au FileType php set tags=tags_php-src.tags,tags_php-vendor.tags
 au FileType behat set tags=tags_gherkin.tags
@@ -72,12 +72,6 @@ vmap <C-j> 4j
 vmap <C-k> 4k
 
 "
-" deoplete suggestions
-"
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#complete_method = "completefunc"
-
-"
 " Tabs & Indentation
 "
 set expandtab     " converts tabs to spaces
@@ -86,20 +80,22 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-"
-" Mouse scrolling and copying
-"
-" set ttymouse=xterm2
-" set clipboard=unnamed
-
 set updatetime=200 " git gutter update time (in ms)
 
 " map ctrl+w ctrl+w to tab to switch vim window
 nnoremap <tab> <c-w><c-w>
+" Explore tags list for the word under the cursor
+map tt g<C-]>
+map TT <C-T>
 " map autocomplete
 inoremap <c-space> <c-x><c-o>
 inoremap <c-@> <c-x><c-o>
-
+" do a grep search on the selected text
+vnoremap <leader>f y:grep -r "<C-r>""
+" do a grep search on the word under cursor
+nnoremap <leader>f :grep -r "<C-r><C-w>"
+" lusty open last used buffer
+nnoremap <leader>lp :LustyJugglePrevious<cr>
 " airline config
 let g:airline#extensions#tabline#enabled = 1
 
@@ -153,18 +149,3 @@ noremap <C-n> :NERDTreeToggle<CR>
 " edit vimrc file
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
-"
-" Syntastic
-"
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-
-" dnf install vim-enhanced
-" echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
