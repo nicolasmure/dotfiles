@@ -110,6 +110,8 @@ inoremap <c-@> <c-x><c-o>
 "set t_Co=256
 "END Powerline
 
+" airline config
+let g:airline#extensions#tabline#enabled = 1
 
 " BEGIN one-dark theme https://github.com/joshdick/onedark.vim
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
