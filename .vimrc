@@ -7,19 +7,21 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim' " plugin manager
 Plugin 'airblade/vim-gitgutter'
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'joshdick/onedark.vim'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'Quramy/tsuquyomi'
+Plugin 'joshdick/onedark.vim' " onedark theme (atom like)
+Plugin 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
+"Plugin 'Quramy/tsuquyomi' " typescript plugin
 Plugin 'scrooloose/nerdtree'
-Plugin 'sheerun/vim-polyglot'
+Plugin 'sheerun/vim-polyglot' " syntax plugin
+Plugin 'Shougo/deoplete.nvim' " asynchronous completion for neovim
+"Plugin 'Shougo/vimproc.vim' " asynchronous execution library
 Plugin 'sjbach/lusty'
-Plugin 'Townk/vim-autoclose'
-Plugin 'vim-airline/vim-airline'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'w0rp/ale'
+Plugin 'Townk/vim-autoclose' " autoclose parenthesis and brackets
+Plugin 'vim-airline/vim-airline' " powerline like for neovim
+Plugin 'w0rp/ale' " asynchronous lint engine
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -54,6 +56,12 @@ set hidden          " be able to open new buffer w/o saving changes to the curre
 set wildmenu        " display autocomplete possibilities in vim commands
 " remove trailing whitespaces ntpeters/vim-better-whitespace
 autocmd BufEnter * EnableStripWhitespaceOnSave
+
+"
+" deoplete suggestions
+"
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#complete_method = "completefunc"
 
 "
 " Tabs & Indentation
