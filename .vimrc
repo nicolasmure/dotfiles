@@ -92,6 +92,8 @@ set softtabstop=4
 
 set updatetime=200 " git gutter update time (in ms)
 
+" map ctrl+w to buffer delete to close buffer
+nnoremap <c-w> :bd<CR>
 " map ctrl+w ctrl+w to tab to switch vim window
 nnoremap <tab> <c-w><c-w>
 " map autocomplete
