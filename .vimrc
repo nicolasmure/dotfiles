@@ -61,6 +61,15 @@ set hidden          " be able to open new buffer w/o saving changes to the curre
 set wildmenu        " display autocomplete possibilities in vim commands
 " remove trailing whitespaces ntpeters/vim-better-whitespace
 autocmd BufEnter * EnableStripWhitespaceOnSave
+" easy navigation between words
+nmap <C-l> w
+nmap <C-h> b
+nmap <C-j> 4j
+nmap <C-k> 4k
+vmap <C-l> w
+vmap <C-h> b
+vmap <C-j> 4j
+vmap <C-k> 4k
 
 "
 " deoplete suggestions
