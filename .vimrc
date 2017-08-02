@@ -13,11 +13,9 @@ Plugin 'sheerun/vim-polyglot' " syntax plugin
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'arnaud-lb/vim-php-namespace'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'sjbach/lusty'
+Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (requires bin install too)
 Plugin 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
 Plugin 'Townk/vim-autoclose' " autoclose parenthesis and brackets
-"Plugin 'Quramy/tsuquyomi' " typescript plugin
 Plugin 'autozimu/LanguageClient-neovim' " Language Server Protocol support for neovim
 Plugin 'Shougo/denite.nvim' " Multi-entry selection UI.
 Plugin 'Shougo/deoplete.nvim' " Completion integration with deoplete
@@ -25,7 +23,6 @@ Plugin 'Shougo/echodoc.vim' " Showing function signature and inline doc.
 Plugin 'Shougo/vimproc.vim' " asynchronous execution library
 Plugin 'vim-airline/vim-airline' " powerline like for neovim
 Plugin 'w0rp/ale' " asynchronous lint engine
-Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (requieres bin install too)
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -37,7 +34,7 @@ let g:deoplete#complete_method = 'omnifunc'
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-    \ 'php': ['php', '/home/nicolas/tmp/vendor/felixfbecker/language-server/bin/php-language-server.php'],
+    \ 'php': ['php', '~/.config/composer/vendor/felixfbecker/language-server/bin/php-language-server.php'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ }
@@ -45,16 +42,10 @@ let g:LanguageClient_selectionUI = 'fzf'
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-nnoremap <silent> <c-r> :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <silent> <c-t> :call LanguageClient_textDocument_documentSymbol()<CR>
 set omnifunc=LanguageClient#complete
 
 set rtp+=~/.fzf " fuzzyfinder plugin to bin
-
-"au FileType php set tags=tags_php-src.tags,tags_php-vendor.tags
-"au FileType behat set tags=tags_gherkin.tags
-"au FileType javascript set tags=tags_js-lib.tags,tags_js-src.tags,tags_js-modules.tags
-"au FileType typescript set tags=tags_ts-lib.tags,tags_ts-typings.tags,tags_ts-modules.tags,tags_ts-src.tags
-"au FileType python set tags=tags_python.tags
 
 scriptencoding utf-8
 set encoding=utf-8
@@ -103,9 +94,6 @@ set updatetime=200 " git gutter update time (in ms)
 
 " map ctrl+w ctrl+w to tab to switch vim window
 nnoremap <tab> <c-w><c-w>
-" Explore tags list for the word under the cursor
-map tt g<C-]>
-map TT <C-T>
 " map autocomplete
 inoremap <c-space> <c-x><c-o>
 inoremap <c-@> <c-x><c-o>
@@ -113,8 +101,11 @@ inoremap <c-@> <c-x><c-o>
 vnoremap <leader>f y:grep -r "<C-r>""
 " do a grep search on the word under cursor
 nnoremap <leader>f :grep -r "<C-r><C-w>"
-" lusty open last used buffer
-nnoremap <leader>lp :LustyJugglePrevious<cr>
+" ctrl+b to list buffers
+nnoremap <c-p> :FZF<CR>
+nnoremap <c-b> :Buffers<CR>
+" get back to previous buffer
+nnoremap <leader>b :Buffers<CR><CR>
 " airline config
 let g:airline#extensions#tabline#enabled = 1
 
