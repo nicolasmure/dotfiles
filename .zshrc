@@ -105,3 +105,5 @@ alias tmx='tmux attach -t $(echo ${PWD##*/} | sed "s/[^a-zA-Z0-9]//g") || tmux n
 alias vi='nvim'
 alias vim='nvim'
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
