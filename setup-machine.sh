@@ -2,6 +2,8 @@
 
 # basic update
 sudo dnf upgrade
+# install the basics
+sudo dnf install git vim neovim
 
 # node and npm
 sudo dnf install nodejs
@@ -20,3 +22,5 @@ sudo ln -s ~/.fzf/bin/fzf-tmux /usr/local/bin/fzf-tmux
 
 sudo dnf install ruby ruby-devel gcc redhat-rpm-config vim-enhanced
 gem install neovim
+sudo pip3 install --upgrade neovim
+sudo pip3 install --upgrade typing
