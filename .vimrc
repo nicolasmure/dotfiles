@@ -13,7 +13,8 @@ Plugin 'sheerun/vim-polyglot' " syntax plugin
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'arnaud-lb/vim-php-namespace'
-Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (requires bin install too)
+Plugin 'ctrlpvim/ctrlp.vim' " ctrlp to open files and MRU buffers with a fuzzy finder
+Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (used with ctrl+t mapping) (requires bin install too)
 Plugin 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
 Plugin 'Townk/vim-autoclose' " autoclose parenthesis and brackets
 Plugin 'autozimu/LanguageClient-neovim' " Language Server Protocol support for neovim
@@ -103,11 +104,11 @@ inoremap <c-@> <c-x><c-o>
 vnoremap <leader>f y:grep -r "<C-r>""
 " do a grep search on the word under cursor
 nnoremap <leader>f :grep -r "<C-r><C-w>"
-" ctrl+b to list buffers
-nnoremap <c-p> :FZF<CR>
-nnoremap <c-b> :Buffers<CR>
-" get back to previous buffer
-nnoremap <leader>b :Buffers<CR><CR>
+nnoremap <c-p> :CtrlP<CR>
+" ctrl+b to list MRU files
+nnoremap <c-b> :CtrlPMRU<CR>
+" get back to the previously used buffer
+nnoremap <leader>b :b#<CR>
 " airline config
 let g:airline#extensions#tabline#enabled = 1
 
