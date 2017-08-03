@@ -42,6 +42,7 @@ let g:LanguageClient_serverCommands = {
 let g:LanguageClient_selectionUI = 'fzf'
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> ref :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <c-t> :call LanguageClient_textDocument_documentSymbol()<CR>
 set omnifunc=LanguageClient#complete
