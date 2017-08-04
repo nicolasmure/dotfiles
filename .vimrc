@@ -92,6 +92,9 @@ vmap <C-l> w
 vmap <C-h> b
 vmap <C-j> 4j
 vmap <C-k> 4k
+" remove shift+j original mapping (originally concat the next line to the current one)
+nmap <S-j> <nop>
+vmap <S-j> <nop>
 
 "
 " Tabs & Indentation
