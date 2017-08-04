@@ -18,8 +18,9 @@ Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (used with ctrl+t mapping) (
 Plugin 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
 Plugin 'Townk/vim-autoclose' " autoclose parenthesis and brackets
 Plugin 'autozimu/LanguageClient-neovim' " Language Server Protocol support for neovim
-Plugin 'Shougo/denite.nvim' " Multi-entry selection UI.
-Plugin 'Shougo/deoplete.nvim' " Completion integration with deoplete
+"Plugin 'Shougo/denite.nvim' " Multi-entry selection UI.
+"Plugin 'Shougo/deoplete.nvim' " Completion integration with deoplete
+Plugin 'roxma/nvim-completion-manager' " completion integration
 Plugin 'Shougo/echodoc.vim' " Showing function signature and inline doc.
 Plugin 'Shougo/vimproc.vim' " asynchronous execution library
 Plugin 'vim-airline/vim-airline' " powerline like for neovim
@@ -29,8 +30,16 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " END Vundle
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#complete_method = 'omnifunc'
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#complete_method = 'omnifunc'
+
+" completion
+" don't give |ins-completion-menu| messages.  For example,
+" '-- XXX completion (YYY)', 'match 1 of 2', 'The only match',
+set shortmess+=c
+" use <TAB> to select the popup menu
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
