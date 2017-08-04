@@ -12,6 +12,7 @@ Plugin 'joshdick/onedark.vim' " onedark theme (atom like)
 Plugin 'sheerun/vim-polyglot' " syntax plugin
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'Yggdroot/indentLine' " indentation guide
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'ctrlpvim/ctrlp.vim' " ctrlp to open files and MRU buffers with a fuzzy finder
 Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (used with ctrl+t mapping) (requires bin install too)
@@ -71,6 +72,7 @@ set cursorcolumn
 set number          " display line number
 set relativenumber  " display relative line number
 set colorcolumn=80  " display a column at 80 chars
+let g:indentLine_char = '▏' " indentation guide char
 " Search options
 set incsearch
 set hlsearch
