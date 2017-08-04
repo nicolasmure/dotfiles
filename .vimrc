@@ -18,7 +18,6 @@ Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (used with ctrl+t mapping) (
 Plugin 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
 Plugin 'Townk/vim-autoclose' " autoclose parenthesis and brackets
 Plugin 'autozimu/LanguageClient-neovim' " Language Server Protocol support for neovim
-"Plugin 'Shougo/denite.nvim' " Multi-entry selection UI.
 "Plugin 'Shougo/deoplete.nvim' " Completion integration with deoplete
 Plugin 'roxma/nvim-completion-manager' " completion integration
 Plugin 'Shougo/echodoc.vim' " Showing function signature and inline doc.
@@ -92,6 +91,11 @@ vmap <C-l> w
 vmap <C-h> b
 vmap <C-j> 4j
 vmap <C-k> 4k
+" force to never use arrow for navigation !
+nmap <Up> <nop>
+nmap <Down> <nop>
+nmap <Left> <nop>
+nmap <Right> <nop>
 " remove shift+j original mapping (originally concat the next line to the current one)
 nmap <S-j> <nop>
 vmap <S-j> <nop>
