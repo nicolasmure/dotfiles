@@ -18,19 +18,14 @@ Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (used with ctrl+t mapping) (
 Plugin 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
 Plugin 'Townk/vim-autoclose' " autoclose parenthesis and brackets
 Plugin 'autozimu/LanguageClient-neovim' " Language Server Protocol support for neovim
-"Plugin 'Shougo/deoplete.nvim' " Completion integration with deoplete
+Plugin 'Shougo/denite.nvim' " Multi-entry selection UI (also handle completion suggestions)
 Plugin 'roxma/nvim-completion-manager' " completion integration
-Plugin 'Shougo/echodoc.vim' " Showing function signature and inline doc.
-Plugin 'Shougo/vimproc.vim' " asynchronous execution library
 Plugin 'vim-airline/vim-airline' " powerline like for neovim
 Plugin 'w0rp/ale' " asynchronous lint engine
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " END Vundle
-
-"let g:deoplete#enable_at_startup = 1
-"let g:deoplete#complete_method = 'omnifunc'
 
 " completion
 " don't give |ins-completion-menu| messages.  For example,
@@ -39,6 +34,9 @@ set shortmess+=c
 " use <TAB> to select the popup menu
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" map ctrl+space to open autocomplete popup
+imap <c-space> <Plug>(cm_force_refresh)
+imap <c-@> <Plug>(cm_force_refresh)
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
@@ -53,7 +51,6 @@ nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> ref :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <c-t> :call LanguageClient_textDocument_documentSymbol()<CR>
-set omnifunc=LanguageClient#complete
 
 set rtp+=~/.fzf " fuzzyfinder plugin to bin
 
@@ -115,9 +112,6 @@ set updatetime=200 " git gutter update time (in ms)
 nnoremap <c-w> :bd<CR>
 " map ctrl+w ctrl+w to tab to switch vim window
 nnoremap <tab> <c-w><c-w>
-" map autocomplete
-inoremap <c-space> <c-x><c-o>
-inoremap <c-@> <c-x><c-o>
 " do a grep search on the selected text
 vnoremap <leader>f y:grep -r "<C-r>""
 " do a grep search on the word under cursor
@@ -158,7 +152,6 @@ colorscheme onedark
 " BEGIN ctrl+p config
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-" let g:ctrlp_cmd = 'CtrlPMRU'
 " speep up Ctrl-P
 if executable('ag')
   " change the grep program for ag which is faster
@@ -176,7 +169,4 @@ endif
 " NERDTree
 "
 noremap <C-n> :NERDTreeToggle<CR>
-
-" edit vimrc file
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
