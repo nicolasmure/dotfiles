@@ -20,6 +20,7 @@ Plugin 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
 Plugin 'Townk/vim-autoclose' " autoclose parenthesis and brackets
 Plugin 'travisjeffery/vim-auto-mkdir' " auto mkdir when saving a file in an unexistant dir
 Plugin 'tpope/vim-eunuch' " helpers for unix commands (rm, mv, mkdir, chmod, etc...)
+Plugin 'tpope/vim-fugitive' " git commands
 Plugin 'autozimu/LanguageClient-neovim' " Language Server Protocol support for neovim
 Plugin 'Shougo/denite.nvim' " Multi-entry selection UI (also handle completion suggestions)
 Plugin 'roxma/nvim-completion-manager' " completion integration
