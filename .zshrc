@@ -105,5 +105,7 @@ alias tmx='tmux attach -t $(echo ${PWD##*/} | sed "s/[^a-zA-Z0-9]//g") || tmux n
 alias vi='nvim'
 alias vim='nvim'
 
-
+# use vim mode on CLI (press esc to enter vim mode and edit typed command)
+set -o vi
+# fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
