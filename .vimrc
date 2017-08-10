@@ -55,6 +55,7 @@ nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> ref :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 nnoremap <silent> <c-t> :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <silent> <c-y> :call LanguageClient_workspace_symbol()<CR>
 
 set rtp+=~/.fzf " fuzzyfinder plugin to bin
 
