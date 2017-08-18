@@ -26,6 +26,8 @@ Plugin 'Shougo/denite.nvim' " Multi-entry selection UI (also handle completion s
 Plugin 'roxma/nvim-completion-manager' " completion integration
 Plugin 'vim-airline/vim-airline' " powerline like for neovim
 Plugin 'w0rp/ale' " asynchronous lint engine
+Plugin 'godlygeek/tabular' " required for vim-markdown
+Plugin 'plasticboy/vim-markdown' " markdown plugin
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -77,6 +79,7 @@ set number          " display line number
 set relativenumber  " display relative line number
 set colorcolumn=80  " display a column at 80 chars
 let g:indentLine_char = '▏' " indentation guide char
+set nofoldenable " do not fold (eg md files)
 " Search options
 set incsearch
 set hlsearch
