@@ -17,7 +17,7 @@ Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'ctrlpvim/ctrlp.vim' " ctrlp to open files and MRU buffers with a fuzzy finder
 Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (used with ctrl+t mapping) (requires bin install too)
 Plugin 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
-Plugin 'Townk/vim-autoclose' " autoclose parenthesis and brackets
+Plugin 'jiangmiao/auto-pairs' " autoclose parenthesis and brackets, auto indent in curly braces
 Plugin 'travisjeffery/vim-auto-mkdir' " auto mkdir when saving a file in an unexistant dir
 Plugin 'tpope/vim-eunuch' " helpers for unix commands (rm, mv, mkdir, chmod, etc...)
 Plugin 'tpope/vim-fugitive' " git commands
@@ -26,8 +26,6 @@ Plugin 'Shougo/denite.nvim' " Multi-entry selection UI (also handle completion s
 Plugin 'roxma/nvim-completion-manager' " completion integration
 Plugin 'vim-airline/vim-airline' " powerline like for neovim
 Plugin 'w0rp/ale' " asynchronous lint engine
-Plugin 'godlygeek/tabular' " required for vim-markdown
-Plugin 'plasticboy/vim-markdown' " markdown plugin
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -79,7 +77,7 @@ set number          " display line number
 set relativenumber  " display relative line number
 set colorcolumn=80  " display a column at 80 chars
 let g:indentLine_char = '▏' " indentation guide char
-set nofoldenable " do not fold (eg md files)
+let g:polyglot_disabled = ['markdown']
 " Search options
 set incsearch
 set hlsearch
