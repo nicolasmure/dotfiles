@@ -129,7 +129,8 @@ nnoremap <tab> <c-w><c-w>
 vnoremap <leader>f y:grep -r "<C-r>""
 " do a grep search on the word under cursor
 nnoremap <leader>f :grep -r "<C-r><C-w>"
-nnoremap <c-p> :CtrlP<CR>
+" ctrl+p to list files and use fzf
+nnoremap <c-p> :Files<CR>
 " ctrl+b to list MRU files
 nnoremap <c-b> :CtrlPMRU<CR>
 " get back to the previously used buffer
