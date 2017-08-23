@@ -115,6 +115,12 @@ set softtabstop=4
 
 set updatetime=200 " git gutter update time (in ms)
 
+" Fast split resize
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
 " map ctrl+w to buffer delete to close buffer
 nnoremap <c-w> :bd<CR>
 " map ctrl+w ctrl+w to tab to switch vim window
