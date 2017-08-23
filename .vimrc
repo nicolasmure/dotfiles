@@ -14,8 +14,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Yggdroot/indentLine' " indentation guide
 Plugin 'arnaud-lb/vim-php-namespace'
-Plugin 'ctrlpvim/ctrlp.vim' " ctrlp to open files and MRU buffers with a fuzzy finder
-Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (used with ctrl+t mapping) (requires bin install too)
+Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (requires bin install too)
 Plugin 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
 Plugin 'jiangmiao/auto-pairs' " autoclose parenthesis and brackets, auto indent in curly braces
 Plugin 'travisjeffery/vim-auto-mkdir' " auto mkdir when saving a file in an unexistant dir
@@ -129,10 +128,10 @@ nnoremap <tab> <c-w><c-w>
 vnoremap <leader>f y:grep -r "<C-r>""
 " do a grep search on the word under cursor
 nnoremap <leader>f :grep -r "<C-r><C-w>"
-" ctrl+p to list files and use fzf
+" ctrl+p to list files with fzf
 nnoremap <c-p> :Files<CR>
-" ctrl+b to list MRU files
-nnoremap <c-b> :CtrlPMRU<CR>
+" ctrl+b to list MRU buffers with fzf
+nnoremap <c-b> :Buffers<CR>
 " get back to the previously used buffer
 nnoremap <leader>b :b#<CR>
 " airline config
@@ -162,22 +161,6 @@ syntax on
 colorscheme onedark
 " Default terminal font is Monospace Regular 12pt
 " END one-dark theme
-
-" BEGIN ctrl+p config
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-" speep up Ctrl-P
-if executable('ag')
-  " change the grep program for ag which is faster
-  set grepprg=ag\ --nogroup\ --nocolor
-  if filereadable('.agignore')
-      let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  else
-      let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  endif
-let g:ctrlp_use_caching = 0
-endif
-" END ctrl+p config
 
 "
 " NERDTree
