@@ -3,6 +3,7 @@
 [user]
 	name = Nicolas MURE
 	email = nicolas.mure@knplabs.com
+	signingkey = 145C4CAA
 [push]
 	default = matching
 [core]
