@@ -37,6 +37,8 @@ set shortmess+=c
 " use <TAB> to select the popup menu
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" start new line when pressing enter when popup menu is visible
+inoremap <expr> <CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
 " map ctrl+space to open autocomplete popup
 imap <c-space> <Plug>(cm_force_refresh)
 imap <c-@> <Plug>(cm_force_refresh)
