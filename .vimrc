@@ -11,9 +11,8 @@ Plugin 'VundleVim/Vundle.vim' " plugin manager
 Plugin 'joshdick/onedark.vim' " onedark theme (atom like)
 Plugin 'sheerun/vim-polyglot' " syntax plugin
 Plugin 'scrooloose/nerdtree'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter' " show added / edited / removed lines near the line number
 Plugin 'Yggdroot/indentLine' " indentation guide
-Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (requires bin install too)
 Plugin 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
 Plugin 'jiangmiao/auto-pairs' " autoclose parenthesis and brackets, auto indent in curly braces
