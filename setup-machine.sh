@@ -20,7 +20,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 sudo ln -s ~/.fzf/bin/fzf /usr/local/bin/fzf
 sudo ln -s ~/.fzf/bin/fzf-tmux /usr/local/bin/fzf-tmux
 
-sudo dnf install python3 python3-devel ruby ruby-devel gcc redhat-rpm-config vim-enhanced
+sudo dnf install python3 python3-devel ruby ruby-devel gcc redhat-rpm-config vim-enhanced ShellCheck
 gem install neovim
 pip3 install --user --upgrade neovim typing jedi mistune psutil setproctitle
 
