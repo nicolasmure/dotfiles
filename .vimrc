@@ -24,6 +24,7 @@ Plugin 'Shougo/denite.nvim' " Multi-entry selection UI (also handle completion s
 Plugin 'roxma/nvim-completion-manager' " completion integration
 Plugin 'vim-airline/vim-airline' " powerline like for neovim
 Plugin 'w0rp/ale' " asynchronous lint engine
+Plugin 'godlygeek/tabular' " align text (such as markdown tables)
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -112,6 +113,16 @@ set expandtab     " converts tabs to spaces
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+
+"
+" Tabularize
+"
+nmap <Leader>= :Tabularize /=<CR>
+vmap <Leader>= :Tabularize /=<CR>
+nmap <Leader>: :Tabularize /:\zs<CR>
+vmap <Leader>: :Tabularize /:\zs<CR>
+nmap <Leader>\| :Tabularize /\|<CR>
+vmap <Leader>\| :Tabularize /\|<CR>
 
 set updatetime=200 " git gutter update time (in ms)
 
