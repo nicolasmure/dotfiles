@@ -104,6 +104,9 @@ nmap <Right> <nop>
 " remove shift+j original mapping (originally concat the next line to the current one)
 nmap <S-j> <nop>
 vmap <S-j> <nop>
+" show next matched string at the center of screen
+nnoremap n nzz
+nnoremap N Nzz
 
 "
 " Tabs & Indentation
