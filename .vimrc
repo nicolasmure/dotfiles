@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim' " plugin manager
 Plugin 'joshdick/onedark.vim' " onedark theme (atom like)
 Plugin 'sheerun/vim-polyglot' " syntax plugin
 Plugin 'scrooloose/nerdtree'
+Plugin 'unkiwii/vim-nerdtree-sync' " sync nerdtree with current opened file
 Plugin 'airblade/vim-gitgutter' " show added / edited / removed lines near the line number
 Plugin 'Yggdroot/indentLine' " indentation guide
 Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (requires bin install too)
@@ -191,3 +192,5 @@ let g:fzf_colors =
 " NERDTree
 "
 noremap <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden = 1 " show dot files
+let g:nerdtree_sync_cursorline = 1 " highlight current opened file in nerdtree
