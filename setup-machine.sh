@@ -18,7 +18,6 @@ composer run-script --working-dir=`realpath ~/.config/composer/vendor/felixfbeck
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 sudo ln -s ~/.fzf/bin/fzf /usr/local/bin/fzf
-sudo ln -s ~/.fzf/bin/fzf-tmux /usr/local/bin/fzf-tmux
 
 sudo dnf install python3 python3-devel ruby ruby-devel gcc redhat-rpm-config vim-enhanced ShellCheck jq
 gem install neovim

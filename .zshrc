@@ -101,7 +101,6 @@ prompt_context() {
 alias ll="ls -lah"
 alias h="history | grep"
 alias fig='docker-compose'
-alias tmx='tmux attach -t $(echo ${PWD##*/} | sed "s/[^a-zA-Z0-9]//g") || tmux new -s $(echo ${PWD##*/} | sed "s/[^a-zA-Z0-9]//g") tmux source-file .tmux.conf'
 alias vi='nvim'
 alias vim='nvim'
 
