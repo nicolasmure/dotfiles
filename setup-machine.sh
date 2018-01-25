@@ -3,7 +3,7 @@
 # basic update
 sudo dnf upgrade
 # install the basics
-sudo dnf install git vim neovim
+sudo dnf install git vim neovim tilix
 
 # node and npm
 sudo dnf install nodejs
