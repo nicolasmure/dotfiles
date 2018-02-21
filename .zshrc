@@ -103,6 +103,8 @@ alias h="history | grep"
 alias fig='docker-compose'
 alias vi='nvim'
 alias vim='nvim'
+alias cfix='git commit --fixup'
+alias cafix='git commit --all --fixup'
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
