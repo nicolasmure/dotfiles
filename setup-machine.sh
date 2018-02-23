@@ -23,3 +23,8 @@ sudo dnf install python3 python3-devel ruby ruby-devel gcc redhat-rpm-config vim
 gem install neovim
 pip3 install --user --upgrade neovim typing jedi mistune psutil setproctitle
 
+# docker and docker-compose
+sudo dnf install docker-ce docker-compose
+sudo groupadd docker -f
+sudo usermod -a -G docker nicolas
+sudo systemctl enable docker
