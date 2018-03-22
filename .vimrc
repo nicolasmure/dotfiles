@@ -140,6 +140,7 @@ nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 nnoremap <c-w> :bd<CR>
 " map ctrl+w ctrl+w to tab to switch vim window
 nnoremap <tab> <c-w><c-w>
+nnoremap <S-tab> <c-w>W
 " do a grep search on the selected text
 vnoremap <leader>f y:grep -r "<C-r>""
 " do a grep search on the word under cursor
