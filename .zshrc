@@ -101,6 +101,7 @@ prompt_context() {
 alias ll="ls -lah"
 alias h="history | grep"
 alias fig='docker-compose'
+alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 alias cfix='git commit --fixup'
