@@ -26,6 +26,7 @@ Plugin 'roxma/nvim-completion-manager' " completion integration
 Plugin 'vim-airline/vim-airline' " powerline like for neovim
 Plugin 'w0rp/ale' " asynchronous lint engine
 Plugin 'godlygeek/tabular' " align text (such as markdown tables)
+Plugin 'sgur/vim-editorconfig' " .editorconfig support
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -117,6 +118,9 @@ set expandtab     " converts tabs to spaces
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+" editorconfig plugin options
+let g:editorconfig_root_chdir = 1 " automatically :lcd if root = true exists in .editorconfig
+let g:editorconfig_verbose = 1 " show verbose messages
 
 "
 " Tabularize
