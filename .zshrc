@@ -99,6 +99,7 @@ prompt_context() {
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll="ls -lah"
+alias kk="ll" # in case of mistype :p
 alias h="history | grep"
 alias fig='docker-compose'
 alias v='nvim'
