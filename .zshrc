@@ -107,6 +107,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias cfix='git commit --fixup'
 alias cafix='git commit --all --fixup'
+alias :q!="exit" # exit term like vim ;)
 
 # fzf config
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
