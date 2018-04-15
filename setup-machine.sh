@@ -4,6 +4,7 @@
 sudo dnf upgrade
 # install the basics
 sudo dnf install git vim neovim tilix \
+    pop-gtk-theme pop-icon-theme \
     tig \
     unrar \
     gnome-terminal-nautilus # add a "Open in terminal" shortcut on right click
