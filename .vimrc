@@ -199,3 +199,10 @@ let g:fzf_colors =
 noremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden = 1 " show dot files
 let g:nerdtree_sync_cursorline = 1 " highlight current opened file in nerdtree
+
+"
+" w0rp/ale
+"
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
