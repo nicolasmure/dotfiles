@@ -4,6 +4,7 @@
 sudo dnf upgrade
 # install the basics
 sudo dnf install git vim neovim tilix \
+    gucharmap \
     pop-gtk-theme pop-icon-theme \
     tig \
     unrar \
