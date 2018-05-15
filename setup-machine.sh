@@ -93,6 +93,7 @@ sudo dnf install -y \
 sudo dnf install -y \
     audacious \
     audacity \
+    brasero \
     chromium chromium-common chromium-libs chromium-libs-media chromium-libs-media-freeworld \
     clementine \
     gimp \
@@ -100,6 +101,7 @@ sudo dnf install -y \
     gparted \
     firefox \
     inkscape \
+    k3b k3b-extras-freeworld \
     libreoffice \
     playonlinux \
     steam \
