@@ -8,7 +8,7 @@
 	default = matching
 [core]
 	excludesfile = /home/nicolas/.gitignore_global
-	editor = vim
+	editor = nvim
 [rerere]
     # If, like me, you like rerere, decomment these
     # autoupdate = true
