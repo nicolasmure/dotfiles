@@ -158,6 +158,9 @@ nnoremap <c-b> :Buffers<CR>
 nnoremap <leader>b :b#<CR>
 " airline config
 let g:airline#extensions#tabline#enabled = 1
+" invert airline sections b and c to display filename before VCS info
+let g:airline_section_b = "%<%<%{airline#extensions#fugitiveline#bufname()}%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#"
+let g:airline_section_c = "%{airline#util#wrap(airline#extensions#hunks#get_hunks(),0)}%{airline#util#wrap(airline#extensions#branch#get_head(),0)}"
 
 " BEGIN one-dark theme https://github.com/joshdick/onedark.vim
 if (has("nvim"))
