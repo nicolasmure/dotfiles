@@ -100,6 +100,7 @@ sudo dnf install -y \
     gucharmap \
     gparted \
     firefox \
+    fontforge \
     inkscape \
     k3b k3b-extras-freeworld \
     libreoffice \
