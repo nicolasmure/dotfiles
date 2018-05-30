@@ -130,7 +130,7 @@ sudo dnf install -y \
 
 # settings
 sudo usermod -a -G wireshark `whoami`
-sudo echo "vm.swappiness=5" >> /etc/sysctl.conf
+sudo bash -c "echo 'vm.swappiness=5' >> /etc/sysctl.conf"
 # disable tracker miner (see https://askubuntu.com/a/348692)
 echo -e "\nHidden=true\n" | sudo tee --append /etc/xdg/autostart/tracker-extract.desktop \
     /etc/xdg/autostart/tracker-miner-apps.desktop \
