@@ -18,6 +18,7 @@ sudo dnf upgrade -y
 sudo dnf install -y \
     ansible \
     curl \
+    dnf-plugins-core \
     gcc \
     git \
     jq \
@@ -36,7 +37,7 @@ sudo dnf install -y \
     wget
 
 # cp config files
-rsync . ~ --exclude=.git --exclude=setup-machine.sh
+rsync -a . ~ --exclude=.git --exclude=setup-machine.sh
 
 # node and npm
 sudo dnf install -y nodejs
@@ -58,7 +59,6 @@ if [ ! -d ~/.fzf ] ; then
 fi
 
 # docker and docker-compose (see https://docs.docker.com/install/linux/docker-ce/fedora/)
-sudo dnf install -y dnf-plugins-core
 sudo dnf config-manager \
     --add-repo \
     https://download.docker.com/linux/fedora/docker-ce.repo
@@ -68,8 +68,18 @@ sudo usermod -a -G docker `whoami`
 sudo systemctl enable docker
 
 # nvim
+if [ ! -d ~/.vim/bundle/Vundle.vim ] ; then
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
 nvim +PluginUpdate +qall
 nvim +UpdateRemotePlugins +qall
+
+if [ ! -f ~/.vim/bundle/LanguageClient-neovim/bin/languageclient ] ; then
+    pushd ~/.vim/bundle/LanguageClient-neovim
+    bash install.sh
+    popd
+fi
 
 # zsh
 sudo dnf install -y zsh
@@ -78,6 +88,10 @@ if [ ! -d ~/.oh-my-zsh ] ; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     rm ~/.zshrc* && cp ./.zshrc ~/.zshrc
 fi
+
+# neofetch
+sudo dnf copr enable -y konimex/neofetch
+sudo dnf install -y neofetch
 
 # gnome
 sudo dnf install -y \
