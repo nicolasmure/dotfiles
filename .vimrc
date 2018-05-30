@@ -74,6 +74,7 @@ set history=1000                " Increase history
 set nobackup                    " Do not backup files on overwrite
 set directory=~/.vim/tmp        " Directory to put swap file
 set autoread                    " Reload buffer automatically on external file change
+set lazyredraw
 " higlight the cursor line
 set cursorline
 set cursorcolumn
