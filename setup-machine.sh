@@ -110,6 +110,7 @@ sudo dnf install -y \
     brasero \
     chromium chromium-common chromium-libs chromium-libs-media chromium-libs-media-freeworld \
     clementine \
+    easytag \
     gimp \
     gucharmap \
     gparted \
