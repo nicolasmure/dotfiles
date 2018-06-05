@@ -24,7 +24,7 @@ Plugin 'tpope/vim-commentary' " to comment blocks of code
 Plugin 'tpope/vim-surround' " to change surrounding chunks (eg simple quotes to double quotes)
 Plugin 'tpope/vim-repeat' " to repeat sime plugings map with '.'
 Plugin 'autozimu/LanguageClient-neovim' " Language Server Protocol support for neovim
-Plugin 'Shougo/denite.nvim' " Multi-entry selection UI (also handle completion suggestions)
+" Plugin 'Shougo/denite.nvim' " Multi-entry selection UI (also handle completion suggestions)
 Plugin 'roxma/nvim-completion-manager' " completion integration
 Plugin 'vim-airline/vim-airline' " powerline like for neovim
 Plugin 'w0rp/ale' " asynchronous lint engine
