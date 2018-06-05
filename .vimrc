@@ -20,6 +20,9 @@ Plugin 'jiangmiao/auto-pairs' " autoclose parenthesis and brackets, auto indent 
 Plugin 'travisjeffery/vim-auto-mkdir' " auto mkdir when saving a file in an unexistant dir
 Plugin 'tpope/vim-eunuch' " helpers for unix commands (rm, mv, mkdir, chmod, etc...)
 Plugin 'tpope/vim-fugitive' " git commands
+Plugin 'tpope/vim-commentary' " to comment blocks of code
+Plugin 'tpope/vim-surround' " to change surrounding chunks (eg simple quotes to double quotes)
+Plugin 'tpope/vim-repeat' " to repeat sime plugings map with '.'
 Plugin 'autozimu/LanguageClient-neovim' " Language Server Protocol support for neovim
 Plugin 'Shougo/denite.nvim' " Multi-entry selection UI (also handle completion suggestions)
 Plugin 'roxma/nvim-completion-manager' " completion integration
