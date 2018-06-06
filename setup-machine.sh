@@ -111,6 +111,7 @@ sudo dnf install -y \
     chromium chromium-common chromium-libs chromium-libs-media chromium-libs-media-freeworld \
     clementine \
     easytag \
+    epiphany \
     gimp \
     gucharmap \
     gparted \
