@@ -129,11 +129,39 @@ sudo dnf install -y \
     wine \
     wireshark
 
+# chromecast audio
+function install_chromecast_audio () {
+    sudo pip install vext
+    sudo pip install vext.gi
+    sudo dnf copr enable -y cygn/pulseaudio-dlna
+    sudo dnf install -y \
+        pulseaudio-dlna \
+        python2-gobject \
+        python2-gtkextra
+
+    # as pulseaudio starts in userland, do not use systemd but desktop session
+    # instead to start pulseaudio-dlna
+    mkdir -p ~/.config/autostart
+    echo "[Desktop Entry]
+Type=Application
+Name=pulseaudio-dlna
+Exec=/usr/bin/pulseaudio-dlna -c wav -p 10291 --auto-reconnect
+" > ~/.config/autostart/pulseaudio-dlna.desktop
+}
+
+echo "Do you want to install chromecast audio ?"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) install_chromecast_audio; break;;
+        No ) break;;
+    esac
+done
+
 # settings
 sudo usermod -a -G wireshark `whoami`
-sudo bash -c "echo 'vm.swappiness=5' >> /etc/sysctl.conf"
+echo "vm.swappiness=5" | sudo tee -a /etc/sysctl.conf
 # disable tracker miner (see https://askubuntu.com/a/348692)
-echo -e "\nHidden=true\n" | sudo tee --append /etc/xdg/autostart/tracker-extract.desktop \
+echo -e "\nHidden=true\n" | sudo tee -a /etc/xdg/autostart/tracker-extract.desktop \
     /etc/xdg/autostart/tracker-miner-apps.desktop \
     /etc/xdg/autostart/tracker-miner-fs.desktop \
     /etc/xdg/autostart/tracker-miner-user-guides.desktop \
