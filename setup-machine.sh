@@ -147,6 +147,10 @@ Type=Application
 Name=pulseaudio-dlna
 Exec=/usr/bin/pulseaudio-dlna -c wav -p 10291 --auto-reconnect
 " > ~/.config/autostart/pulseaudio-dlna.desktop
+
+    # also install pulse effects to have a limiter
+    sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    sudo flatpak install -y flathub com.github.wwmm.pulseeffects
 }
 
 echo "Do you want to install chromecast audio ?"
