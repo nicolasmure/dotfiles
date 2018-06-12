@@ -101,6 +101,7 @@ prompt_context() {
 alias ll="ls -lah"
 alias kk="ll" # in case of mistype :p
 alias h="history | grep"
+alias d="docker"
 alias fig='docker-compose'
 alias v='nvim'
 alias vi='nvim'
