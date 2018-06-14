@@ -118,3 +118,6 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
 fi
 
+if [ -d ${HOME}/.cargo ]; then
+    source  ${HOME}/.cargo/env
+fi
