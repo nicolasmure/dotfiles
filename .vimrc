@@ -55,6 +55,7 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
 let g:LanguageClient_selectionUI = 'fzf'
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
