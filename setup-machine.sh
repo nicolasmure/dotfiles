@@ -23,6 +23,7 @@ sudo dnf install -y \
     git \
     jq \
     neovim \
+    nmap \
     powerline \
     python2-neovim \
     python3 python3-devel python3-neovim \
