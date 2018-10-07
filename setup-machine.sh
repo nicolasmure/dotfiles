@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # go to the dir of this script
-cd "$(dirname "$0")"
+cd "$(dirname "$0")" || exit 1
 
 # remove unneeded things
 sudo dnf remove -y \
@@ -10,9 +10,9 @@ sudo dnf remove -y \
 
 # basic update
 sudo dnf install -y \
-    https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-    https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf upgrade -y
+    "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
+    "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
+sudo dnf upgrade -y --best --allowerasing
 
 # CLI tools
 sudo dnf install -y \
@@ -49,7 +49,7 @@ sudo npm install -g javascript-typescript-langserver
 sudo dnf install -y php composer
 if [ ! -d ~/.config/composer/vendor/felixfbecker/language-server ] ; then
     composer global require felixfbecker/language-server
-    composer run-script --working-dir=`realpath ~/.config/composer/vendor/felixfbecker/language-server` parse-stubs
+    composer run-script --working-dir="$(realpath ~/.config/composer/vendor/felixfbecker/language-server)" parse-stubs
 fi
 
 # fzf
@@ -65,7 +65,7 @@ sudo dnf config-manager \
     https://download.docker.com/linux/fedora/docker-ce.repo
 sudo dnf install -y docker-ce docker-compose
 sudo groupadd docker -f
-sudo usermod -a -G docker `whoami`
+sudo usermod -a -G docker "$(whoami)"
 sudo systemctl enable docker
 
 # nvim
@@ -77,9 +77,9 @@ nvim +PluginUpdate +qall
 nvim +UpdateRemotePlugins +qall
 
 if [ ! -f ~/.vim/bundle/LanguageClient-neovim/bin/languageclient ] ; then
-    pushd ~/.vim/bundle/LanguageClient-neovim
+    pushd ~/.vim/bundle/LanguageClient-neovim || exit 1
     bash install.sh
-    popd
+    popd || exit 1
 fi
 
 # zsh
@@ -131,7 +131,7 @@ sudo dnf install -y \
     wireshark
 
 # chromecast audio
-function install_chromecast_audio () {
+install_chromecast_audio () {
     sudo pip install vext
     sudo pip install vext.gi
     sudo dnf copr enable -y cygn/pulseaudio-dlna
@@ -163,10 +163,10 @@ select yn in "Yes" "No"; do
 done
 
 # settings
-sudo usermod -a -G wireshark `whoami`
+sudo usermod -a -G wireshark "$(whoami)"
 echo "vm.swappiness=5" | sudo tee -a /etc/sysctl.conf
 # disable tracker miner (see https://askubuntu.com/a/348692)
-echo -e "\nHidden=true\n" | sudo tee -a /etc/xdg/autostart/tracker-extract.desktop \
+echo -e "\\nHidden=true\\n" | sudo tee -a /etc/xdg/autostart/tracker-extract.desktop \
     /etc/xdg/autostart/tracker-miner-apps.desktop \
     /etc/xdg/autostart/tracker-miner-fs.desktop \
     /etc/xdg/autostart/tracker-miner-user-guides.desktop \
