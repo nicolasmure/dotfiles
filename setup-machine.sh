@@ -121,6 +121,7 @@ sudo dnf install -y \
     inkscape \
     k3b k3b-extras-freeworld \
     libreoffice \
+    mediawriter \
     playonlinux \
     steam \
     thunderbird thunderbird-enigmail \
