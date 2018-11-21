@@ -24,8 +24,11 @@ Plugin 'tpope/vim-commentary' " to comment blocks of code
 Plugin 'tpope/vim-surround' " to change surrounding chunks (eg simple quotes to double quotes)
 Plugin 'tpope/vim-repeat' " to repeat sime plugings map with '.'
 Plugin 'autozimu/LanguageClient-neovim' " Language Server Protocol support for neovim
-" Plugin 'Shougo/denite.nvim' " Multi-entry selection UI (also handle completion suggestions)
-Plugin 'roxma/nvim-completion-manager' " completion integration
+Plugin 'ncm2/ncm2' " completion integration
+Plugin 'roxma/nvim-yarp'
+" completion sources https://github.com/ncm2/ncm2/wiki
+Plugin 'ncm2/ncm2-bufword'
+Plugin 'ncm2/ncm2-path'
 Plugin 'vim-airline/vim-airline' " powerline like for neovim
 Plugin 'w0rp/ale' " asynchronous lint engine
 Plugin 'godlygeek/tabular' " align text (such as markdown tables)
@@ -39,14 +42,14 @@ filetype plugin indent on    " required
 " don't give |ins-completion-menu| messages.  For example,
 " '-- XXX completion (YYY)', 'match 1 of 2', 'The only match',
 set shortmess+=c
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
 " use <TAB> to select the popup menu
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " start new line when pressing enter when popup menu is visible
 inoremap <expr> <CR> pumvisible() ? "\<C-y>\<CR>" : "\<CR>"
-" map ctrl+space to open autocomplete popup
-imap <c-space> <Plug>(cm_force_refresh)
-imap <c-@> <Plug>(cm_force_refresh)
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
