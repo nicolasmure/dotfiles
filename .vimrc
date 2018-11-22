@@ -1,42 +1,42 @@
 "
-" BEGIN Vundle (vim plugins manager)
+" BEGIN vim-plug (vim plugins manager)
 "
 set nocompatible              " be iMproved, required
 filetype off                  " required
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.local/share/nvim/plugged')
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim' " plugin manager
-Plugin 'joshdick/onedark.vim' " onedark theme (atom like)
-Plugin 'sheerun/vim-polyglot' " syntax plugin
-Plugin 'scrooloose/nerdtree'
-Plugin 'unkiwii/vim-nerdtree-sync' " sync nerdtree with current opened file
-Plugin 'airblade/vim-gitgutter' " show added / edited / removed lines near the line number
-Plugin 'Yggdroot/indentLine' " indentation guide
-Plugin 'junegunn/fzf.vim' " fuzzy finder vim plugin (requires bin install too)
-Plugin 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
-Plugin 'jiangmiao/auto-pairs' " autoclose parenthesis and brackets, auto indent in curly braces
-Plugin 'travisjeffery/vim-auto-mkdir' " auto mkdir when saving a file in an unexistant dir
-Plugin 'tpope/vim-eunuch' " helpers for unix commands (rm, mv, mkdir, chmod, etc...)
-Plugin 'tpope/vim-fugitive' " git commands
-Plugin 'tpope/vim-commentary' " to comment blocks of code
-Plugin 'tpope/vim-surround' " to change surrounding chunks (eg simple quotes to double quotes)
-Plugin 'tpope/vim-repeat' " to repeat sime plugings map with '.'
-Plugin 'autozimu/LanguageClient-neovim' " Language Server Protocol support for neovim
-Plugin 'ncm2/ncm2' " completion integration
-Plugin 'roxma/nvim-yarp'
+Plug 'joshdick/onedark.vim' " onedark theme (atom like)
+Plug 'sheerun/vim-polyglot' " syntax plugin
+Plug 'scrooloose/nerdtree'
+Plug 'unkiwii/vim-nerdtree-sync' " sync nerdtree with current opened file
+Plug 'airblade/vim-gitgutter' " show added / edited / removed lines near the line number
+Plug 'Yggdroot/indentLine' " indentation guide
+Plug 'junegunn/fzf.vim' " fuzzy finder vim plugin (requires bin install too)
+Plug 'ntpeters/vim-better-whitespace' " eol and eof whitespace removal
+Plug 'jiangmiao/auto-pairs' " autoclose parenthesis and brackets, auto indent in curly braces
+Plug 'travisjeffery/vim-auto-mkdir' " auto mkdir when saving a file in an unexistant dir
+Plug 'tpope/vim-eunuch' " helpers for unix commands (rm, mv, mkdir, chmod, etc...)
+Plug 'tpope/vim-fugitive' " git commands
+Plug 'tpope/vim-commentary' " to comment blocks of code
+Plug 'tpope/vim-surround' " to change surrounding chunks (eg simple quotes to double quotes)
+Plug 'tpope/vim-repeat' " to repeat sime plugings map with '.'
+" Language Server Protocol support for neovim
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'ncm2/ncm2' " completion integration
+Plug 'roxma/nvim-yarp'
 " completion sources https://github.com/ncm2/ncm2/wiki
-Plugin 'ncm2/ncm2-bufword'
-Plugin 'ncm2/ncm2-path'
-Plugin 'vim-airline/vim-airline' " powerline like for neovim
-Plugin 'w0rp/ale' " asynchronous lint engine
-Plugin 'godlygeek/tabular' " align text (such as markdown tables)
-Plugin 'sgur/vim-editorconfig' " .editorconfig support
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" END Vundle
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'vim-airline/vim-airline' " powerline like for neovim
+Plug 'w0rp/ale' " asynchronous lint engine
+Plug 'godlygeek/tabular' " align text (such as markdown tables)
+Plug 'sgur/vim-editorconfig' " .editorconfig support
+" Initialize plugin system
+call plug#end()
+" END vim-plug
 
 " completion
 " don't give |ins-completion-menu| messages.  For example,

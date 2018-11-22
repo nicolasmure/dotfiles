@@ -69,18 +69,14 @@ sudo usermod -a -G docker "$(whoami)"
 sudo systemctl enable docker
 
 # nvim
-if [ ! -d ~/.vim/bundle/Vundle.vim ] ; then
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim ] ; then
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-nvim +PluginUpdate +qall
+nvim +PlugUpgrade +qall
+nvim +PlugUpdate +qall
 nvim +UpdateRemotePlugins +qall
-
-if [ ! -f ~/.vim/bundle/LanguageClient-neovim/bin/languageclient ] ; then
-    pushd ~/.vim/bundle/LanguageClient-neovim || exit 1
-    bash install.sh
-    popd || exit 1
-fi
 
 # zsh
 sudo dnf install -y zsh
