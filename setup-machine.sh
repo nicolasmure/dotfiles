@@ -40,6 +40,9 @@ sudo dnf install -y \
 # cp config files
 rsync -a . ~ --exclude=.git --exclude=setup-machine.sh
 
+# install git-standup
+curl -L https://raw.githubusercontent.com/kamranahmedse/git-standup/master/installer.sh | sudo sh
+
 # node and npm
 sudo dnf install -y nodejs
 sudo ln -s /bin/node /usr/local/bin/nodejs
