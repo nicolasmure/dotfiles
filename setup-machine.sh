@@ -132,26 +132,19 @@ sudo dnf install -y \
 
 # chromecast audio
 install_chromecast_audio () {
-    sudo pip install vext
-    sudo pip install vext.gi
-    sudo dnf copr enable -y cygn/pulseaudio-dlna
+    sudo dnf copr enable -y bugzy/mkchromecast
     sudo dnf install -y \
-        pulseaudio-dlna \
-        python2-gobject \
-        python2-gtkextra
+        ffmpeg \
+        mkchromecast
 
     # as pulseaudio starts in userland, do not use systemd but desktop session
     # instead to start pulseaudio-dlna
     mkdir -p ~/.config/autostart
     echo "[Desktop Entry]
 Type=Application
-Name=pulseaudio-dlna
-Exec=/usr/bin/pulseaudio-dlna -c wav -p 10291 --auto-reconnect
-" > ~/.config/autostart/pulseaudio-dlna.desktop
-
-    # also install pulse effects to have a limiter
-    sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    sudo flatpak install -y flathub com.github.wwmm.pulseeffects
+Name=mkchromecast
+Exec=/usr/bin/mkchromecast -p 10291 --encoder-backend ffmpeg -c wav --sample-rate 44100 --chunk-size 4096
+" > ~/.config/autostart/mkchromecast.desktop
 }
 
 echo "Do you want to install chromecast audio ?"
