@@ -143,7 +143,7 @@ install_chromecast_audio () {
     echo "[Desktop Entry]
 Type=Application
 Name=mkchromecast
-Exec=/usr/bin/mkchromecast -p 10291 --encoder-backend ffmpeg -c wav --sample-rate 44100 --chunk-size 4096
+Exec=/usr/bin/mkchromecast -p 10291 --encoder-backend ffmpeg -c wav --sample-rate 44100 --chunk-size 1
 " > ~/.config/autostart/mkchromecast.desktop
 }
 
