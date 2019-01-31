@@ -97,7 +97,9 @@ set ignorecase
 set hidden          " be able to open new buffer w/o saving changes to the current one
 set wildmenu        " display autocomplete possibilities in vim commands
 " remove trailing whitespaces ntpeters/vim-better-whitespace
-autocmd BufEnter * EnableStripWhitespaceOnSave
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:strip_whitelines_at_eof=1
 " easy navigation between words
 nmap <C-l> w
 nmap <C-h> b
