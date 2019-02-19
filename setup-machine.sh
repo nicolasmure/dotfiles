@@ -155,6 +155,9 @@ select yn in "Yes" "No"; do
     esac
 done
 
+# xbox controller
+sudo modprobe xpad
+
 # settings
 sudo usermod -a -G wireshark "$(whoami)"
 echo "vm.swappiness=5" | sudo tee -a /etc/sysctl.conf
