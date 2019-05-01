@@ -26,7 +26,6 @@ sudo dnf install -y \
     neovim \
     nmap \
     powerline \
-    python2-neovim \
     python3 python3-devel python3-neovim \
     redhat-rpm-config \
     ruby ruby-devel \
