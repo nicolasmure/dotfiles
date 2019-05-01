@@ -100,8 +100,7 @@ sudo dnf install -y \
     dconf-editor \
     gnome-terminal-nautilus \
     gnome-tweaks \
-    numix-icon-theme numix-icon-theme-circle \
-    pop-gtk-theme pop-icon-theme \
+    numix-icon-theme numix-icon-theme-circle
 
 # graphical apps
 sudo dnf install -y \
