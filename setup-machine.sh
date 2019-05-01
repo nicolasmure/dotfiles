@@ -22,6 +22,7 @@ sudo dnf install -y \
     gcc \
     git \
     jq \
+    make \
     neovim \
     nmap \
     powerline \
