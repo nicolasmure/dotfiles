@@ -62,11 +62,10 @@ if [ ! -d ~/.fzf ] ; then
     sudo ln -s ~/.fzf/bin/fzf /usr/local/bin/fzf
 fi
 
-# docker and docker-compose (see https://docs.docker.com/install/linux/docker-ce/fedora/)
-sudo dnf config-manager \
-    --add-repo \
-    https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install -y docker-ce docker-compose
+# docker and docker-compose
+# the docker-ce package is now shipped by moby-engine package on fedora
+# see https://github.com/docker/for-linux/issues/600#issuecomment-495894108
+sudo dnf install -y moby-engine docker-compose
 sudo groupadd docker -f
 sudo usermod -a -G docker "$(whoami)"
 sudo systemctl enable docker
