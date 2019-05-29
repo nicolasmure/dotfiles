@@ -59,6 +59,7 @@ install_cli_tools () {
         git \
         jq \
         make \
+        neofetch \
         neovim \
         nmap \
         powerline \
@@ -86,11 +87,6 @@ install_zsh () {
 
         sudo -u "${SUDO_USER}" cp ./.zshrc "${USER_HOME}/.zshrc"
     fi
-}
-
-install_neofetch () {
-    dnf copr enable -y konimex/neofetch
-    dnf install -y neofetch
 }
 
 install_git_standup () {
@@ -243,7 +239,6 @@ main () {
 
     install_cli_tools
     install_zsh
-    install_neofetch
     install_git_standup
     install_fzf
 
