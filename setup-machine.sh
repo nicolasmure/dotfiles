@@ -51,8 +51,13 @@ copy_config_files () {
 
 remove_uneeded_packages () {
     dnf remove -y \
+        anaconda-core anaconda-gui anaconda-live anaconda-tui anaconda-user-help anaconda-widgets \
+        ctags \
         evolution \
-        rhythmbox
+        hplip hplip-common hplip-libs \
+        rhythmbox \
+        tmux \
+        totem
 }
 
 basic_update () {
