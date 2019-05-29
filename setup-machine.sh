@@ -25,6 +25,18 @@ check_sudo_user () {
     fi
 }
 
+check_minimum_fedora_version () {
+    local minimum_fedora_version="${1}"
+    local fedora_version
+    fedora_version="$(rpm -E %fedora)"
+
+    if [ "${fedora_version:-0}" -lt "${minimum_fedora_version}" ]; then
+        printerr "This script is meant to privision fedora >= v${minimum_fedora_version}, however v${fedora_version} detected. Aborting."
+
+        exit 1
+    fi
+}
+
 set_user_home_var () {
     USER_HOME="$(getent passwd "${SUDO_USER}" | cut -d":" -f 6)"
 }
@@ -229,6 +241,7 @@ disable_tracker_miner () {
 main () {
     check_sudo
     check_sudo_user
+    check_minimum_fedora_version "30"
     set_user_home_var
     go_to_script_dir
 
