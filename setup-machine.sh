@@ -242,6 +242,29 @@ configure_swappiness () {
     echo "vm.swappiness=5" | tee -a /etc/sysctl.conf
 }
 
+configure_dns_resolver () {
+    echo "# disable /etc/resolv.conf auto management by NetworkManager
+[main]
+dns=dnsmasq
+rc-manager=unmanaged
+" | tee /etc/NetworkManager/conf.d/dns.conf
+
+    echo "# Use dnsmasq as DNS resolver
+nameserver 127.0.0.1
+" | tee /etc/resolv.conf
+
+    echo "# Let dnsmasq use public resolvers.
+# Edit this dnsmasq config if you want to resolve a VPN
+# (or create an other dedicated conf file for this VPN)
+all-servers
+# see https://developers.cloudflare.com/1.1.1.1/setting-up-1.1.1.1/
+server=1.1.1.1
+server=1.0.0.1
+server=2606:4700:4700::1111
+server=2606:4700:4700::1001
+" | tee /etc/NetworkManager/dnsmasq.d/dns.conf
+}
+
 disable_tracker_miner () {
     # see https://askubuntu.com/a/348692
     echo -e "\\nHidden=true\\n" | tee -a /etc/xdg/autostart/tracker-extract.desktop \
@@ -285,6 +308,7 @@ main () {
     enable_xbox_controller_kernel_module
 
     configure_swappiness
+    configure_dns_resolver
     disable_tracker_miner
 
     # done
