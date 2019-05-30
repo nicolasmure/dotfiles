@@ -143,6 +143,17 @@ install_docker () {
     groupadd docker -f
     usermod -a -G docker "${SUDO_USER}"
     systemctl enable docker
+
+    # Set custom config for the docker daemon installed with moby-engine package.
+    #
+    # Default opts : OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
+    # Set a limit for the number of opened files ( https://bugzilla.redhat.com/show_bug.cgi?id=1715254 )
+    # Remove the --live-restore option to be able to run docker in swarm mode.
+    #
+    # See the default config file at https://src.fedoraproject.org/rpms/moby-engine/blob/master/f/docker.sysconfig
+    echo "# Modify these options if you want to change the way the docker daemon runs
+OPTIONS='--selinux-enabled --log-driver=journald --default-ulimit nofile=1024:1024'
+" | tee /etc/sysconfig/docker
 }
 
 configure_nvim () {
