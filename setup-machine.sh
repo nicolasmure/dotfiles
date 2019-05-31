@@ -49,6 +49,23 @@ copy_config_files () {
     sudo -u "${SUDO_USER}" rsync -a . "${USER_HOME}" --exclude=.git --exclude=setup-machine.sh
 }
 
+disable_uneeded_services () {
+    local commands=(disable stop mask)
+    local services=(
+        crond
+        dnf-makecache
+        lvm2-monitor
+        NetworkManager-wait-online
+        plymouth-quit-wait
+    )
+
+    for service in "${services[@]}"; do
+        for command in "${commands[@]}"; do
+            systemctl "${command}" "${service}"
+        done
+    done
+}
+
 remove_uneeded_packages () {
     dnf remove -y \
         anaconda-core anaconda-gui anaconda-live anaconda-tui anaconda-user-help anaconda-widgets \
@@ -238,6 +255,15 @@ enable_xbox_controller_kernel_module () {
     modprobe xpad
 }
 
+configure_journalctl () {
+    # see https://wiki.archlinux.org/index.php/Systemd/Journal#Journal_size_limit
+    mkdir -p /etc/systemd/journald.conf.d
+
+    echo "[Journal]
+SystemMaxUse=50M
+" | tee /etc/systemd/journald.conf.d/00-journal-size.conf
+}
+
 configure_swappiness () {
     echo "vm.swappiness=5" | tee -a /etc/sysctl.conf
 }
@@ -286,6 +312,7 @@ main () {
 
     copy_config_files
 
+    disable_uneeded_services
     remove_uneeded_packages
     basic_update
 
@@ -307,6 +334,7 @@ main () {
 
     enable_xbox_controller_kernel_module
 
+    configure_journalctl
     configure_swappiness
     configure_dns_resolver
     disable_tracker_miner
