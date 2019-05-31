@@ -72,6 +72,7 @@ remove_uneeded_packages () {
         ctags \
         evolution \
         hplip hplip-common hplip-libs \
+        plymouth \
         rhythmbox \
         tmux \
         totem
@@ -255,6 +256,10 @@ enable_xbox_controller_kernel_module () {
     modprobe xpad
 }
 
+configure_grub () {
+    grub2-editenv - set fastboot=1
+}
+
 configure_journalctl () {
     # see https://wiki.archlinux.org/index.php/Systemd/Journal#Journal_size_limit
     mkdir -p /etc/systemd/journald.conf.d
@@ -334,6 +339,7 @@ main () {
 
     enable_xbox_controller_kernel_module
 
+    configure_grub
     configure_journalctl
     configure_swappiness
     configure_dns_resolver
