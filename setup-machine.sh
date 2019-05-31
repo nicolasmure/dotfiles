@@ -255,6 +255,15 @@ enable_xbox_controller_kernel_module () {
     modprobe xpad
 }
 
+configure_journalctl () {
+    # see https://wiki.archlinux.org/index.php/Systemd/Journal#Journal_size_limit
+    mkdir -p /etc/systemd/journald.conf.d
+
+    echo "[Journal]
+SystemMaxUse=50M
+" | tee /etc/systemd/journald.conf.d/00-journal-size.conf
+}
+
 configure_swappiness () {
     echo "vm.swappiness=5" | tee -a /etc/sysctl.conf
 }
@@ -325,6 +334,7 @@ main () {
 
     enable_xbox_controller_kernel_module
 
+    configure_journalctl
     configure_swappiness
     configure_dns_resolver
     disable_tracker_miner
