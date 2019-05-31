@@ -49,6 +49,23 @@ copy_config_files () {
     sudo -u "${SUDO_USER}" rsync -a . "${USER_HOME}" --exclude=.git --exclude=setup-machine.sh
 }
 
+disable_uneeded_services () {
+    local commands=(disable stop mask)
+    local services=(
+        crond
+        dnf-makecache
+        lvm2-monitor
+        NetworkManager-wait-online
+        plymouth-quit-wait
+    )
+
+    for service in "${services[@]}"; do
+        for command in "${commands[@]}"; do
+            systemctl "${command}" "${service}"
+        done
+    done
+}
+
 remove_uneeded_packages () {
     dnf remove -y \
         anaconda-core anaconda-gui anaconda-live anaconda-tui anaconda-user-help anaconda-widgets \
@@ -286,6 +303,7 @@ main () {
 
     copy_config_files
 
+    disable_uneeded_services
     remove_uneeded_packages
     basic_update
 
