@@ -132,13 +132,13 @@ install_fzf () {
     if [ ! -d "${USER_HOME}/.fzf" ] ; then
         sudo -u "${SUDO_USER}" git clone --depth 1 https://github.com/junegunn/fzf.git "${USER_HOME}/.fzf"
         sudo -u "${SUDO_USER}" "${USER_HOME}/.fzf/install"
-        ln -s "${USER_HOME}/.fzf/bin/fzf" /usr/local/bin/fzf
+        ln -sf "${USER_HOME}/.fzf/bin/fzf" /usr/local/bin/fzf
     fi
 }
 
 install_nodejs () {
     dnf install -y nodejs
-    ln -s /bin/node /usr/local/bin/nodejs
+    ln -sf /bin/node /usr/local/bin/nodejs
     npm install -g \
         javascript-typescript-langserver \
         yarn
