@@ -56,6 +56,8 @@ disable_uneeded_services () {
         dnf-makecache
         lvm2-monitor
         NetworkManager-wait-online
+        packagekit
+        packagekit-offline-update
         plymouth-quit-wait
     )
 
@@ -96,6 +98,7 @@ install_cli_tools () {
         make \
         neofetch \
         neovim \
+        nethogs \
         nmap \
         powerline \
         python3 python3-devel python3-neovim \
