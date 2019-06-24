@@ -121,3 +121,11 @@ fi
 if [ -d ${HOME}/.cargo ]; then
     source  ${HOME}/.cargo/env
 fi
+
+if [ -f ${HOME}/.zsh_doctl_completion ]; then
+    source  ${HOME}/.zsh_doctl_completion
+fi
+
+if [ -f /usr/bin/go ]; then
+    export GOPATH="$(go env GOPATH)"
+fi
