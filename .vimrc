@@ -8,6 +8,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'joshdick/onedark.vim' " onedark theme (atom like)
 Plug 'sheerun/vim-polyglot' " syntax plugin
 Plug 'ekalinin/Dockerfile.vim' " syntax plugin for Dockerfiles (used by vim-polyglot)
+Plug 'smerrill/vcl-vim-plugin' " syntax plugin fot vtc (varnish) (used by vim-polyglot)
 Plug 'scrooloose/nerdtree'
 Plug 'unkiwii/vim-nerdtree-sync' " sync nerdtree with current opened file
 Plug 'airblade/vim-gitgutter' " show added / edited / removed lines near the line number
