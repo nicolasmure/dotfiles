@@ -68,6 +68,12 @@ disable_uneeded_services () {
     done
 }
 
+configure_dnf () {
+    # see https://www.addictivetips.com/ubuntu-linux-tips/speed-up-the-fedora-linux-app-installer/
+    echo "fastestmirror=true
+max_parallel_downloads=10" | tee -a /etc/dnf/dnf.conf
+}
+
 remove_uneeded_packages () {
     dnf remove -y \
         anaconda-core anaconda-gui anaconda-live anaconda-tui anaconda-user-help anaconda-widgets \
@@ -321,6 +327,7 @@ main () {
     copy_config_files
 
     disable_uneeded_services
+    configure_dnf
     remove_uneeded_packages
     basic_update
 
