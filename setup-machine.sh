@@ -145,6 +145,10 @@ install_fzf () {
     fi
 }
 
+install_python_lsp () {
+    pip3 install python-language-server
+}
+
 install_nodejs () {
     dnf install -y nodejs
     ln -sf /bin/node /usr/local/bin/nodejs
@@ -336,6 +340,7 @@ main () {
     install_git_standup
     install_fzf
 
+    install_python_lsp
     install_nodejs
     install_php
     install_docker
