@@ -60,6 +60,7 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
+    \ 'python': ['/usr/local/bin/pyls'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
 let g:LanguageClient_selectionUI = 'fzf'
