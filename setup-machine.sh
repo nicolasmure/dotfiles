@@ -183,8 +183,12 @@ install_docker () {
     #
     # See the default config file at https://src.fedoraproject.org/rpms/moby-engine/blob/master/f/docker.sysconfig
     echo "# Modify these options if you want to change the way the docker daemon runs
-OPTIONS='--selinux-enabled --log-driver=journald --default-ulimit nofile=1024:1024'
-" | tee /etc/sysconfig/docker
+OPTIONS=\"--selinux-enabled \
+  --log-driver=journald \
+  --default-ulimit nofile=1024:1024 \
+  --init-path /usr/libexec/docker/docker-init \
+  --userland-proxy-path /usr/libexec/docker/docker-proxy \
+\"" | tee /etc/sysconfig/docker
 }
 
 configure_nvim () {
