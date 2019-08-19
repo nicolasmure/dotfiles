@@ -187,7 +187,6 @@ OPTIONS=\"--selinux-enabled \
   --log-driver=journald \
   --default-ulimit nofile=1024:1024 \
   --init-path /usr/libexec/docker/docker-init \
-  --userland-proxy-path /usr/libexec/docker/docker-proxy \
 \"" | tee /etc/sysconfig/docker
 }
 
