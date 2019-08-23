@@ -45,9 +45,9 @@ install_ansible () {
 
 provision_localhost () {
     ansible-playbook \
-        -i provisioning/hosts \
+        -i hosts \
         -l localhost \
-        provisioning/playbook.yml \
+        playbook.yml \
         --ask-become-pass
 }
 
@@ -55,9 +55,6 @@ main () {
     install_ansible
 
     provision_localhost
-
-    # done
-    reboot
 }
 
 main
