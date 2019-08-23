@@ -1,0 +1,30 @@
+---
+- name: Enable mkchromecast repository
+  become: yes
+  shell: "dnf copr enable -y bugzy/mkchromecast"
+  when: install_chromecast_audio
+  tags:
+    - install_chromecast_audio
+
+- name: Install mkchromecast
+  become: yes
+  dnf:
+    name: [
+      "ffmpeg",
+      "mkchromecast",
+    ]
+    state: present
+  when: install_chromecast_audio
+  tags:
+    - install_chromecast_audio
+
+# As pulseaudio starts in userland, do not use systemd but desktop session
+# instead to start pulseaudio-dlna
+- name: Autostart mkchromecast
+  copy:
+    src: .config/autostart/mkchromecast.desktop
+    dest: ~/.config/autostart/mkchromecast.desktop
+  when: install_chromecast_audio
+  tags:
+    - install_chromecast_audio
+    - copy_mkchromecast_config

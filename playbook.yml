@@ -3,6 +3,12 @@
   # gather_facts required to grab OS version number and username
   # @see https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variables-discovered-from-systems-facts
   gather_facts: yes
+  pre_tasks:
+    - name: Include host vars
+      include_vars:
+        file: vars/localhost.yml
+      tags:
+        - install_chromecast_audio
   tasks:
     - import_tasks: tasks/copy_config_files.yml
 
@@ -25,6 +31,8 @@
 
     - import_tasks: tasks/install_gnome_deps.yml
     - import_tasks: tasks/install_graphical_apps.yml
+
+    - import_tasks: tasks/install_chromecast_audio.yml
 
     - import_tasks: tasks/enable_xbox_controller_kernel_module.yml
 
