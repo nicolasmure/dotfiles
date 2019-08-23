@@ -36,14 +36,6 @@ prompt_for_chromecast_audio_installation () {
 
 ################################################################################
 
-copy_config_files () {
-    rsync -a . "${HOME}" \
-        --exclude=.editorconfig \
-        --exclude=.git \
-        --exclude=provisioning \
-        --exclude=setup-machine.sh
-}
-
 install_ansible () {
     sudo dnf install -y \
         ansible \
@@ -60,8 +52,6 @@ provision_localhost () {
 }
 
 main () {
-    copy_config_files
-
     install_ansible
 
     provision_localhost

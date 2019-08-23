@@ -1,0 +1,6 @@
+---
+- name: rsync zshrc
+  synchronize:
+    src: files/dotfiles/.zshrc
+    dest: ~/
+    mode: push

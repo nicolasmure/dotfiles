@@ -4,6 +4,8 @@
   # @see https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variables-discovered-from-systems-facts
   gather_facts: yes
   tasks:
+    - import_tasks: tasks/copy_config_files.yml
+
     - import_tasks: tasks/disable_unneeded_services.yml
     - import_tasks: tasks/configure_dnf.yml
     - import_tasks: tasks/remove_unneeded_packages.yml
@@ -34,3 +36,4 @@
 
   handlers:
     - include: handlers/docker.yml
+    - include: handlers/zsh.yml

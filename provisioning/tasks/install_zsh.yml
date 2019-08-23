@@ -41,6 +41,16 @@
     - install_zsh
     - install_oh_my_zsh
 
+- name: Remove old .zshrc
+  shell: "rm -f ~/.zshrc*"
+  args:
+    warn: no
+  when: omz.stat.isdir is not defined
+  notify: rsync zshrc
+  tags:
+    - install_zsh
+    - install_oh_my_zsh
+
 - name: Remove oh my zsh install script
   file:
     path: /tmp/omz_install.sh

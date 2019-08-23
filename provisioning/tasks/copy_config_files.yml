@@ -1,0 +1,9 @@
+---
+- name: Copy config files
+  synchronize:
+    src: files/dotfiles/
+    dest: ~/
+    mode: push
+    delete: no
+  tags:
+    - copy_config_files
