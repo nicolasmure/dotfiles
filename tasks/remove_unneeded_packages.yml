@@ -1,0 +1,24 @@
+---
+- name: Remove unneeded packages
+  become: yes
+  dnf:
+    name: [
+      "anaconda-core",
+      "anaconda-gui",
+      "anaconda-live",
+      "anaconda-tui",
+      "anaconda-user-help",
+      "anaconda-widgets",
+      "ctags",
+      "evolution",
+      "hplip",
+      "hplip-common",
+      "hplip-libs",
+      "plymouth",
+      "rhythmbox",
+      "tmux",
+    ]
+    state: absent
+    autoremove: yes
+  tags:
+    - remove_unneeded_packages

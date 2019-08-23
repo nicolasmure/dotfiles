@@ -1,0 +1,48 @@
+---
+- name: Install graphical apps
+  become: yes
+  dnf:
+    name: [
+      "audacious",
+      "audacity",
+      "brasero",
+      "chromium",
+      "chromium-common",
+      "chromium-libs",
+      "chromium-libs-media",
+      "chromium-libs-media-freeworld",
+      "clementine",
+      "easytag",
+      "epiphany",
+      "gimp",
+      "gucharmap",
+      "gparted",
+      "firefox",
+      "fontforge",
+      "inkscape",
+      "k3b",
+      "k3b-extras-freeworld",
+      "libreoffice",
+      "mediawriter",
+      "playonlinux",
+      "steam",
+      "thunderbird",
+      "thunderbird-enigmail",
+      "vlc",
+      "tilix",
+      "transmission-gtk",
+      "wine",
+      "wireshark",
+    ]
+    state: present
+  tags:
+    - install_graphical_apps
+
+- name: Join wireshark group
+  become: yes
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: wireshark
+    append: yes
+  tags:
+    - install_graphical_apps

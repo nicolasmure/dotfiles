@@ -1,0 +1,39 @@
+---
+- name: Install PHP
+  become: yes
+  dnf:
+    name: [
+      "composer",
+      "php",
+    ]
+    state: present
+  tags:
+    - install_php
+
+- name: Check if php language server is installed
+  stat:
+    path: ~/.config/composer/vendor/felixfbecker/language-server
+  register: php_lsp
+  tags:
+    - install_php
+    - install_php_lsp
+
+- name: Install PHP LSP
+  composer:
+    command: require
+    arguments: felixfbecker/language-server
+    global_command: yes
+  when: php_lsp.stat.isdir is not defined
+  tags:
+    - install_php
+    - install_php_lsp
+
+- name: Configure PHP LSP stubs
+  composer:
+    command: run-script
+    arguments: parse-stubs
+    working_dir: ~/.config/composer/vendor/felixfbecker/language-server
+  when: php_lsp.stat.isdir is not defined
+  tags:
+    - install_php
+    - install_php_lsp

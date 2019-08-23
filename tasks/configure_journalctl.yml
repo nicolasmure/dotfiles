@@ -1,0 +1,9 @@
+---
+# see https://wiki.archlinux.org/index.php/Systemd/Journal#Journal_size_limit
+- name: Configure journalctl
+  become: yes
+  copy:
+    src: etc/systemd/journald.conf.d/00-journal-size.conf
+    dest: /etc/systemd/journald.conf.d/00-journal-size.conf
+  tags:
+    - configure_journalctl

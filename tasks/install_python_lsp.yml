@@ -1,0 +1,8 @@
+---
+- name: Install python LSP
+  become: yes
+  pip:
+    name: python-language-server
+    state: present
+  tags:
+    - install_python_lsp

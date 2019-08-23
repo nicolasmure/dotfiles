@@ -1,0 +1,47 @@
+---
+- hosts: localhost
+  # gather_facts required to grab OS version number and username
+  # @see https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#variables-discovered-from-systems-facts
+  gather_facts: yes
+  pre_tasks:
+    - name: Include host vars
+      include_vars:
+        file: vars/localhost.yml
+      tags:
+        - install_chromecast_audio
+  tasks:
+    - import_tasks: tasks/copy_config_files.yml
+
+    - import_tasks: tasks/disable_unneeded_services.yml
+    - import_tasks: tasks/configure_dnf.yml
+    - import_tasks: tasks/remove_unneeded_packages.yml
+    - import_tasks: tasks/basic_update.yml
+
+    - import_tasks: tasks/install_cli_tools.yml
+    - import_tasks: tasks/install_zsh.yml
+    - import_tasks: tasks/install_git_standup.yml
+    - import_tasks: tasks/install_fzf.yml
+
+    - import_tasks: tasks/install_python_lsp.yml
+    - import_tasks: tasks/install_nodejs.yml
+    - import_tasks: tasks/install_php.yml
+    - import_tasks: tasks/install_docker.yml
+
+    - import_tasks: tasks/configure_nvim.yml
+
+    - import_tasks: tasks/install_gnome_deps.yml
+    - import_tasks: tasks/install_graphical_apps.yml
+
+    - import_tasks: tasks/install_chromecast_audio.yml
+
+    - import_tasks: tasks/enable_xbox_controller_kernel_module.yml
+
+    - import_tasks: tasks/configure_grub.yml
+    - import_tasks: tasks/configure_journalctl.yml
+    - import_tasks: tasks/configure_swappiness.yml
+    - import_tasks: tasks/configure_dns_resolver.yml
+    - import_tasks: tasks/disable_tracker_miner.yml
+
+  handlers:
+    - include: handlers/docker.yml
+    - include: handlers/zsh.yml
