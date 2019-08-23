@@ -1,0 +1,18 @@
+---
+- name: Disable unneeded services
+  become: yes
+  systemd:
+    name: "{{ item }}"
+    state: stopped
+    enabled: no
+    masked: yes
+  with_items:
+    - crond
+    - dnf-makecache
+    - lvm2-monitor
+    - NetworkManager-wait-online
+    - packagekit
+    - packagekit-offline-update
+    - plymouth-quit-wait
+  tags:
+    - disable_unneeded_services

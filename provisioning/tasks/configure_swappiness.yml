@@ -1,0 +1,10 @@
+---
+- name: Configure swappiness
+  become: yes
+  lineinfile:
+    path: /etc/sysctl.conf
+    create: yes
+    state: present
+    line: "vm.swappiness=5"
+  tags:
+    - configure_swappiness

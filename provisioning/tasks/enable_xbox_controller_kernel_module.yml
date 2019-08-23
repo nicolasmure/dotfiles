@@ -1,0 +1,8 @@
+---
+- name: Enable XBox controller kernel module
+  become: yes
+  modprobe:
+    name: xpad
+    state: present
+  tags:
+    - enable_xbox_controller_kernel_module

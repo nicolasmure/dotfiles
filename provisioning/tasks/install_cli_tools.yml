@@ -1,0 +1,34 @@
+---
+- name: Install CLI tools
+  become: yes
+  dnf:
+    name: [
+      "curl",
+      "dnf-plugins-core",
+      "gcc",
+      "git",
+      "jq",
+      "make",
+      "neofetch",
+      "neovim",
+      "nethogs",
+      "nmap",
+      "powerline",
+      "python3",
+      "python3-devel",
+      "python3-neovim",
+      "redhat-rpm-config",
+      "ruby",
+      "ruby-devel",
+      "ShellCheck",
+      "tig",
+      "unrar",
+      "util-linux-user",
+      "vagrant",
+      "vim",
+      "vim-enhanced",
+      "wget",
+    ]
+    state: present
+  tags:
+    - install_cli_tools

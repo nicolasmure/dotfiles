@@ -1,0 +1,55 @@
+---
+# the docker-ce package is now shipped by moby-engine package on fedora
+# see https://github.com/docker/for-linux/issues/600#issuecomment-495894108
+- name: Install docker
+  become: yes
+  dnf:
+    name: [
+      "docker-compose",
+      "moby-engine",
+    ]
+    state: present
+  tags:
+    - install_docker
+
+- name: Create docker group
+  become: yes
+  group:
+    name: docker
+    state: present
+  tags:
+    - install_docker
+
+- name: Join docker group
+  become: yes
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: yes
+  tags:
+    - install_docker
+
+- name: Enable docker service
+  become: yes
+  systemd:
+    name: docker
+    enabled: yes
+  tags:
+    - install_docker
+
+# Set custom config for the docker daemon installed with moby-engine package.
+#
+# Default opts : OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
+# Set a limit for the number of opened files ( https://bugzilla.redhat.com/show_bug.cgi?id=1715254 )
+# Remove the --live-restore option to be able to run docker in swarm mode.
+#
+# See the default config file at https://src.fedoraproject.org/rpms/moby-engine/blob/master/f/docker.sysconfig
+- name: Copy docker options configuration
+  become: yes
+  copy:
+    src: etc/sysconfig/docker
+    dest: /etc/sysconfig/docker
+  notify: restart docker
+  tags:
+    - install_docker
+    - copy_docker_options

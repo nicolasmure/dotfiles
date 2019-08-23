@@ -1,0 +1,13 @@
+---
+- name: Configure dnf
+  become: yes
+  lineinfile:
+    path: /etc/dnf/dnf.conf
+    create: yes
+    state: present
+    line: "{{ item }}"
+  with_items:
+    - "fastestmirror=true"
+    - "max_parallel_downloads=10"
+  tags:
+    - configure_dnf

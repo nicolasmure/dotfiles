@@ -1,0 +1,30 @@
+---
+- name: Install nodejs
+  become: yes
+  dnf:
+    name: nodejs
+    state: present
+  tags:
+    - install_nodejs
+
+- name: Create symlink from node to nodejs
+  become: yes
+  file:
+    src: /bin/node
+    dest: /usr/local/bin/nodejs
+    state: link
+  tags:
+    - install_nodejs
+
+- name: Install global NPM packages
+  become: yes
+  npm:
+    name: "{{ item }}"
+    state: present
+    global: yes
+  with_items:
+    - javascript-typescript-langserver
+    - yarn
+  tags:
+    - install_nodejs
+    - install_global_npm_packages

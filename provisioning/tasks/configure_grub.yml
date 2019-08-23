@@ -1,0 +1,6 @@
+---
+- name: Configure grub
+  become: yes
+  shell: "grub2-editenv - set fastboot=1"
+  tags:
+    - configure_grub

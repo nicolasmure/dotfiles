@@ -1,0 +1,51 @@
+---
+- name: Install zsh
+  become: yes
+  dnf:
+    name: zsh
+    state: present
+  tags:
+    - install_zsh
+
+- name: Set zsh as user shell
+  become: yes
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /bin/zsh
+  tags:
+    - install_zsh
+    - set_user_shell
+
+- name: Check if oh-my-zsh is already installed
+  stat:
+    path: ~/.oh-my-zsh
+  register: omz
+  tags:
+    - install_zsh
+    - install_oh_my_zsh
+
+- name: Download oh-my-zsh install script
+  get_url:
+    url: https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    dest: /tmp/omz_install.sh
+    mode: "0700"
+  when: omz.stat.isdir is not defined
+  tags:
+    - install_zsh
+    - install_oh_my_zsh
+
+- name: Install oh my zsh
+  shell: /tmp/omz_install.sh
+  when: omz.stat.isdir is not defined
+  tags:
+    - install_zsh
+    - install_oh_my_zsh
+
+- name: Remove oh my zsh install script
+  file:
+    path: /tmp/omz_install.sh
+    state: absent
+  when: omz.stat.isdir is not defined
+  tags:
+    - install_zsh
+    - install_oh_my_zsh

@@ -1,0 +1,25 @@
+---
+- name: Copy NetworkManager dns conf file
+  become: yes
+  copy:
+    src: etc/NetworkManager/conf.d/dns.conf
+
+    dest: /etc/NetworkManager/conf.d/dns.conf
+  tags:
+    configure_dns_resolver
+
+- name: Copy /etc/resolv.conf file
+  become: yes
+  copy:
+    src: etc/resolv.conf
+    dest: /etc/resolv.conf
+  tags:
+    configure_dns_resolver
+
+- name: Copy dnsmasq conf
+  become: yes
+  copy:
+    src: etc/NetworkManager/dnsmasq.d/dns.conf
+    dest: /etc/NetworkManager/dnsmasq.d/dns.conf
+  tags:
+    configure_dns_resolver
