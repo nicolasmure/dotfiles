@@ -32,3 +32,15 @@
     state: present
   tags:
     - install_cli_tools
+
+- name: Install yq
+  become: yes
+  get_url:
+    url: "https://github.com/mikefarah/yq/releases/download/{{ yq_version }}/yq_linux_amd64"
+    dest: /usr/local/bin/yq
+    mode: 0755
+  vars:
+    - yq_version: 2.4.0
+  tags:
+    - install_cli_tools
+    - install_yq
