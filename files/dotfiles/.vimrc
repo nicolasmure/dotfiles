@@ -9,8 +9,6 @@ Plug 'joshdick/onedark.vim' " onedark theme (atom like)
 Plug 'sheerun/vim-polyglot' " syntax plugin
 Plug 'ekalinin/Dockerfile.vim' " syntax plugin for Dockerfiles (used by vim-polyglot)
 Plug 'smerrill/vcl-vim-plugin' " syntax plugin fot vtc (varnish) (used by vim-polyglot)
-Plug 'scrooloose/nerdtree'
-Plug 'unkiwii/vim-nerdtree-sync' " sync nerdtree with current opened file
 Plug 'airblade/vim-gitgutter' " show added / edited / removed lines near the line number
 Plug 'Yggdroot/indentLine' " indentation guide
 Plug 'junegunn/fzf.vim' " fuzzy finder vim plugin (requires bin install too)
@@ -206,11 +204,10 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 "
-" NERDTree
+" netrw (split explorer)
 "
-noremap <C-n> :NERDTreeToggle<CR>
-let NERDTreeShowHidden = 1 " show dot files
-let g:nerdtree_sync_cursorline = 1 " highlight current opened file in nerdtree
+noremap <C-n> :32vne <CR>:Explore .<CR>
+let g:netrw_browse_split = 4 " open selected file in previously focused window
 
 "
 " w0rp/ale
