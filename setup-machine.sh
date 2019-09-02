@@ -9,7 +9,8 @@ install_ansible () {
     sudo dnf install -y \
         ansible \
         pexpect \
-        python3
+        python3 \
+        python3-importlib-metadata
 }
 
 copy_dist_files () {
