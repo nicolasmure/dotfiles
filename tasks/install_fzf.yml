@@ -25,7 +25,7 @@
 - name: Create symlink for fzf bin
   become: yes
   file:
-    src: "{{ ansible_user_id }}/.fzf/bin/fzf"
+    src: "{{ ansible_user_dir }}/.fzf/bin/fzf"
     dest: /usr/local/bin/fzf
     state: link
   when: fzf.stat.isdir is not defined

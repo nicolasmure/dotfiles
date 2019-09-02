@@ -1,4 +1,12 @@
 ---
+- name: Ensure journalctl.conf.d exists
+  become: yes
+  file:
+    path: /etc/systemd/journald.conf.d
+    state: directory
+  tags:
+    - configure_journalctl
+
 # see https://wiki.archlinux.org/index.php/Systemd/Journal#Journal_size_limit
 - name: Configure journalctl
   become: yes
