@@ -34,7 +34,7 @@
 
     - import_tasks: tasks/install_chromecast_audio.yml
 
-    - import_tasks: tasks/enable_xbox_controller_kernel_module.yml
+    # - import_tasks: tasks/enable_xbox_controller_kernel_module.yml
 
     - import_tasks: tasks/configure_grub.yml
     - import_tasks: tasks/configure_journalctl.yml

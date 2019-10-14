@@ -8,7 +8,7 @@
 
 - name: Download git-standup install script
   get_url:
-    path: https://raw.githubusercontent.com/kamranahmedse/git-standup/master/installer.sh
+    url: https://raw.githubusercontent.com/kamranahmedse/git-standup/master/installer.sh
     dest: /tmp/git-standup-installer.sh
     mode: 700
   when: git_standup.stat.exists == False
