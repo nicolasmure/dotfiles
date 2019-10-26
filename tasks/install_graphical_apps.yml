@@ -5,7 +5,6 @@
     name: [
       "audacious",
       "audacity",
-      "brasero",
       "chromium",
       "chromium-common",
       "chromium-libs",
@@ -20,8 +19,6 @@
       "firefox",
       "fontforge",
       "inkscape",
-      "k3b",
-      "k3b-extras-freeworld",
       "libreoffice",
       "mediawriter",
       "playonlinux",

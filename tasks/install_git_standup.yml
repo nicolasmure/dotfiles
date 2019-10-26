@@ -7,6 +7,7 @@
     - install_git_standup
 
 - name: Download git-standup install script
+  become: yes
   get_url:
     url: https://raw.githubusercontent.com/kamranahmedse/git-standup/master/installer.sh
     dest: /tmp/git-standup-installer.sh
