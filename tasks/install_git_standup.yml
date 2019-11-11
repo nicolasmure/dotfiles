@@ -24,6 +24,7 @@
     - install_git_standup
 
 - name: Remove git-standup installation script
+  become: yes
   file:
     path: /tmp/git-standup-installer.sh
     state: absent
