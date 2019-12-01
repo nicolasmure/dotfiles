@@ -4,5 +4,6 @@
   modprobe:
     name: xpad
     state: present
+  when: enable_xbox_controller == True
   tags:
     - enable_xbox_controller_kernel_module
