@@ -1,2 +1,3 @@
 ---
 install_chromecast_audio: false
+enable_xbox_controller: false
