@@ -5,6 +5,7 @@
     name: [
       "curl",
       "dnf-plugins-core",
+      "ffmpeg",
       "gcc",
       "git",
       "jq",
