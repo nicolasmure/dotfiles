@@ -3,6 +3,7 @@
   become: yes
   dnf:
     name: [
+      "audacious",
       "audacity",
       "chromium",
       "chromium-common",
