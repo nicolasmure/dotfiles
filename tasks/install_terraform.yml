@@ -1,0 +1,85 @@
+---
+- name: Set task vars
+  set_fact:
+    terraform_binary_path: /usr/local/bin/terraform
+    terraform_version: "0.12.21"
+    terraform_archive_sha256sum: "ca0d0796c79d14ee73a3d45649dab5e531f0768ee98da71b31e423e3278e9aa9"
+    terraform_binary_sha256sum: "6283aebb8cd0189adf95a4a1ca11f62079ea6148ac2c69bcd6fdbb2b7401662c"
+  when: install_terraform | default(false)
+  tags:
+    - install_cli_tools
+    - install_terraform
+
+- name: Check if terraform is already installed
+  stat:
+    path: "{{ terraform_binary_path }}"
+    checksum_algorithm: sha256
+  register: binary
+  when: install_terraform | default(false)
+  tags:
+    - install_cli_tools
+    - install_terraform
+
+- name: Remove terraform binary when not the expected one
+  become: yes
+  file:
+    path: "{{ terraform_binary_path }}"
+    state: absent
+  when: install_terraform | default(false) and (binary.stat.exists == True and binary.stat.checksum != terraform_binary_sha256sum)
+  tags:
+    - install_cli_tools
+    - install_terraform
+
+- name: Download terraform archive
+  become: yes
+  get_url:
+    url: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+    checksum: "sha256:{{ terraform_archive_sha256sum }}"
+    dest: /tmp/terraform.zip
+    mode: 0644
+    owner: root
+    group: root
+  when: install_terraform | default(false) and (binary.stat.exists == False or binary.stat.checksum != terraform_binary_sha256sum)
+  register: terraform_archive_downloaded
+  notify: remove terraform temporary files
+  tags:
+    - install_cli_tools
+    - install_terraform
+
+- name: Create directory to unpack archive
+  become: yes
+  file:
+    path: /tmp/terraform
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+  when: terraform_archive_downloaded is changed
+  tags:
+    - install_cli_tools
+    - install_terraform
+
+- name: Extract terraform archive
+  become: yes
+  unarchive:
+    remote_src: yes
+    src: /tmp/terraform.zip
+    dest: /tmp/terraform/
+  when: terraform_archive_downloaded is changed
+  tags:
+    - install_cli_tools
+    - install_terraform
+
+- name: Install terraform binary
+  become: yes
+  copy:
+    remote_src: yes
+    src: /tmp/terraform/terraform
+    dest: "{{ terraform_binary_path }}"
+    mode: 0755
+    owner: root
+    group: root
+  when: terraform_archive_downloaded is changed
+  tags:
+    - install_cli_tools
+    - install_terraform

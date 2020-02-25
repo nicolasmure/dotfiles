@@ -1,0 +1,6 @@
+---
+- name: remove terraform temporary files
+  become: yes
+  shell: "rm -rf /tmp/terraform*"
+  args:
+    warn: no
