@@ -57,7 +57,7 @@ export GROFF_NO_SGR=1
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man-pages colorize cp web-search z docker go node npm composer rand-quote themes dnf)
+plugins=(git colored-man-pages colorize cp web-search z docker go node npm composer rand-quote themes dnf dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
