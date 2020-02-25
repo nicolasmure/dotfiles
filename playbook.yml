@@ -10,6 +10,7 @@
       tags:
         - enable_xbox_controller_kernel_module
         - install_chromecast_audio
+        - install_terraform
   tasks:
     - import_tasks: tasks/copy_config_files.yml
 
@@ -19,6 +20,7 @@
     - import_tasks: tasks/basic_update.yml
 
     - import_tasks: tasks/install_cli_tools.yml
+    - import_tasks: tasks/install_terraform.yml
     - import_tasks: tasks/install_zsh.yml
     - import_tasks: tasks/install_git_standup.yml
     - import_tasks: tasks/install_fzf.yml
@@ -45,4 +47,5 @@
 
   handlers:
     - include: handlers/docker.yml
+    - include: handlers/terraform.yml
     - include: handlers/zsh.yml

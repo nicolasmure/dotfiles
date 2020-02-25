@@ -4,6 +4,7 @@
     path: /usr/local/bin/git-standup
   register: git_standup
   tags:
+    - install_cli_tools
     - install_git_standup
 
 - name: Download git-standup install script
@@ -14,6 +15,7 @@
     mode: 700
   when: git_standup.stat.exists == False
   tags:
+    - install_cli_tools
     - install_git_standup
 
 - name: Install git-standup
@@ -21,6 +23,7 @@
   shell: /tmp/git-standup-installer.sh
   when: git_standup.stat.exists == False
   tags:
+    - install_cli_tools
     - install_git_standup
 
 - name: Remove git-standup installation script
@@ -30,4 +33,5 @@
     state: absent
   when: git_standup.stat.exists == False
   tags:
+    - install_cli_tools
     - install_git_standup
