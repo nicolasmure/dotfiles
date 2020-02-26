@@ -1,0 +1,63 @@
+---
+# @see https://blog.jallet.org/controler-le-retro-eclairage-du-clevo-n151zu-1178.html
+# @see https://github.com/tuxedocomputers/tuxedo-keyboard
+- name: Install required packages to install tuxedo kernel module
+  become: yes
+  dnf:
+    name: [
+      "dkms",
+    ]
+    state: present
+  when: enable_tuxedo_keyboard_backlight_controls
+  tags:
+    - enable_tuxedo_keyboard_backlight_kernel_module
+
+- name: Copy tuxedo configuration
+  become: yes
+  template:
+    src: ../templates/tuxedo_keyboard.conf.j2
+    dest: /etc/modprobe.d/tuxedo_keyboard.conf
+    mode: 0644
+    owner: root
+    group: root
+  when: enable_tuxedo_keyboard_backlight_controls
+  tags:
+    - enable_tuxedo_keyboard_backlight_kernel_module
+
+- name: Clone tuxedo repo
+  become: yes
+  git:
+    repo: https://github.com/tuxedocomputers/tuxedo-keyboard.git
+    dest: /usr/src/tuxedo_keyboard-2.0.0
+    clone: yes
+  register: tuxedo_cloned
+  when: enable_tuxedo_keyboard_backlight_controls
+  tags:
+    - enable_tuxedo_keyboard_backlight_kernel_module
+
+- name: Add tuxedo kernel module
+  become: yes
+  command: "dkms add -m tuxedo_keyboard -v 2.0.0"
+  args:
+    warn: no
+  when: enable_tuxedo_keyboard_backlight_controls and tuxedo_cloned is changed
+  tags:
+    - enable_tuxedo_keyboard_backlight_kernel_module
+
+- name: Install tuxedo kernel module
+  become: yes
+  command: "dkms install -m tuxedo_keyboard -v 2.0.0"
+  args:
+    warn: no
+  when: enable_tuxedo_keyboard_backlight_controls and tuxedo_cloned is changed
+  tags:
+    - enable_tuxedo_keyboard_backlight_kernel_module
+
+- name: Enable tuxedo kernel module
+  become: yes
+  command: "modprobe tuxedo_keyboard"
+  args:
+    warn: no
+  when: enable_tuxedo_keyboard_backlight_controls and tuxedo_cloned is changed
+  tags:
+    - enable_tuxedo_keyboard_backlight_kernel_module

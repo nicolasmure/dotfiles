@@ -11,7 +11,7 @@
       "joystick-support",
     ]
     state: present
-  when: enable_xbox_controller == True
+  when: enable_xbox_controller
   tags:
     - enable_xbox_controller_kernel_module
 
@@ -22,7 +22,7 @@
     dest: /usr/src/xpad-0.4
     clone: yes
   register: xpad_cloned
-  when: enable_xbox_controller == True
+  when: enable_xbox_controller
   tags:
     - enable_xbox_controller_kernel_module
 
@@ -31,7 +31,7 @@
   command: "dkms install -m xpad -v 0.4"
   args:
     warn: no
-  when: enable_xbox_controller == True and xpad_cloned is changed
+  when: enable_xbox_controller and xpad_cloned is changed
   tags:
     - enable_xbox_controller_kernel_module
 
@@ -40,6 +40,6 @@
   command: "modprobe xpad"
   args:
     warn: no
-  when: enable_xbox_controller == True and xpad_cloned is changed
+  when: enable_xbox_controller and xpad_cloned is changed
   tags:
     - enable_xbox_controller_kernel_module
