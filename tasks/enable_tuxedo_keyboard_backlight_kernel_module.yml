@@ -15,7 +15,7 @@
 - name: Copy tuxedo configuration
   become: yes
   template:
-    src: ../templates/tuxedo_keyboard.conf.j2
+    src: ../templates/tuxedo-keyboard/module.conf.j2
     dest: /etc/modprobe.d/tuxedo_keyboard.conf
     mode: 0644
     owner: root
@@ -58,6 +58,18 @@
   command: "modprobe tuxedo_keyboard"
   args:
     warn: no
+  when: enable_tuxedo_keyboard_backlight_controls and tuxedo_cloned is changed
+  tags:
+    - enable_tuxedo_keyboard_backlight_kernel_module
+
+- name: Load tuxedo kernel module on boot
+  become: yes
+  template:
+    src: ../templates/tuxedo-keyboard/load.conf.j2
+    dest: /etc/modules-load.d/tuxedo_keyboard.conf
+    mode: 0644
+    owner: root
+    group: root
   when: enable_tuxedo_keyboard_backlight_controls and tuxedo_cloned is changed
   tags:
     - enable_tuxedo_keyboard_backlight_kernel_module
