@@ -8,6 +8,7 @@
       include_vars:
         file: vars/localhost.yml
       tags:
+        - enable_tuxedo_keyboard_backlight_kernel_module
         - enable_xbox_controller_kernel_module
         - install_chromecast_audio
         - install_terraform
@@ -38,6 +39,7 @@
     - import_tasks: tasks/install_chromecast_audio.yml
 
     - import_tasks: tasks/enable_xbox_controller_kernel_module.yml
+    - import_tasks: tasks/enable_tuxedo_keyboard_backlight_kernel_module.yml
 
     - import_tasks: tasks/configure_grub.yml
     - import_tasks: tasks/configure_journalctl.yml

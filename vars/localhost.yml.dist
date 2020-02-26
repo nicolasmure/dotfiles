@@ -1,4 +1,5 @@
 ---
+enable_tuxedo_keyboard_backlight_controls: false
 enable_xbox_controller: false
 install_chromecast_audio: false
 install_terraform: true
