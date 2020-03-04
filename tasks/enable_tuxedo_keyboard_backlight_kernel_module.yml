@@ -24,6 +24,25 @@
   tags:
     - enable_tuxedo_keyboard_backlight_kernel_module
 
+- name: Delete tuxedo sources
+  become: yes
+  file:
+    path: /usr/src/tuxedo_keyboard-2.0.0
+    state: absent
+  when: enable_tuxedo_keyboard_backlight_controls and force_tuxedo_keyboard_backlight_controls_reinstall
+  tags:
+    - enable_tuxedo_keyboard_backlight_kernel_module
+
+- name: Remove previously installed tuxedo_keyboard kernel module
+  become: yes
+  ignore_errors: yes
+  command: "dkms remove -m tuxedo_keyboard -v 2.0.0 --all"
+  args:
+    warn: no
+  when: enable_tuxedo_keyboard_backlight_controls and force_tuxedo_keyboard_backlight_controls_reinstall
+  tags:
+    - enable_tuxedo_keyboard_backlight_kernel_module
+
 - name: Clone tuxedo repo
   become: yes
   git:
@@ -37,6 +56,7 @@
 
 - name: Add tuxedo kernel module
   become: yes
+  ignore_errors: yes
   command: "dkms add -m tuxedo_keyboard -v 2.0.0"
   args:
     warn: no
