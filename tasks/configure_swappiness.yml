@@ -1,10 +1,23 @@
 ---
-- name: Configure swappiness
+- name: Configure swappiness (1)
   become: yes
   lineinfile:
     path: /etc/sysctl.conf
     create: yes
     state: present
-    line: "vm.swappiness=5"
+    regexp: '^vm\.swappiness\='
+    line: "vm.swappiness=0"
+  tags:
+    - configure_swappiness
+
+# @see https://success.docker.com/article/node-using-swap-memory-instead-of-host-memory
+- name: Configure swappiness (2)
+  become: yes
+  lineinfile:
+    path: /etc/sysctl.conf
+    create: yes
+    state: present
+    regexp: '^vm\.overcommit_memory\='
+    line: "vm.overcommit_memory=1"
   tags:
     - configure_swappiness
