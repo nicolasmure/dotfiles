@@ -23,16 +23,19 @@
     - configure_nvim
 
 - name: Upgrade nvim plugin manager
+  ignore_errors: yes
   shell: nvim +PlugUpgrade +qall
   tags:
     - configure_nvim
 
 - name: Upgrade nvim plugins
+  ignore_errors: yes
   shell: nvim +PlugUpdate +qall
   tags:
     - configure_nvim
 
 - name: Upgrade nvim remote plugins
+  ignore_errors: yes
   shell: nvim +UpdateRemotePlugins +qall
   tags:
     - configure_nvim

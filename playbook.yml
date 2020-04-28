@@ -12,6 +12,7 @@
         - enable_xbox_controller_kernel_module
         - install_chromecast_audio
         - install_terraform
+        - set_selinux_status
   tasks:
     - import_tasks: tasks/copy_config_files.yml
 
@@ -30,6 +31,7 @@
     - import_tasks: tasks/install_nodejs.yml
     - import_tasks: tasks/install_php.yml
     - import_tasks: tasks/install_docker.yml
+    - import_tasks: tasks/set_selinux_status.yml
 
     - import_tasks: tasks/configure_nvim.yml
 
