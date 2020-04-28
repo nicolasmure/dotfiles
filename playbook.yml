@@ -10,7 +10,10 @@
       tags:
         - enable_tuxedo_keyboard_backlight_kernel_module
         - enable_xbox_controller_kernel_module
+        - flatpak
         - install_chromecast_audio
+        - install_game_emulators
+        - install_slack
         - install_terraform
         - set_selinux_status
   tasks:
@@ -37,6 +40,10 @@
 
     - import_tasks: tasks/install_gnome_deps.yml
     - import_tasks: tasks/install_graphical_apps.yml
+
+    - import_tasks: tasks/configure_flatpak.yml
+    - import_tasks: tasks/install_game_emulators.yml
+    - import_tasks: tasks/install_slack.yml
 
     - import_tasks: tasks/install_chromecast_audio.yml
 
