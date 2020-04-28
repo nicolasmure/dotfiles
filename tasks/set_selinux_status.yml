@@ -1,0 +1,11 @@
+---
+- name: Set SELinux status
+  become: yes
+  lineinfile:
+    path: /etc/selinux/config
+    create: yes
+    state: present
+    regexp: '^SELINUX\='
+    line: "SELINUX={{ selinux_status | default('enforcing') }}"
+  tags:
+    - set_selinux_status
