@@ -3,6 +3,7 @@ enable_tuxedo_keyboard_backlight_controls: false
 enable_xbox_controller: false
 force_tuxedo_keyboard_backlight_controls_reinstall: false
 install_chromecast_audio: false
+install_game_emulators: false
 install_terraform: true
 # see /etc/selinux/config for possible selinux statuses
 selinux_status: enforcing

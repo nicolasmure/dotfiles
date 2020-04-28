@@ -1,0 +1,39 @@
+---
+# Multiple console game emulator (e.g. various nintendo)
+# @see https://flathub.org/apps/details/org.libretro.RetroArch
+- name: Install RetroArch
+  become: yes
+  flatpak:
+    name: org.libretro.RetroArch
+    state: present
+    method: system
+  when: install_game_emulators | default(false)
+  tags:
+    - install_game_emulators
+    - flatpak
+
+# Sega MegaDrive console emulator
+# @see https://flathub.org/apps/details/com.retrodev.blastem
+- name: Install blastem
+  become: yes
+  flatpak:
+    name: com.retrodev.blastem
+    state: present
+    method: system
+  when: install_game_emulators | default(false)
+  tags:
+    - install_game_emulators
+    - flatpak
+
+# Sony PS2 console emulator
+# @see https://flathub.org/apps/details/net.pcsx2.PCSX2
+- name: Install PCSX2
+  become: yes
+  flatpak:
+    name: net.pcsx2.PCSX2
+    state: present
+    method: system
+  when: install_game_emulators | default(false)
+  tags:
+    - install_game_emulators
+    - flatpak
