@@ -68,3 +68,24 @@
   tags:
     - install_docker
     - configure_container_dns
+
+# As Fedora 32 has moved firewalld backend to nftables by default (since the
+# use of firewalld > v0.6), we should revert it to iptables backend as it's the
+# only thing that docker supports. Otherwise, containers in the same network
+# won't be able to reach each other.
+#
+# @see https://fedoraproject.org/wiki/Changes/firewalld_default_to_nftables
+# @see https://freesteph.info/blog/fedora-32-docker-compose.html
+# @see https://pastebin.com/Zq3Gev7w
+- name: Revert firewalld backend to iptables
+  become: yes
+  lineinfile:
+    path: /etc/firewalld/firewalld.conf
+    create: yes
+    state: present
+    regexp: '^FirewallBackend\='
+    line: "FirewallBackend=iptables"
+  notify: restart firewalld
+  tags:
+    - install_docker
+    - configure_firewalld

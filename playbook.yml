@@ -59,5 +59,6 @@
 
   handlers:
     - include: handlers/docker.yml
+    - include: handlers/firewalld.yml
     - include: handlers/terraform.yml
     - include: handlers/zsh.yml
