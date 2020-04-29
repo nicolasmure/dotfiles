@@ -2,5 +2,6 @@
 - name: Configure grub
   become: yes
   shell: "grub2-editenv - set fastboot=1"
+  notify: dump grub config
   tags:
     - configure_grub
