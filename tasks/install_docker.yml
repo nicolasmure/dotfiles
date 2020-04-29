@@ -54,6 +54,22 @@
     - install_docker
     - copy_docker_options
 
+# @see https://blog.christophersmart.com/2019/12/15/enabling-docker-in-fedora-31-by-reverting-to-cgroups-v1/
+# @see https://github.com/geerlingguy/ansible-role-docker/issues/186
+- name: Disable cgroupsV2 (fallback to cgroupsV1)
+  become: yes
+  lineinfile:
+    path: /etc/default/grub
+    create: yes
+    state: present
+    regexp: '^(GRUB_CMDLINE_LINUX=".*?)( systemd\.unified_cgroup_hierarchy=0)?"$'
+    line: '\1 systemd.unified_cgroup_hierarchy=0"'
+    backrefs: yes
+  notify: dump grub config
+  tags:
+    - install_docker
+    - disable_cgroupsv2
+
 # @see https://ask.fedoraproject.org/t/dns-resolution-errors-with-docker-in-fedora-32/6385/3
 # @see https://fedoraproject.org/wiki/Common_F32_bugs#mDNS_.28multicast_DNS.29_breaks_on_upgrade_to_Fedora_32
 - name: Configure container DNS resolution
@@ -68,3 +84,24 @@
   tags:
     - install_docker
     - configure_container_dns
+
+# As Fedora 32 has moved firewalld backend to nftables by default (since the
+# use of firewalld > v0.6), we should revert it to iptables backend as it's the
+# only thing that docker supports. Otherwise, containers in the same network
+# won't be able to reach each other.
+#
+# @see https://fedoraproject.org/wiki/Changes/firewalld_default_to_nftables
+# @see https://freesteph.info/blog/fedora-32-docker-compose.html
+# @see https://pastebin.com/Zq3Gev7w
+- name: Revert firewalld backend to iptables
+  become: yes
+  lineinfile:
+    path: /etc/firewalld/firewalld.conf
+    create: yes
+    state: present
+    regexp: '^FirewallBackend\='
+    line: "FirewallBackend=iptables"
+  notify: restart firewalld
+  tags:
+    - install_docker
+    - configure_firewalld

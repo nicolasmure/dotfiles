@@ -1,0 +1,6 @@
+---
+- name: restart firewalld
+  become: yes
+  systemd:
+    name: firewalld
+    state: restarted
