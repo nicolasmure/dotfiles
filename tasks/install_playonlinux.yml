@@ -1,0 +1,11 @@
+---
+# @see https://flathub.org/apps/details/org.phoenicis.playonlinux
+- name: Install playonlinux
+  become: yes
+  flatpak:
+    name: org.phoenicis.playonlinux
+    state: present
+    method: system
+  tags:
+    - install_playonlinux
+    - flatpak

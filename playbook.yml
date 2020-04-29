@@ -43,6 +43,7 @@
 
     - import_tasks: tasks/configure_flatpak.yml
     - import_tasks: tasks/install_game_emulators.yml
+    - import_tasks: tasks/install_playonlinux.yml
     - import_tasks: tasks/install_slack.yml
 
     - import_tasks: tasks/install_chromecast_audio.yml
