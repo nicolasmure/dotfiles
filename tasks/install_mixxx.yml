@@ -1,0 +1,31 @@
+---
+- name: Install mixxx
+  become: yes
+  dnf:
+    name: [
+      "mixxx",
+    ]
+    state: present
+  when: install_mixxx | default(false)
+  tags:
+    - install_mixxx
+
+# @see https://www.mixxx.org/forums/viewtopic.php?f=3&t=8010
+- name: Configure .asoundrc for Audio4DJ soundcard
+  template:
+    src: ../templates/mixxx/.asoundrc.j2
+    dest: ~/.asoundrc
+    mode: 0644
+  when: install_mixxx | default(false)
+  tags:
+    - install_mixxx
+    - configure_audio_4_dj
+
+# @see https://ywwg.com/wordpress/archives/772
+- name: Set Audio4DJ input mode to line (requires the card to be plugged in)
+  shell: "amixer -c {{ audio_4_dj_card_number }} cset numid=1 {{ audio_4_dj_input_mode }}"
+  ignore_errors: yes
+  when: install_mixxx | default(false)
+  tags:
+    - install_mixxx
+    - configure_audio_4_dj
