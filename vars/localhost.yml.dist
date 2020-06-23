@@ -1,9 +1,19 @@
 ---
+# @see `$ aplay -l` and `$ arecord -l`
+audio_4_dj_card_number: 1
+# @see https://ywwg.com/wordpress/archives/772
+# 2: phono
+# 1: line
+# 0: timecode
+audio_4_dj_input_mode: 1
+
 enable_tuxedo_keyboard_backlight_controls: false
 enable_xbox_controller: false
 force_tuxedo_keyboard_backlight_controls_reinstall: false
+
 install_chromecast_audio: false
 install_game_emulators: false
+install_mixxx: false
 install_slack: false
 install_terraform: true
 # see /etc/selinux/config for possible selinux statuses
