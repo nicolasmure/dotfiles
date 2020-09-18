@@ -1,3 +1,4 @@
+let g:polyglot_disabled = ['markdown']
 "
 " BEGIN vim-plug (vim plugins manager)
 "
@@ -90,7 +91,6 @@ set number          " display line number
 set relativenumber  " display relative line number
 set colorcolumn=80  " display a column at 80 chars
 let g:indentLine_char = '▏' " indentation guide char
-let g:polyglot_disabled = ['markdown']
 " Search options
 set incsearch
 set hlsearch
