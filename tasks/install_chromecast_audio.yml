@@ -2,6 +2,8 @@
 - name: Enable mkchromecast repository
   become: yes
   shell: "dnf copr enable -y bugzy/mkchromecast"
+  args:
+    warn: no
   when: install_chromecast_audio
   tags:
     - install_chromecast_audio
