@@ -205,9 +205,29 @@ let g:fzf_colors =
 
 "
 " netrw (split explorer)
+" @see https://vi.stackexchange.com/a/17684
 "
-noremap <C-n> :32vne <CR>:Explore .<CR>
 let g:netrw_browse_split = 4 " open selected file in previously focused window
+let g:NetrwOpened=0
+
+function! ToggleNetrw()
+    if g:NetrwOpened
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwOpened=0
+    else
+        let g:NetrwOpened=1
+        silent 32vnew
+        silent Explore .
+    endif
+endfunction
+
+noremap <silent> <C-n> :call ToggleNetrw()<CR>
 
 "
 " w0rp/ale
