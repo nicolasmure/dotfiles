@@ -206,8 +206,13 @@ let g:fzf_colors =
 "
 " netrw (split explorer)
 " @see https://vi.stackexchange.com/a/17684
+" @see https://shapeshed.com/vim-netrw/#nerdtree-like-setup
 "
 let g:netrw_browse_split = 4 " open selected file in previously focused window
+let g:netrw_banner = 0       " hide the comments banner
+let g:netrw_liststyle = 3    " tree style listing
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
 let g:NetrwOpened=0
 
 function! ToggleNetrw()
@@ -222,8 +227,7 @@ function! ToggleNetrw()
         let g:NetrwOpened=0
     else
         let g:NetrwOpened=1
-        silent 32vnew
-        silent Explore .
+        silent Lexplore .
     endif
 endfunction
 
