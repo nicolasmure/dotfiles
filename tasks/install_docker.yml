@@ -1,7 +1,20 @@
 ---
+- name: Install docker (not podman)
+  become: yes
+  dnf:
+    name: [
+      "podman",
+      "podman-docker",
+      "podman-plugins",
+    ]
+    state: absent
+  when: install_docker | default(false)
+  tags:
+    - install_docker
+
 # the docker-ce package is now shipped by moby-engine package on fedora
 # see https://github.com/docker/for-linux/issues/600#issuecomment-495894108
-- name: Install docker
+- name: Install docker (moby-engine)
   become: yes
   dnf:
     name: [
@@ -9,6 +22,7 @@
       "moby-engine",
     ]
     state: present
+  when: install_docker | default(false)
   tags:
     - install_docker
 
@@ -17,6 +31,7 @@
   group:
     name: docker
     state: present
+  when: install_docker | default(false)
   tags:
     - install_docker
 
@@ -26,6 +41,7 @@
     name: "{{ ansible_user_id }}"
     groups: docker
     append: yes
+  when: install_docker | default(false)
   tags:
     - install_docker
 
@@ -34,6 +50,7 @@
   systemd:
     name: docker
     enabled: yes
+  when: install_docker | default(false)
   tags:
     - install_docker
 
@@ -50,6 +67,7 @@
     src: etc/sysconfig/docker
     dest: /etc/sysconfig/docker
   notify: restart docker
+  when: install_docker | default(false)
   tags:
     - install_docker
     - copy_docker_options
@@ -66,6 +84,7 @@
     line: '\1 systemd.unified_cgroup_hierarchy=0"'
     backrefs: yes
   notify: dump grub config
+  when: install_docker | default(false)
   tags:
     - install_docker
     - disable_cgroupsv2
@@ -81,6 +100,7 @@
     regexp: '^hosts\:'
     line: "hosts:      files dns myhostname"
   notify: restart docker
+  when: install_docker | default(false)
   tags:
     - install_docker
     - configure_container_dns
@@ -102,6 +122,7 @@
     regexp: '^FirewallBackend\='
     line: "FirewallBackend=iptables"
   notify: restart firewalld
+  when: install_docker | default(false)
   tags:
     - install_docker
     - configure_firewalld
