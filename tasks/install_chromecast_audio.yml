@@ -26,7 +26,7 @@
   copy:
     src: .config/autostart/mkchromecast.desktop
     dest: ~/.config/autostart/mkchromecast.desktop
-  when: install_chromecast_audio
+  when: install_chromecast_audio and autostart_chromecast_audio
   tags:
     - install_chromecast_audio
     - copy_mkchromecast_config

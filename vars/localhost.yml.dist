@@ -11,6 +11,7 @@ enable_tuxedo_keyboard_backlight_controls: false
 enable_xbox_controller: false
 force_tuxedo_keyboard_backlight_controls_reinstall: false
 
+autostart_chromecast_audio: false
 install_chromecast_audio: false
 install_docker: false
 install_game_emulators: false
