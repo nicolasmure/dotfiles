@@ -16,6 +16,6 @@ install_docker: false
 install_game_emulators: false
 install_mixxx: false
 install_slack: false
-install_terraform: true
+install_terraform: false
 # see /etc/selinux/config for possible selinux statuses
 selinux_status: enforcing
