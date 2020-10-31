@@ -1,12 +1,24 @@
 ---
+# Install mixxx via flatpak as they provide stable releases.
+# Installing via dnf (which uses RPM fusion repos), can provide unstable (beta)
+# releases.
 - name: Install mixxx
   become: yes
-  dnf:
-    name: [
-      "mixxx",
-    ]
+  flatpak:
+    name: org.mixxx.Mixxx
     state: present
+    method: system
   when: install_mixxx | default(false)
+  register: mixxx_installed
+  tags:
+    - install_mixxx
+
+- name: Make sure asoundrc config file is considered by the mixxx app
+  become: yes
+  shell: "flatpak override --persist .asoundrc org.mixxx.Mixxx"
+  args:
+    warn: no
+  when: mixxx_installed is changed
   tags:
     - install_mixxx
 
@@ -14,7 +26,7 @@
 - name: Configure .asoundrc for Audio4DJ soundcard
   template:
     src: ../templates/mixxx/.asoundrc.j2
-    dest: ~/.asoundrc
+    dest: ~/.var/app/org.mixxx.Mixxx/.asoundrc/asoundrc.conf
     mode: 0644
   when: install_mixxx | default(false)
   tags:
