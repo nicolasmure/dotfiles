@@ -1,0 +1,37 @@
+---
+- name: Install DAW
+  become: yes
+  dnf:
+    name: [
+      "ardour6",
+      "lv2-calf-plugins-gui",
+      "lv2-EQ10Q-plugins",
+    ]
+    state: present
+  when: install_daw | default(false)
+  tags:
+    - install_daw
+
+# @see https://jackaudio.org/faq/linux_rt_config.html
+- name: Join audio group
+  become: yes
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: audio
+    append: yes
+  when: install_daw | default(false)
+  tags:
+    - install_daw
+
+# @see https://jackaudio.org/faq/linux_rt_config.html
+- name: Configure audio limits
+  become: yes
+  template:
+    src: ../templates/daw/audio.conf.j2
+    dest: /etc/security/limits.d/audio.conf
+    mode: 0644
+    owner: root
+    group: root
+  when: install_daw | default(false)
+  tags:
+    - install_daw
