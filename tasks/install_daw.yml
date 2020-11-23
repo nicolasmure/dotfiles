@@ -4,8 +4,11 @@
   dnf:
     name: [
       "ardour6",
+      "Cadence",
+      "jack-audio-connection-kit-dbus",
       "lv2-calf-plugins-gui",
       "lv2-EQ10Q-plugins",
+      "qjackctl",
     ]
     state: present
   when: install_daw | default(false)
