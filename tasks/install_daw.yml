@@ -8,6 +8,7 @@
       "jack-audio-connection-kit-dbus",
       "lv2-calf-plugins-gui",
       "lv2-EQ10Q-plugins",
+      "lv2-zam-plugins",
       "qjackctl",
     ]
     state: present
