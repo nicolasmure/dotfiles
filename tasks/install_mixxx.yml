@@ -12,6 +12,7 @@
   register: mixxx_installed
   tags:
     - install_mixxx
+    - flatpak
 
 - name: Make sure asoundrc config file is considered by the mixxx app
   become: yes
@@ -21,6 +22,7 @@
   when: mixxx_installed is changed
   tags:
     - install_mixxx
+    - flatpak
 
 # @see https://www.mixxx.org/forums/viewtopic.php?f=3&t=8010
 - name: Configure .asoundrc for Audio4DJ soundcard
