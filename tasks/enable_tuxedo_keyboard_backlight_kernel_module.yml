@@ -27,7 +27,7 @@
 - name: Delete tuxedo sources
   become: yes
   file:
-    path: /usr/src/tuxedo_keyboard-2.0.0
+    path: "/usr/src/tuxedo_keyboard-{{ tuxedo_keyboard_version }}"
     state: absent
   when: enable_tuxedo_keyboard_backlight_controls and force_tuxedo_keyboard_backlight_controls_reinstall
   tags:
@@ -36,7 +36,7 @@
 - name: Remove previously installed tuxedo_keyboard kernel module
   become: yes
   ignore_errors: yes
-  command: "dkms remove -m tuxedo_keyboard -v 2.0.0 --all"
+  command: "dkms remove -m tuxedo_keyboard -v {{ tuxedo_keyboard_version }} --all"
   args:
     warn: no
   when: enable_tuxedo_keyboard_backlight_controls and force_tuxedo_keyboard_backlight_controls_reinstall
@@ -47,8 +47,9 @@
   become: yes
   git:
     repo: https://github.com/tuxedocomputers/tuxedo-keyboard.git
-    dest: /usr/src/tuxedo_keyboard-2.0.0
+    dest: "/usr/src/tuxedo_keyboard-{{ tuxedo_keyboard_version }}"
     clone: yes
+    version: "{{ tuxedo_keyboard_commit }}"
   register: tuxedo_cloned
   when: enable_tuxedo_keyboard_backlight_controls
   tags:
@@ -57,7 +58,7 @@
 - name: Add tuxedo kernel module
   become: yes
   ignore_errors: yes
-  command: "dkms add -m tuxedo_keyboard -v 2.0.0"
+  command: "dkms add -m tuxedo_keyboard -v {{ tuxedo_keyboard_version }}"
   args:
     warn: no
   when: enable_tuxedo_keyboard_backlight_controls and tuxedo_cloned is changed
@@ -66,7 +67,7 @@
 
 - name: Install tuxedo kernel module
   become: yes
-  command: "dkms install -m tuxedo_keyboard -v 2.0.0"
+  command: "dkms install -m tuxedo_keyboard -v {{ tuxedo_keyboard_version }}"
   args:
     warn: no
   when: enable_tuxedo_keyboard_backlight_controls and tuxedo_cloned is changed
@@ -75,9 +76,9 @@
 
 - name: Enable tuxedo kernel module
   become: yes
-  command: "modprobe tuxedo_keyboard"
-  args:
-    warn: no
+  modprobe:
+    name: tuxedo_keyboard
+    state: present
   when: enable_tuxedo_keyboard_backlight_controls and tuxedo_cloned is changed
   tags:
     - enable_tuxedo_keyboard_backlight_kernel_module
