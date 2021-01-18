@@ -1,45 +1,21 @@
 ---
-# @see https://www.kernel.org/doc/html/v4.16/input/devices/xpad.html
-# @see https://github.com/paroj/xpad
+# @see https://rudd-o.com/linux-and-free-software/how-to-use-your-xbox-368-controllers-under-fedora
 - name: Install joystick package and kernel module
   become: yes
   dnf:
     name: [
-      "dkms",
-      "kernel-devel",
       "kernel-modules-extra",
-      "joystick-support",
     ]
     state: present
   when: enable_xbox_controller
   tags:
     - enable_xbox_controller_kernel_module
 
-- name: Clone xpad repo
-  become: yes
-  git:
-    repo: https://github.com/paroj/xpad.git
-    dest: /usr/src/xpad-0.4
-    clone: yes
-  register: xpad_cloned
-  when: enable_xbox_controller
-  tags:
-    - enable_xbox_controller_kernel_module
-
-- name: Install xpad kernel module
-  become: yes
-  command: "dkms install -m xpad -v 0.4"
-  args:
-    warn: no
-  when: enable_xbox_controller and xpad_cloned is changed
-  tags:
-    - enable_xbox_controller_kernel_module
-
 - name: Enable xpad kernel module
   become: yes
-  command: "modprobe xpad"
-  args:
-    warn: no
-  when: enable_xbox_controller and xpad_cloned is changed
+  modprobe:
+    name: xpad
+    state: present
+  when: enable_xbox_controller
   tags:
     - enable_xbox_controller_kernel_module
