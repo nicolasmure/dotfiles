@@ -8,6 +8,8 @@
       "ffmpeg",
       "gcc",
       "git",
+      "gstreamer1",
+      "gstreamer1-libav",
       "jq",
       "make",
       "neofetch",
