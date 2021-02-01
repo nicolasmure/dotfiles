@@ -12,6 +12,19 @@
     - install_game_emulators
     - flatpak
 
+# Nintendo Wii / Gamecube emulator
+# @see https://flathub.org/apps/details/org.DolphinEmu.dolphin-emu
+- name: Install dolphin emulator
+  become: yes
+  flatpak:
+    name: org.DolphinEmu.dolphin-emu
+    state: present
+    method: system
+  when: install_game_emulators | default(false)
+  tags:
+    - install_game_emulators
+    - flatpak
+
 # Sega MegaDrive console emulator
 # @see https://flathub.org/apps/details/com.retrodev.blastem
 - name: Install blastem
