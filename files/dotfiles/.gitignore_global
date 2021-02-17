@@ -1,4 +1,5 @@
 cache.properties
+.ccls-cache/*
 .idea/*
 npm-debug.log
 .tags*
