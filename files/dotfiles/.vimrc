@@ -20,7 +20,7 @@ Plug 'tpope/vim-eunuch' " helpers for unix commands (rm, mv, mkdir, chmod, etc..
 Plug 'tpope/vim-fugitive' " git commands
 Plug 'tpope/vim-commentary' " to comment blocks of code
 Plug 'tpope/vim-surround' " to change surrounding chunks (eg simple quotes to double quotes)
-Plug 'tpope/vim-repeat' " to repeat sime plugings map with '.'
+Plug 'tpope/vim-repeat' " to repeat some plugings map with '.'
 " Language Server Protocol support for neovim
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -46,7 +46,7 @@ set shortmess+=c
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
-" use <TAB> to select the popup menu
+" use <Tab> to select the popup menu
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " start new line when pressing enter when popup menu is visible
