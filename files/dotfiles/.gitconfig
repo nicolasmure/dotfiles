@@ -20,3 +20,10 @@
     autosquash = true
 [pager]
 	branch = false
+
+[sendemail]
+    ; setup for using git send-email; prompts for password
+    smtpuser = nicolas.mure2019@gmail.com
+    smtpserver = smtp.googlemail.com
+    smtpencryption = tls
+    smtpserverport = 587
