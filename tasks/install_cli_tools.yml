@@ -8,6 +8,7 @@
       "ffmpeg",
       "gcc",
       "git",
+      "git-email",
       "gstreamer1",
       "gstreamer1-libav",
       "jq",
