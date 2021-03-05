@@ -1,0 +1,11 @@
+---
+- name: Install Vagrant
+  become: yes
+  dnf:
+    name: [
+      "vagrant",
+    ]
+    state: present
+  when: install_vagrant
+  tags:
+    - install_vagrant
