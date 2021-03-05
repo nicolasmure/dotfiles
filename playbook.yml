@@ -16,6 +16,7 @@
         - install_docker
         - install_game_emulators
         - install_mixxx
+        - install_php
         - install_slack
         - install_terraform
         - set_selinux_status
