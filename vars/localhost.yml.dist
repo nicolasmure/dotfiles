@@ -21,6 +21,7 @@ install_docker: false
 install_game_emulators: false
 install_mixxx: false
 install_php: false
+install_python_lsp: false
 install_slack: false
 install_terraform: false
 install_vagrant: false

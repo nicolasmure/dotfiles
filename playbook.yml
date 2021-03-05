@@ -17,6 +17,7 @@
         - install_game_emulators
         - install_mixxx
         - install_php
+        - install_python_lsp
         - install_slack
         - install_terraform
         - install_vagrant
