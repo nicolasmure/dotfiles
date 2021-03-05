@@ -4,5 +4,6 @@
   pip:
     name: python-language-server
     state: present
+  when: install_python_lsp
   tags:
     - install_python_lsp

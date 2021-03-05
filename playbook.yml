@@ -16,8 +16,12 @@
         - install_docker
         - install_game_emulators
         - install_mixxx
+        - install_nodejs
+        - install_php
+        - install_python_lsp
         - install_slack
         - install_terraform
+        - install_vagrant
         - set_selinux_status
   tasks:
     - import_tasks: tasks/copy_config_files.yml
@@ -37,6 +41,7 @@
     - import_tasks: tasks/install_nodejs.yml
     - import_tasks: tasks/install_php.yml
     - import_tasks: tasks/install_docker.yml
+    - import_tasks: tasks/install_vagrant.yml
     - import_tasks: tasks/set_selinux_status.yml
 
     - import_tasks: tasks/configure_nvim.yml
