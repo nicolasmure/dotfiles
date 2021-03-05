@@ -16,6 +16,7 @@
         - install_docker
         - install_game_emulators
         - install_mixxx
+        - install_nodejs
         - install_php
         - install_python_lsp
         - install_slack

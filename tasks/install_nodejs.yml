@@ -4,6 +4,7 @@
   dnf:
     name: nodejs
     state: present
+  when: install_nodejs
   tags:
     - install_nodejs
 
@@ -13,6 +14,7 @@
     src: /bin/node
     dest: /usr/local/bin/nodejs
     state: link
+  when: install_nodejs
   tags:
     - install_nodejs
 
@@ -25,6 +27,7 @@
   with_items:
     - javascript-typescript-langserver
     - yarn
+  when: install_nodejs
   tags:
     - install_nodejs
     - install_global_npm_packages

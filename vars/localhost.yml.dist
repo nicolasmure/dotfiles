@@ -20,6 +20,7 @@ install_daw: false
 install_docker: false
 install_game_emulators: false
 install_mixxx: false
+install_nodejs: false
 install_php: false
 install_python_lsp: false
 install_slack: false
