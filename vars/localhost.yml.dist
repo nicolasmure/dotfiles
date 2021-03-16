@@ -23,6 +23,7 @@ install_mixxx: false
 install_nodejs: false
 install_php: false
 install_python_lsp: false
+install_rust: false
 install_slack: false
 install_terraform: false
 install_vagrant: false

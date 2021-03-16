@@ -1,0 +1,16 @@
+---
+- name: Install rustup (will install rust and cargo for the current user)
+  shell: "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y"
+  args:
+    warn: no
+  when: install_rust
+  tags:
+    - install_rust
+
+- name: Install rust LSP
+  shell: "~/.cargo/bin/rustup component add rls rust-analysis rust-src"
+  args:
+    warn: no
+  when: install_rust
+  tags:
+    - install_rust
