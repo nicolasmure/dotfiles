@@ -24,5 +24,6 @@
     command: "tracker reset --hard"
     responses:
       'Are you sure you want to proceed': "y"
+      'Voulez-vous vraiment continuer': "o"
   tags:
     - disable_tracker_miner
