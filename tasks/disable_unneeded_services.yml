@@ -9,6 +9,7 @@
   with_items:
     - crond
     - dnf-makecache
+    - dkms
     - lvm2-monitor
     - NetworkManager-wait-online
     - packagekit
