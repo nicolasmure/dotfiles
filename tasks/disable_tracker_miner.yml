@@ -1,29 +1,4 @@
 ---
-# see https://askubuntu.com/a/348692
-- name: Disable tracker miner (.desktop files)
-  become: yes
-  lineinfile:
-    path: "{{ item }}"
-    create: yes
-    state: present
-    line: "Hidden=true"
-  with_items:
-    - /etc/xdg/autostart/tracker-extract.desktop
-    - /etc/xdg/autostart/tracker-miner-apps.desktop
-    - /etc/xdg/autostart/tracker-miner-fs.desktop
-    - /etc/xdg/autostart/tracker-miner-user-guides.desktop
-    - /etc/xdg/autostart/tracker-store.desktop
-  tags:
-    - disable_tracker_miner
-
-- name: Disable tracker miner (gsettings)
-  shell: "{{ item }}"
-  with_items:
-    - "gsettings set org.freedesktop.Tracker.Miner.Files crawling-interval -2"
-    - "gsettings set org.freedesktop.Tracker.Miner.Files enable-monitors false"
-  tags:
-    - disable_tracker_miner
-
 - name: Find tracker miner systemd user services
   find:
     path: /usr/lib/systemd/user
