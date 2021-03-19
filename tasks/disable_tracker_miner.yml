@@ -1,26 +1,21 @@
 ---
-# see https://askubuntu.com/a/348692
-- name: Disable tracker miner (.desktop files)
-  become: yes
-  lineinfile:
-    path: "{{ item }}"
-    create: yes
-    state: present
-    line: "Hidden=true"
-  with_items:
-    - /etc/xdg/autostart/tracker-extract.desktop
-    - /etc/xdg/autostart/tracker-miner-apps.desktop
-    - /etc/xdg/autostart/tracker-miner-fs.desktop
-    - /etc/xdg/autostart/tracker-miner-user-guides.desktop
-    - /etc/xdg/autostart/tracker-store.desktop
+- name: Find tracker miner systemd user services
+  find:
+    path: /usr/lib/systemd/user
+    patterns: "tracker-*.service"
+  register: tracker_miner_services
   tags:
     - disable_tracker_miner
 
-- name: Disable tracker miner (gsettings)
-  shell: "{{ item }}"
-  with_items:
-    - "gsettings set org.freedesktop.Tracker.Miner.Files crawling-interval -2"
-    - "gsettings set org.freedesktop.Tracker.Miner.Files enable-monitors false"
+# see https://www.linuxuprising.com/2019/07/how-to-completely-disable-tracker.html
+- name: Disable tracker miner (systemd user services)
+  systemd:
+    name: "{{ item }}"
+    state: stopped
+    enabled: no
+    masked: yes
+    scope: user
+  with_items: "{{ tracker_miner_services.files | map(attribute='path') | map('basename') | list }}"
   tags:
     - disable_tracker_miner
 
@@ -29,5 +24,6 @@
     command: "tracker reset --hard"
     responses:
       'Are you sure you want to proceed': "y"
+      'Voulez-vous vraiment continuer': "o"
   tags:
     - disable_tracker_miner
