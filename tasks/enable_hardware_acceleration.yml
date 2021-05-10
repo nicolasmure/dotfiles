@@ -1,0 +1,10 @@
+---
+- name: Enable hardware acceleration
+  become: yes
+  dnf:
+    name: [
+      "intel-media-driver",
+    ]
+    state: present
+  tags:
+    - enable_hardware_acceleration
