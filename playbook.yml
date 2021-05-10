@@ -48,6 +48,7 @@
 
     - import_tasks: tasks/configure_nvim.yml
 
+    - import_tasks: tasks/enable_hardware_acceleration.yml
     - import_tasks: tasks/install_gnome_deps.yml
     - import_tasks: tasks/install_graphical_apps.yml
 
