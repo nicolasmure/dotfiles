@@ -8,7 +8,8 @@
     masked: yes
   with_items:
     - crond
-    - dnf-makecache
+    - dnf-makecache.service
+    - dnf-makecache.timer
     - dkms
     - lvm2-monitor
     - NetworkManager-wait-online
