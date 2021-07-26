@@ -1,6 +1,7 @@
 ---
 - name: Disable unneeded services
   become: yes
+  ignore_errors: yes
   systemd:
     name: "{{ item }}"
     state: stopped

@@ -6,6 +6,7 @@
   dnf:
     name: [
       "dkms",
+      "kernel-devel",
     ]
     state: present
   when: enable_tuxedo_keyboard_backlight_controls
