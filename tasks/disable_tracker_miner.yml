@@ -18,12 +18,3 @@
   with_items: "{{ tracker_miner_services.files | map(attribute='path') | map('basename') | list }}"
   tags:
     - disable_tracker_miner
-
-- name: Disable tracker miner (reset tracker)
-  expect:
-    command: "tracker reset --hard"
-    responses:
-      'Are you sure you want to proceed': "y"
-      'Voulez-vous vraiment continuer': "o"
-  tags:
-    - disable_tracker_miner

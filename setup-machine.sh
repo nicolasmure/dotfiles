@@ -8,8 +8,7 @@ set -o nounset
 install_ansible () {
     sudo dnf install -y \
         ansible \
-        python3 \
-        python3-pexpect
+        python3
 }
 
 copy_dist_files () {
