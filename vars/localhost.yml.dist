@@ -10,6 +10,9 @@ autostart_chromecast_audio: false
 install_chromecast_audio: false
 mkchromecast_commit: fe7bd47fc0368bb70405bb6c55cd94bdb53a7091
 
+# latest flatpak commit for mixxx 2.2.4
+mixxx_flatpak_commit: af3f5768998a2284e7d95123bc90b7977b0c71b0bc40adf1bdebd05b35b7fd2b
+
 install_daw: false
 install_docker: false
 install_game_emulators: false
