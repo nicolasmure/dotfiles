@@ -9,37 +9,7 @@
     state: present
     method: system
   when: install_mixxx | default(false)
-  tags:
-    - install_mixxx
-    - flatpak
-
-- name: Allow installation of specific version
-  become: yes
-  ignore_errors: yes
-  command: "flatpak mask --remove org.mixxx.Mixxx"
-  args:
-    warn: no
-  when: install_mixxx | default(false)
-  tags:
-    - install_mixxx
-    - flatpak
-
-- name: Stick to specific mixxx version
-  become: yes
-  command: "flatpak update -y --commit={{ mixxx_flatpak_commit }} org.mixxx.Mixxx"
-  args:
-    warn: no
-  when: install_mixxx | default(false)
-  tags:
-    - install_mixxx
-    - flatpak
-
-- name: Prevent automatic updates of mixxx
-  become: yes
-  command: "flatpak mask org.mixxx.Mixxx"
-  args:
-    warn: no
-  when: install_mixxx | default(false)
+  register: mixxx_installed
   tags:
     - install_mixxx
     - flatpak
