@@ -9,7 +9,6 @@
     state: present
     method: system
   when: install_mixxx | default(false)
-  register: mixxx_installed
   tags:
     - install_mixxx
     - flatpak
