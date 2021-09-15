@@ -1,12 +1,22 @@
 ---
-- name: Install DAW
+# Install Ardour via flatpak as it is able to get sound from the
+# external soundcard via this way (Pipewire mess on host ?).
+- name: Install Ardour
+  become: yes
+  flatpak:
+    name: org.ardour.Ardour
+    state: present
+    method: system
+  when: install_daw | default(false)
+  tags:
+    - install_daw
+    - flatpak
+
+- name: Install JACK controls
   become: yes
   dnf:
     name: [
-      "ardour6",
       "Cadence",
-      "lv2-calf-plugins-gui",
-      "lv2-zam-plugins",
       "qjackctl",
     ]
     state: present
