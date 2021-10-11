@@ -1,7 +1,21 @@
 ---
-- name: Configure grub
+- name: Configure grub (fastboot)
   become: yes
   shell: "grub2-editenv - set fastboot=1"
+  notify: dump grub config
+  tags:
+    - configure_grub
+
+- name: Configure grub (menu auto hide)
+  become: yes
+  shell: "grub2-editenv - set menu_auto_hide=1"
+  notify: dump grub config
+  tags:
+    - configure_grub
+
+- name: Configure grub (timeout)
+  become: yes
+  shell: "grub2-editenv - set timeout=0"
   notify: dump grub config
   tags:
     - configure_grub
