@@ -3,7 +3,6 @@
   become: yes
   dnf:
     name: [
-      "ccls",
       "curl",
       "dnf-plugins-core",
       "ffmpeg",
