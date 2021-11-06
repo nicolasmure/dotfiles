@@ -1,14 +1,14 @@
 ---
-- name: Install docker (not podman)
+- name: Remove podman
   become: yes
   dnf:
     name: [
       "podman",
       "podman-docker",
+      "podman-gvproxy",
       "podman-plugins",
     ]
     state: absent
-  when: install_docker | default(false)
   tags:
     - install_docker
 
