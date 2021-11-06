@@ -1,21 +1,22 @@
 ---
-- name: Configure grub (fastboot)
+- name: Configure grub (timeout style)
   become: yes
-  shell: "grub2-editenv - set fastboot=1"
-  notify: dump grub config
-  tags:
-    - configure_grub
-
-- name: Configure grub (menu auto hide)
-  become: yes
-  shell: "grub2-editenv - set menu_auto_hide=1"
+  lineinfile:
+    path: /etc/default/grub
+    state: present
+    regexp: '^GRUB_TIMEOUT_STYLE\='
+    line: "GRUB_TIMEOUT_STYLE=hidden"
   notify: dump grub config
   tags:
     - configure_grub
 
 - name: Configure grub (timeout)
   become: yes
-  shell: "grub2-editenv - set timeout=0"
+  lineinfile:
+    path: /etc/default/grub
+    state: present
+    regexp: '^GRUB_TIMEOUT\='
+    line: "GRUB_TIMEOUT=0"
   notify: dump grub config
   tags:
     - configure_grub
