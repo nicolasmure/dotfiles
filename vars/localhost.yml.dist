@@ -10,6 +10,7 @@ autostart_chromecast_audio: false
 install_chromecast_audio: false
 mkchromecast_commit: fe7bd47fc0368bb70405bb6c55cd94bdb53a7091
 
+install_cad: false
 install_daw: false
 install_docker: false
 install_game_emulators: false
