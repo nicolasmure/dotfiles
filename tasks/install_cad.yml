@@ -1,0 +1,11 @@
+---
+- name: Install CAD software
+  become: yes
+  dnf:
+    name: [
+      "freecad",
+    ]
+    state: present
+  when: install_cad | default(false)
+  tags:
+    - install_cad
