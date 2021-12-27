@@ -1,15 +1,4 @@
 ---
-- name: Set task vars
-  set_fact:
-    terraform_binary_path: /usr/local/bin/terraform
-    terraform_version: "0.12.21"
-    terraform_archive_sha256sum: "ca0d0796c79d14ee73a3d45649dab5e531f0768ee98da71b31e423e3278e9aa9"
-    terraform_binary_sha256sum: "6283aebb8cd0189adf95a4a1ca11f62079ea6148ac2c69bcd6fdbb2b7401662c"
-  when: install_terraform | default(false)
-  tags:
-    - install_cli_tools
-    - install_terraform
-
 - name: Check if terraform is already installed
   stat:
     path: "{{ terraform_binary_path }}"

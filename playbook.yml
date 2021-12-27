@@ -13,9 +13,11 @@
         - flatpak
         - install_cad
         - install_chromecast_audio
+        - install_cli_tools
         - install_daw
         - install_docker
         - install_game_emulators
+        - install_git_standup
         - install_mixxx
         - install_nodejs
         - install_php
@@ -24,6 +26,7 @@
         - install_slack
         - install_terraform
         - install_vagrant
+        - install_yq
         - set_selinux_status
   tasks:
     - import_tasks: tasks/copy_config_files.yml
