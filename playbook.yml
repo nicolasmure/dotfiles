@@ -19,6 +19,7 @@
         - install_docker
         - install_game_emulators
         - install_git_standup
+        - install_gnome_deps
         - install_graphical_apps
         - install_mixxx
         - install_nodejs

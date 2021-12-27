@@ -2,16 +2,7 @@
 - name: Install gnome deps
   become: yes
   dnf:
-    name: [
-      "arc-theme",
-      "chrome-gnome-shell",
-      "dconf-editor",
-      "gnome-extensions-app",
-      "gnome-terminal-nautilus",
-      "gnome-tweaks",
-      "numix-icon-theme",
-      "numix-icon-theme-circle",
-    ]
+    name: "{{ gnome_deps | default([]) }}"
     state: present
   tags:
     - install_gnome_deps

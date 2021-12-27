@@ -111,6 +111,18 @@ graphical_apps: [
   "wireshark",
 ]
 
+### Gnome deps
+gnome_deps: [
+  "arc-theme",
+  "chrome-gnome-shell",
+  "dconf-editor",
+  "gnome-extensions-app",
+  "gnome-terminal-nautilus",
+  "gnome-tweaks",
+  "numix-icon-theme",
+  "numix-icon-theme-circle",
+]
+
 ### Other switches
 
 install_cad: false
