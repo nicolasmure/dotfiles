@@ -64,7 +64,6 @@
 
     - import_tasks: tasks/configure_flatpak.yml
     - import_tasks: tasks/install_game_emulators.yml
-    - import_tasks: tasks/install_playonlinux.yml
     - import_tasks: tasks/install_mixxx.yml
     - import_tasks: tasks/install_daw.yml
     - import_tasks: tasks/install_cad.yml
