@@ -2,37 +2,7 @@
 - name: Install CLI tools
   become: yes
   dnf:
-    name: [
-      "curl",
-      "dnf-plugins-core",
-      "ffmpeg",
-      "gcc",
-      "git",
-      "git-email",
-      "gstreamer1",
-      "gstreamer1-libav",
-      "jq",
-      "make",
-      "neofetch",
-      "neovim",
-      "nethogs",
-      "nmap",
-      "powerline",
-      "python3",
-      "python3-devel",
-      "python3-neovim",
-      "pwgen",
-      "redhat-rpm-config",
-      "ruby",
-      "ruby-devel",
-      "ShellCheck",
-      "tig",
-      "unrar",
-      "util-linux-user",
-      "vim",
-      "vim-enhanced",
-      "wget",
-    ]
+    name: "{{ cli_tools | default([]) }}"
     state: present
   tags:
     - install_cli_tools
@@ -41,6 +11,7 @@
   become: yes
   pip:
     name: yq
+  when: install_yq | default(false)
   tags:
     - install_cli_tools
     - install_yq

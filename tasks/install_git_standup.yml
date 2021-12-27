@@ -3,6 +3,7 @@
   stat:
     path: /usr/local/bin/git-standup
   register: git_standup
+  when: install_git_standup | default(false)
   tags:
     - install_cli_tools
     - install_git_standup
@@ -13,7 +14,7 @@
     url: https://raw.githubusercontent.com/kamranahmedse/git-standup/master/installer.sh
     dest: /tmp/git-standup-installer.sh
     mode: 700
-  when: git_standup.stat.exists == False
+  when: install_git_standup | default(false) and git_standup.stat.exists == False
   tags:
     - install_cli_tools
     - install_git_standup
@@ -21,7 +22,7 @@
 - name: Install git-standup
   become: yes
   shell: /tmp/git-standup-installer.sh
-  when: git_standup.stat.exists == False
+  when: install_git_standup | default(false) and git_standup.stat.exists == False
   tags:
     - install_cli_tools
     - install_git_standup
@@ -31,7 +32,7 @@
   file:
     path: /tmp/git-standup-installer.sh
     state: absent
-  when: git_standup.stat.exists == False
+  when: install_git_standup | default(false) and git_standup.stat.exists == False
   tags:
     - install_cli_tools
     - install_git_standup

@@ -8,14 +8,20 @@
       include_vars:
         file: vars/localhost.yml
       tags:
+        - configure_swappiness
+        - disable_unneeded_services
         - enable_tuxedo_keyboard_backlight_kernel_module
         - enable_xbox_controller_kernel_module
         - flatpak
         - install_cad
         - install_chromecast_audio
+        - install_cli_tools
         - install_daw
         - install_docker
         - install_game_emulators
+        - install_git_standup
+        - install_gnome_deps
+        - install_graphical_apps
         - install_mixxx
         - install_nodejs
         - install_php
@@ -24,6 +30,8 @@
         - install_slack
         - install_terraform
         - install_vagrant
+        - install_yq
+        - remove_unneeded_packages
         - set_selinux_status
   tasks:
     - import_tasks: tasks/copy_config_files.yml

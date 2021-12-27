@@ -10,6 +10,121 @@ autostart_chromecast_audio: false
 install_chromecast_audio: false
 mkchromecast_commit: fe7bd47fc0368bb70405bb6c55cd94bdb53a7091
 
+services_to_disable: [
+  "crond",
+  "dnf-makecache.service",
+  "dnf-makecache.timer",
+  "dkms",
+  "lvm2-monitor",
+  "NetworkManager-wait-online",
+  "packagekit",
+  "packagekit-offline-update",
+  "plymouth-quit-wait",
+]
+
+packages_to_remove: [
+  "anaconda-core",
+  "anaconda-gui",
+  "anaconda-live",
+  "anaconda-tui",
+  "anaconda-user-help",
+  "anaconda-widgets",
+  "ctags",
+  "evolution",
+  "hplip",
+  "hplip-common",
+  "hplip-libs",
+  "plymouth",
+  "rhythmbox",
+  "tmux",
+]
+
+### CLI tools
+cli_tools: [
+  "curl",
+  "dnf-plugins-core",
+  "ffmpeg",
+  "gcc",
+  "git",
+  "git-email",
+  "gstreamer1",
+  "gstreamer1-libav",
+  "jq",
+  "make",
+  "neofetch",
+  "neovim",
+  "nethogs",
+  "nmap",
+  "powerline",
+  "python3",
+  "python3-devel",
+  "python3-neovim",
+  "pwgen",
+  "redhat-rpm-config",
+  "ruby",
+  "ruby-devel",
+  "ShellCheck",
+  "tig",
+  "unrar",
+  "util-linux-user",
+  "vim",
+  "vim-enhanced",
+  "wget",
+]
+install_git_standup: false
+install_yq: false
+
+install_terraform: false
+terraform_binary_path: /usr/local/bin/terraform
+terraform_version: "0.12.21"
+terraform_archive_sha256sum: "ca0d0796c79d14ee73a3d45649dab5e531f0768ee98da71b31e423e3278e9aa9"
+terraform_binary_sha256sum: "6283aebb8cd0189adf95a4a1ca11f62079ea6148ac2c69bcd6fdbb2b7401662c"
+
+### Graphical apps
+graphical_apps: [
+  "audacious",
+  "audacity",
+  "brasero",
+  "chromium",
+  "chromium-common",
+  "chromium-libs",
+  "chromium-libs-media",
+  "chromium-libs-media-freeworld",
+  "clementine",
+  "easytag",
+  "gimp",
+  "gucharmap",
+  "gparted",
+  "firefox",
+  "fontforge",
+  "inkscape",
+  "k3b",
+  "libreoffice",
+  "mediawriter",
+  "sound-juicer",
+  "steam",
+  "thunderbird",
+  "vlc",
+  "tilix",
+  "transmission-gtk",
+  "wine",
+  "wireshark",
+]
+
+### Gnome deps
+gnome_deps: [
+  "arc-theme",
+  "chrome-gnome-shell",
+  "dconf-editor",
+  "gnome-extensions-app",
+  "gnome-terminal-nautilus",
+  "gnome-tweaks",
+  "numix-icon-theme",
+  "numix-icon-theme-circle",
+]
+
+### Other switches
+
 install_cad: false
 install_daw: false
 install_docker: false
@@ -20,7 +135,9 @@ install_php: false
 install_python_lsp: false
 install_rust: false
 install_slack: false
-install_terraform: false
 install_vagrant: false
+
 # see /etc/selinux/config for possible selinux statuses
 selinux_status: enforcing
+
+swappiness: 10
