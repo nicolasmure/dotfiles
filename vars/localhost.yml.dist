@@ -10,6 +10,18 @@ autostart_chromecast_audio: false
 install_chromecast_audio: false
 mkchromecast_commit: fe7bd47fc0368bb70405bb6c55cd94bdb53a7091
 
+services_to_disable: [
+  "crond",
+  "dnf-makecache.service",
+  "dnf-makecache.timer",
+  "dkms",
+  "lvm2-monitor",
+  "NetworkManager-wait-online",
+  "packagekit",
+  "packagekit-offline-update",
+  "plymouth-quit-wait",
+]
+
 ### CLI tools
 cli_tools: [
   "curl",

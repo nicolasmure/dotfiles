@@ -8,6 +8,7 @@
       include_vars:
         file: vars/localhost.yml
       tags:
+        - disable_unneeded_services
         - enable_tuxedo_keyboard_backlight_kernel_module
         - enable_xbox_controller_kernel_module
         - flatpak

@@ -7,15 +7,6 @@
     state: stopped
     enabled: no
     masked: yes
-  with_items:
-    - crond
-    - dnf-makecache.service
-    - dnf-makecache.timer
-    - dkms
-    - lvm2-monitor
-    - NetworkManager-wait-online
-    - packagekit
-    - packagekit-offline-update
-    - plymouth-quit-wait
+  with_items: "{{ services_to_disable | default([]) }}"
   tags:
     - disable_unneeded_services
