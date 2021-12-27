@@ -139,3 +139,5 @@ install_vagrant: false
 
 # see /etc/selinux/config for possible selinux statuses
 selinux_status: enforcing
+
+swappiness: 10

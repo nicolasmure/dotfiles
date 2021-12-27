@@ -6,7 +6,7 @@
     create: yes
     state: present
     regexp: '^vm\.swappiness\='
-    line: "vm.swappiness=10"
+    line: "vm.swappiness={{ swappiness | default(10) }}"
   tags:
     - configure_swappiness
 
