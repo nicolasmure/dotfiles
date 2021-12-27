@@ -2,9 +2,7 @@
 - name: Enable hardware acceleration
   become: yes
   dnf:
-    name: [
-      "intel-media-driver",
-    ]
+    name: "{{ hardware_acceleration_packages | default([]) }}"
     state: present
   tags:
     - enable_hardware_acceleration
