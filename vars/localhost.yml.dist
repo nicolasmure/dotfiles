@@ -123,6 +123,13 @@ gnome_deps: [
   "numix-icon-theme-circle",
 ]
 
+# @see https://wiki.archlinux.org/title/Hardware_video_acceleration
+# Set the package accordingly your card, or leave the array empty to avoid
+# package installation
+hardware_acceleration_packages: [
+  "intel-media-driver",
+]
+
 ### Other switches
 
 install_cad: false

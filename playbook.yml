@@ -10,6 +10,7 @@
       tags:
         - configure_swappiness
         - disable_unneeded_services
+        - enable_hardware_acceleration
         - enable_tuxedo_keyboard_backlight_kernel_module
         - enable_xbox_controller_kernel_module
         - flatpak
