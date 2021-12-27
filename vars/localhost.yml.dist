@@ -81,6 +81,35 @@ terraform_archive_sha256sum: "ca0d0796c79d14ee73a3d45649dab5e531f0768ee98da71b31
 terraform_binary_sha256sum: "6283aebb8cd0189adf95a4a1ca11f62079ea6148ac2c69bcd6fdbb2b7401662c"
 
 ### Graphical apps
+graphical_apps: [
+  "audacious",
+  "audacity",
+  "brasero",
+  "chromium",
+  "chromium-common",
+  "chromium-libs",
+  "chromium-libs-media",
+  "chromium-libs-media-freeworld",
+  "clementine",
+  "easytag",
+  "gimp",
+  "gucharmap",
+  "gparted",
+  "firefox",
+  "fontforge",
+  "inkscape",
+  "k3b",
+  "libreoffice",
+  "mediawriter",
+  "sound-juicer",
+  "steam",
+  "thunderbird",
+  "vlc",
+  "tilix",
+  "transmission-gtk",
+  "wine",
+  "wireshark",
+]
 
 ### Other switches
 
