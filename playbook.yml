@@ -28,6 +28,7 @@
         - install_terraform
         - install_vagrant
         - install_yq
+        - remove_unneeded_packages
         - set_selinux_status
   tasks:
     - import_tasks: tasks/copy_config_files.yml
