@@ -8,6 +8,7 @@
       include_vars:
         file: vars/localhost.yml
       tags:
+        - configure_nvim
         - configure_swappiness
         - disable_unneeded_services
         - enable_hardware_acceleration
