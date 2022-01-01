@@ -59,7 +59,7 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ 'python': ['/usr/local/bin/pyls'],
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rust-analyzer'],
     \ }
 let g:LanguageClient_selectionUI = 'fzf'
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>

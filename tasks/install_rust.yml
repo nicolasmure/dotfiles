@@ -8,7 +8,7 @@
     - install_rust
 
 - name: Install rust LSP
-  shell: "~/.cargo/bin/rustup component add rls rust-analysis rust-src"
+  shell: "~/.cargo/bin/rustup +nightly component add rust-analyzer-preview"
   args:
     warn: no
   when: install_rust
