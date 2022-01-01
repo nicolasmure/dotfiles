@@ -27,7 +27,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'ncm2/ncm2' " completion integration
-Plug 'roxma/nvim-yarp'
+Plug 'roxma/nvim-yarp' " required for 'ncm2/ncm2'
 " completion sources https://github.com/ncm2/ncm2/wiki
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
