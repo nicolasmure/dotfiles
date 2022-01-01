@@ -32,7 +32,6 @@ Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'vim-airline/vim-airline' " powerline like for neovim
-Plug 'w0rp/ale' " asynchronous lint engine
 Plug 'godlygeek/tabular' " align text (such as markdown tables)
 Plug 'sgur/vim-editorconfig' " .editorconfig support
 " Initialize plugin system
@@ -232,10 +231,3 @@ function! ToggleNetrw()
 endfunction
 
 noremap <silent> <C-n> :call ToggleNetrw()<CR>
-
-"
-" w0rp/ale
-"
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
