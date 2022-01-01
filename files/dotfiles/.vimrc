@@ -27,12 +27,11 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'ncm2/ncm2' " completion integration
-Plug 'roxma/nvim-yarp'
+Plug 'roxma/nvim-yarp' " required for 'ncm2/ncm2'
 " completion sources https://github.com/ncm2/ncm2/wiki
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'vim-airline/vim-airline' " powerline like for neovim
-Plug 'w0rp/ale' " asynchronous lint engine
 Plug 'godlygeek/tabular' " align text (such as markdown tables)
 Plug 'sgur/vim-editorconfig' " .editorconfig support
 " Initialize plugin system
@@ -60,7 +59,7 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ 'python': ['/usr/local/bin/pyls'],
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rust-analyzer'],
     \ }
 let g:LanguageClient_selectionUI = 'fzf'
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
@@ -232,10 +231,3 @@ function! ToggleNetrw()
 endfunction
 
 noremap <silent> <C-n> :call ToggleNetrw()<CR>
-
-"
-" w0rp/ale
-"
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\}
