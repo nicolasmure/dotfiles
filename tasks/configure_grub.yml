@@ -5,7 +5,7 @@
     path: /etc/default/grub
     state: present
     regexp: '^GRUB_TIMEOUT_STYLE\='
-    line: "GRUB_TIMEOUT_STYLE=hidden"
+    line: "GRUB_TIMEOUT_STYLE={{ grub_timeout_style | default('menu') }}"
   notify: dump grub config
   tags:
     - configure_grub
@@ -16,7 +16,7 @@
     path: /etc/default/grub
     state: present
     regexp: '^GRUB_TIMEOUT\='
-    line: "GRUB_TIMEOUT=0"
+    line: "GRUB_TIMEOUT={{ grub_timeout | default('10') }}"
   notify: dump grub config
   tags:
     - configure_grub
