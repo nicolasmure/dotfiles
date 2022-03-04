@@ -1,0 +1,14 @@
+# {{ ansible_managed }}
+
+# @see /usr/share/containers/containers.conf
+
+[containers]
+
+# @see https://docs.podman.io/en/latest/markdown/podman-run.1.html#userns-mode
+userns = "keep-id"
+
+# Disable SELinux container labeling on volumes to avoid to set the :z or :Z
+# options on volumes mount.
+# @see https://docs.podman.io/en/latest/markdown/podman-run.1.html#volume-v-source-volume-host-dir-container-dir-options
+# @see https://docs.podman.io/en/latest/markdown/podman-run.1.html#security-opt-option
+label = false

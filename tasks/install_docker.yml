@@ -9,6 +9,7 @@
       "podman-plugins",
     ]
     state: absent
+  when: install_docker or not install_podman
   tags:
     - install_docker
 
