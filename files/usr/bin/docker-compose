@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+[ -f /etc/containers/nodocker ] || \
+echo "Emulate Docker-compose CLI using podman-compose. Create /etc/containers/nodocker to quiet msg." >&2
+exec /usr/bin/podman-compose "$@"

@@ -28,6 +28,7 @@
         - install_mixxx
         - install_nodejs
         - install_php
+        - install_podman
         - install_python_lsp
         - install_rust
         - install_slack
@@ -55,6 +56,7 @@
     - import_tasks: tasks/install_php.yml
     - import_tasks: tasks/install_rust.yml
     - import_tasks: tasks/install_docker.yml
+    - import_tasks: tasks/install_podman.yml
     - import_tasks: tasks/install_vagrant.yml
     - import_tasks: tasks/set_selinux_status.yml
 

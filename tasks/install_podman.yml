@@ -1,0 +1,56 @@
+---
+- name: Install podman
+  become: yes
+  dnf:
+    name: [
+      "podman",
+      "podman-compose",
+      "podman-plugins",
+    ]
+    state: present
+  when: install_podman | default(false)
+  tags:
+    - install_podman
+
+- name: Create "docker" command wrapper
+  become: yes
+  copy:
+    src: usr/bin/docker
+    dest: /usr/bin/docker
+    mode: 0755
+  when: install_podman | default(false)
+  tags:
+    - install_podman
+
+- name: Create "docker-compose" command wrapper
+  become: yes
+  copy:
+    src: usr/bin/docker-compose
+    dest: /usr/bin/docker-compose
+    mode: 0755
+  when: install_podman | default(false)
+  tags:
+    - install_podman
+
+# $ docker <command>
+# "Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg."
+- name: Create /etc/containers/nodocker to silence docker commands emulation msg.
+  become: yes
+  copy:
+    src: etc/containers/nodocker
+    dest: /etc/containers/nodocker
+  when: install_podman | default(false)
+  tags:
+    - install_podman
+
+- name: Configure podman
+  become: yes
+  template:
+    src: ../templates/podman/containers.conf.j2
+    dest: /etc/containers/containers.conf
+    mode: 0644
+    owner: root
+    group: root
+  when: install_podman | default(false)
+  tags:
+    - install_podman
