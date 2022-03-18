@@ -83,7 +83,6 @@ terraform_binary_sha256sum: "6283aebb8cd0189adf95a4a1ca11f62079ea6148ac2c69bcd6f
 ### Graphical apps
 graphical_apps: [
   "audacious",
-  "audacity",
   "bottles",
   "brasero",
   "chromium",
@@ -112,6 +111,22 @@ graphical_apps: [
   "wireshark",
 ]
 
+### Flatpak apps
+present_flatpak_apps: [
+  "org.audacityteam.Audacity",
+]
+
+absent_flatpak_apps: [
+  "com.retrodev.blastem",
+  "com.slack.Slack",
+  "com.sweethome3d.Sweethome3d",
+  "net.pcsx2.PCSX2",
+  "org.DolphinEmu.dolphin-emu",
+  "org.freecadweb.FreeCAD",
+  "org.libretro.RetroArch",
+  "org.mixxx.Mixxx",
+]
+
 ### Gnome deps
 gnome_deps: [
   "arc-theme",
@@ -133,17 +148,13 @@ hardware_acceleration_packages: [
 
 ### Other switches
 
-install_cad: false
 install_daw: false
 install_docker: false
-install_game_emulators: false
-install_mixxx: false
 install_nodejs: false
 install_php: false
 install_podman: false
 install_python_lsp: false
 install_rust: false
-install_slack: false
 install_vagrant: false
 
 # see /etc/selinux/config for possible selinux statuses
