@@ -1,0 +1,24 @@
+---
+# Install flatpak apps. They often provide stabler runtimes than when installed
+# via dnf, and also more up to date releases.
+- name: Install flatpak apps
+  become: yes
+  flatpak:
+    name: "{{ item }}"
+    state: present
+    method: system
+  with_items: "{{ present_flatpak_apps | default([]) }}"
+  tags:
+    - flatpak_apps
+    - flatpak
+
+- name: Remove flatpak apps
+  become: yes
+  flatpak:
+    name: "{{ item }}"
+    state: absent
+    method: system
+  with_items: "{{ absent_flatpak_apps | default([]) }}"
+  tags:
+    - flatpak_apps
+    - flatpak
