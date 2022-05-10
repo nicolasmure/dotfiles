@@ -32,10 +32,12 @@
         - install_terraform
         - install_vagrant
         - install_yq
+        - mountpoints
         - remove_unneeded_packages
         - set_selinux_status
   tasks:
     - import_tasks: tasks/copy_config_files.yml
+    - import_tasks: tasks/mountpoints.yml
 
     - import_tasks: tasks/disable_unneeded_services.yml
     - import_tasks: tasks/configure_dnf.yml
@@ -82,5 +84,6 @@
     - include: handlers/docker.yml
     - include: handlers/dump_grub_config.yml
     - include: handlers/firewalld.yml
+    - include: handlers/systemctl.yml
     - include: handlers/terraform.yml
     - include: handlers/zsh.yml
