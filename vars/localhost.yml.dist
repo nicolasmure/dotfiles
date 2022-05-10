@@ -10,6 +10,10 @@ autostart_chromecast_audio: false
 install_chromecast_audio: false
 mkchromecast_commit: fe7bd47fc0368bb70405bb6c55cd94bdb53a7091
 
+mountpoints: [
+# {path: "/mountpoint", src: "UUID=abcd-1234", fstype: "ext4", opts: "defaults", dump: 1, passno: 2},
+]
+
 services_to_disable: [
   "crond",
   "dnf-makecache.service",

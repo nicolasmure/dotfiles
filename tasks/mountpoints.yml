@@ -1,0 +1,16 @@
+---
+- name: Configure mountpoints
+  become: yes
+  mount:
+    path: "{{ item.path }}"
+    src: "{{ item.src }}"
+    fstype: "{{ item.fstype }}"
+    opts: "{{ item.opts }}"
+    dump: "{{ item.dump }}"
+    passno: "{{ item.passno }}"
+    state: mounted
+  with_items: "{{ mountpoints | default([]) }}"
+  # reload systemctl daemon on change (as explained in /etc/fstab file).
+  notify: systemctl daemon-reload
+  tags:
+    - mountpoints
