@@ -1,11 +1,24 @@
 ---
 - name: Install flathub flatpak repo
   become: yes
+  ignore_errors: yes
   flatpak_remote:
     name: flathub
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
     state: present
     method: system
+  register: flathub_installation
+  tags:
+    - install_flathub_repo
+    - flatpak
+
+# @see https://ask.fedoraproject.org/t/cannot-still-install-flatpak-packages/21980/3
+- name: Enable flathub flatpak repo
+  become: yes
+  command: "flatpak remote-modify --enable --no-filter flathub"
+  args:
+    warn: no
+  when: flathub_installation.failed and flathub_installation.msg.find('Remote flathub already exists') != -1
   tags:
     - install_flathub_repo
     - flatpak
