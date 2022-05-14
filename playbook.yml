@@ -81,9 +81,9 @@
     - import_tasks: tasks/disable_tracker_miner.yml
 
   handlers:
-    - include: handlers/docker.yml
-    - include: handlers/dump_grub_config.yml
-    - include: handlers/firewalld.yml
-    - include: handlers/systemctl.yml
-    - include: handlers/terraform.yml
-    - include: handlers/zsh.yml
+    - import_tasks: handlers/docker.yml
+    - import_tasks: handlers/dump_grub_config.yml
+    - import_tasks: handlers/firewalld.yml
+    - import_tasks: handlers/systemctl.yml
+    - import_tasks: handlers/terraform.yml
+    - import_tasks: handlers/zsh.yml
