@@ -1,0 +1,10 @@
+---
+- name: Configure git
+  template:
+    src: ../templates/git/gitconfig.j2
+    dest: ~/.gitconfig
+    mode: 0600
+  when: "'git' in cli_tools | default([])"
+  tags:
+    - configure_git
+    - dotfiles
