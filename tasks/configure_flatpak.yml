@@ -23,12 +23,13 @@
     - install_flathub_repo
     - flatpak
 
-- name: Install Arc GTK theme for flatpak apps
+- name: Install flatpak themes
   become: yes
   flatpak:
-    name: org.gtk.Gtk3theme.Arc
+    name: "{{ item }}"
     state: present
     method: system
+  with_items: "{{ flatpak_themes | default([]) }}"
   tags:
-    - install_arc_gtk_theme_flatpak
+    - install_flatpak_theme
     - flatpak

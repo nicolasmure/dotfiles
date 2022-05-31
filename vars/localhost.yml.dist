@@ -130,6 +130,10 @@ absent_flatpak_apps: [
   "org.mixxx.Mixxx",
 ]
 
+flatpak_themes: [
+  "org.gtk.Gtk3theme.Arc",
+]
+
 ### Gnome deps
 gnome_deps: [
   "arc-theme",
