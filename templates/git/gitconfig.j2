@@ -1,0 +1,31 @@
+# {{ ansible_managed }}
+
+[user]
+    name = {{ git_user_name }}
+    email = {{ git_user_email }}
+[push]
+    default = matching
+[core]
+    excludesfile = /home/{{ ansible_user_id }}/.gitignore_global
+    editor = {{ git_core_editor }}
+[rerere]
+    # If, like me, you like rerere, decomment these
+    # autoupdate = true
+    enabled = true
+
+[commit]
+    gpgsign = {{ git_commit_gpgsign }}
+[gpg]
+    program = gpg2
+
+[rebase]
+    autosquash = true
+[pager]
+    branch = false
+
+[sendemail]
+    ; setup for using git send-email; prompts for password
+    smtpuser = {{ git_sendemail_smtpuser }}
+    smtpserver = {{ git_sendemail_smtpserver }}
+    smtpencryption = {{ git_sendemail_smtpencryption }}
+    smtpserverport = {{ git_sendemail_smtpserverport }}

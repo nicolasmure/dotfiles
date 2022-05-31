@@ -10,6 +10,15 @@ autostart_chromecast_audio: false
 install_chromecast_audio: false
 mkchromecast_commit: fe7bd47fc0368bb70405bb6c55cd94bdb53a7091
 
+git_user_name: "John Doe"
+git_user_email: "you@mail.com"
+git_core_editor: "nano"
+git_commit_gpgsign: "false"
+git_sendemail_smtpuser: "you@mail.com"
+git_sendemail_smtpserver: "smtp.mail.com"
+git_sendemail_smtpencryption: "tls"
+git_sendemail_smtpserverport: "587"
+
 mountpoints: [
 # {path: "/mountpoint", src: "UUID=abcd-1234", fstype: "ext4", opts: "defaults", dump: 1, passno: 2},
 ]
