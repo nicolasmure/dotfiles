@@ -176,6 +176,8 @@ install_vagrant: false
 # see /etc/selinux/config for possible selinux statuses
 selinux_status: enforcing
 
+# set it to 'hidden' with a timeout of 0 to hide grub menu
+# @see https://www.gnu.org/software/grub/manual/grub/html_node/Simple-configuration.html
 grub_timeout_style: menu
 grub_timeout: 10
 
