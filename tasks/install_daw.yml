@@ -4,10 +4,13 @@
 - name: Install Ardour
   become: yes
   flatpak:
-    name: org.ardour.Ardour
+    name: "{{ item }}"
     state: present
     method: system
   when: install_daw | default(false)
+  with_items:
+    - "org.ardour.Ardour"
+    - "org.freedesktop.LinuxAudio.Plugins.Calf"
   tags:
     - install_daw
     - flatpak
