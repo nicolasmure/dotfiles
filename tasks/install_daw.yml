@@ -17,12 +17,13 @@
     - install_daw
     - flatpak
 
-- name: Install JACK controls
+- name: Install JACK and pipewire controls
   become: yes
   dnf:
     name: [
       "Cadence",
       "qjackctl",
+      "qpwgraph",
     ]
     state: present
   when: install_daw | default(false)
