@@ -3,6 +3,7 @@
   become: yes
   dnf:
     name: [
+      "containernetworking-plugins",
       "podman",
       "podman-compose",
       "podman-plugins",
