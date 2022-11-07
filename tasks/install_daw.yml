@@ -10,9 +10,9 @@
   when: install_daw | default(false)
   with_items:
     - "org.ardour.Ardour"
-    - "org.freedesktop.LinuxAudio.Plugins.Calf"
-    - "org.freedesktop.LinuxAudio.Plugins.LSP/x86_64/21.08"
-    - "org.freedesktop.LinuxAudio.Plugins.x42Plugins/x86_64/21.08"
+    - "org.freedesktop.LinuxAudio.Plugins.Calf/x86_64/22.08"
+    - "org.freedesktop.LinuxAudio.Plugins.LSP/x86_64/22.08"
+    - "org.freedesktop.LinuxAudio.Plugins.x42Plugins/x86_64/22.08"
   tags:
     - install_daw
     - flatpak
