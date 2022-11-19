@@ -147,7 +147,6 @@ flatpak_themes: [
 ### Gnome deps
 gnome_deps: [
   "arc-theme",
-  "chrome-gnome-shell",
   "dconf-editor",
   "gnome-extensions-app",
   "gnome-terminal-nautilus",
