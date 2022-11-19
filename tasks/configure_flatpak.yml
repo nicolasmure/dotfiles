@@ -1,5 +1,5 @@
 ---
-- name: Install flathub flatpak repo
+- name: Install flathub flatpak repo (system)
   become: yes
   ignore_errors: yes
   flatpak_remote:
@@ -7,18 +7,38 @@
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
     state: present
     method: system
-  register: flathub_installation
+  register: flathub_installation_system
   tags:
     - install_flathub_repo
     - flatpak
 
 # @see https://ask.fedoraproject.org/t/cannot-still-install-flatpak-packages/21980/3
-- name: Enable flathub flatpak repo
+- name: Enable flathub flatpak repo (system)
   become: yes
-  command: "flatpak remote-modify --enable --no-filter flathub"
+  command: "flatpak remote-modify --enable --no-filter --use-for-deps flathub"
   args:
     warn: no
-  when: flathub_installation.failed and flathub_installation.msg.find('Remote flathub already exists') != -1
+  when: flathub_installation_system.failed and flathub_installation_system.msg.find('Remote flathub already exists') != -1
+  tags:
+    - install_flathub_repo
+    - flatpak
+
+- name: Install flathub flatpak repo (user)
+  flatpak_remote:
+    name: flathub
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+    state: present
+    method: user
+  register: flathub_installation_user
+  tags:
+    - install_flathub_repo
+    - flatpak
+
+- name: Enable flathub flatpak repo (user)
+  command: "flatpak remote-modify -u --enable --no-filter --use-for-deps flathub"
+  args:
+    warn: no
+  when: flathub_installation_user.changed
   tags:
     - install_flathub_repo
     - flatpak
@@ -32,4 +52,12 @@
   with_items: "{{ flatpak_themes | default([]) }}"
   tags:
     - install_flatpak_theme
+    - flatpak
+
+- name: Install flatpak-builder
+  become: yes
+  dnf:
+    name: "flatpak-builder"
+    state: present
+  tags:
     - flatpak
