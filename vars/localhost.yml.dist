@@ -113,6 +113,7 @@ graphical_apps: [
   "fontforge",
   "inkscape",
   "k3b",
+  "librecad",
   "libreoffice",
   "sound-juicer",
   "steam",
