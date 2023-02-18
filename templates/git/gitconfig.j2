@@ -29,3 +29,9 @@
     smtpserver = {{ git_sendemail_smtpserver }}
     smtpencryption = {{ git_sendemail_smtpencryption }}
     smtpserverport = {{ git_sendemail_smtpserverport }}
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
