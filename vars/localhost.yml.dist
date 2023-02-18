@@ -60,6 +60,7 @@ cli_tools: [
   "gcc",
   "git",
   "git-email",
+  "git-lfs",
   "gstreamer1",
   "gstreamer1-libav",
   "jq",
