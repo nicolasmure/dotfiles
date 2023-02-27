@@ -187,6 +187,9 @@ colorscheme onedark
 " Default terminal font is Monospace Regular 12pt
 " END one-dark theme
 
+" Syntax highlighting for FreeCAD Macros files
+autocmd BufNewFile,BufRead *.FCMacro set filetype=python
+
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
