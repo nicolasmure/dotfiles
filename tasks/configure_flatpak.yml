@@ -16,8 +16,6 @@
 - name: Enable flathub flatpak repo (system)
   become: yes
   command: "flatpak remote-modify --enable --no-filter --use-for-deps flathub"
-  args:
-    warn: no
   when: flathub_installation_system.failed and flathub_installation_system.msg.find('Remote flathub already exists') != -1
   tags:
     - install_flathub_repo
@@ -36,8 +34,6 @@
 
 - name: Enable flathub flatpak repo (user)
   command: "flatpak remote-modify -u --enable --no-filter --use-for-deps flathub"
-  args:
-    warn: no
   when: flathub_installation_user.changed
   tags:
     - install_flathub_repo

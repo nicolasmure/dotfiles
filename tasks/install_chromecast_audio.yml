@@ -34,7 +34,6 @@
   become: yes
   command: "python setup.py build"
   args:
-    warn: no
     chdir: "/usr/local/src/mkchromecast-{{ mkchromecast_commit }}"
   when: install_chromecast_audio and mkchromecast_downloaded is changed
   tags:
@@ -44,7 +43,6 @@
   become: yes
   command: "python setup.py install"
   args:
-    warn: no
     chdir: "/usr/local/src/mkchromecast-{{ mkchromecast_commit }}"
   when: install_chromecast_audio and mkchromecast_downloaded is changed
   tags:

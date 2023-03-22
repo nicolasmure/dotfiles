@@ -43,8 +43,6 @@
 
 - name: Remove old .zshrc
   shell: "rm -f ~/.zshrc*"
-  args:
-    warn: no
   when: omz.stat.isdir is not defined
   notify: rsync zshrc
   tags:
