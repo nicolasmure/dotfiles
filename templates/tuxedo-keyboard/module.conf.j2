@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 
-# brightness can go up to 255
-# @see https://blog.jallet.org/controler-le-retro-eclairage-du-clevo-n151zu-1178.html
+# @see https://github.com/tuxedocomputers/tuxedo-keyboard/blob/4749901db2dcc3430bf6497086bb9fefbac7eeff/src_pkg/rpm_pkg.spec#L145-L148
+# latest settings are saved and loaded on boot
 
-options tuxedo_keyboard mode=0 brightness=85 state=1 color_left=0xffffff color_center=0xffffff color_right=0xffffff
+options tuxedo_keyboard kbd_backlight_mode=0
