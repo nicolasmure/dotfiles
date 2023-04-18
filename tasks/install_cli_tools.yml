@@ -4,6 +4,7 @@
   dnf:
     name: "{{ cli_tools | default([]) }}"
     state: present
+    allowerasing: true
   tags:
     - install_cli_tools
 
