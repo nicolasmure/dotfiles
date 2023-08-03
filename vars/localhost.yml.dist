@@ -3,8 +3,8 @@ enable_tuxedo_keyboard_backlight_controls: false
 enable_xbox_controller: false
 force_tuxedo_keyboard_backlight_controls_reinstall: false
 # @see https://github.com/tuxedocomputers/tuxedo-keyboard/releases
-tuxedo_keyboard_commit: 2b04cbc60a7b38031cdad8c98abc732ee64883b4
-tuxedo_keyboard_version: 3.2.8
+tuxedo_keyboard_commit: f6f547870cdebb3e07ba8926d80ab49aed7964c7
+tuxedo_keyboard_version: 3.2.9
 
 autostart_chromecast_audio: false
 install_chromecast_audio: false
