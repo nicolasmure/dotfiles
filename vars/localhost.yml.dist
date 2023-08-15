@@ -78,6 +78,7 @@ cli_tools: [
   "redhat-rpm-config",
   "ruby",
   "ruby-devel",
+  "sbc",
   "ShellCheck",
   "tig",
   "unrar",
