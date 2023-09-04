@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version = 1.0
+Type = Application
+Terminal = false
+Name = Popcorn Time
+Exec = /usr/local/bin/Popcorn-Time
+Icon = /usr/local/src/popcorntime/src/app/images/icon.png
+Categories = AudioVideo;

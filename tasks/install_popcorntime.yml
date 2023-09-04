@@ -1,0 +1,64 @@
+---
+- name: Install popcorntime deps
+  become: yes
+  dnf:
+    name: [
+      "GConf2",
+      "libatomic",
+      "libcanberra",
+    ]
+    state: present
+  when: install_popcorntime
+  tags:
+    - install_popcorntime
+
+- name: Ensure popcorntime installation directory exists
+  become: yes
+  file:
+    path: "/usr/local/src/popcorntime"
+    state: directory
+  when: install_popcorntime
+  tags:
+    - install_popcorntime
+
+- name: Download popcorntime sources
+  become: yes
+  unarchive:
+    src: "https://github.com/popcorn-official/popcorn-desktop/releases/download/v{{ popcorntime_version }}/Popcorn-Time-{{ popcorntime_version }}-linux64.zip"
+    dest: "/usr/local/src/popcorntime"
+    remote_src: yes
+  when: install_popcorntime
+  tags:
+    - install_popcorntime
+
+- name: Create popcorntime bin symlink
+  become: yes
+  file:
+    src: "/usr/local/src/popcorntime/Popcorn-Time"
+    dest: "/usr/local/bin/Popcorn-Time"
+    state: link
+  when: install_popcorntime
+  tags:
+    - install_popcorntime
+
+- name: Create popcorntime desktop entry
+  become: yes
+  copy:
+    src: "usr/local/share/applications/popcorntime.desktop"
+    dest: "/usr/local/share/applications/popcorntime.desktop"
+  when: install_popcorntime
+  tags:
+    - install_popcorntime
+
+- name: Uninstall popcorntime
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "/usr/local/src/popcorntime"
+    - "/usr/local/bin/Popcorn-Time"
+    - "/usr/local/share/applications/popcorntime.desktop"
+  when: not install_popcorntime
+  tags:
+    - install_popcorntime

@@ -10,6 +10,9 @@ autostart_chromecast_audio: false
 install_chromecast_audio: false
 mkchromecast_commit: fe7bd47fc0368bb70405bb6c55cd94bdb53a7091
 
+install_popcorntime: false
+popcorntime_version: 0.4.9
+
 git_user_name: "John Doe"
 git_user_email: "you@mail.com"
 git_core_editor: "nano"
