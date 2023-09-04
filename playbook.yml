@@ -29,6 +29,7 @@
         - install_nodejs
         - install_php
         - install_podman
+        - install_popcorntime
         - install_python_lsp
         - install_rust
         - install_terraform
@@ -73,6 +74,7 @@
     - import_tasks: tasks/install_daw.yml
 
     - import_tasks: tasks/install_chromecast_audio.yml
+    - import_tasks: tasks/install_popcorntime.yml
 
     - import_tasks: tasks/enable_xbox_controller_kernel_module.yml
     - import_tasks: tasks/enable_tuxedo_keyboard_backlight_kernel_module.yml
