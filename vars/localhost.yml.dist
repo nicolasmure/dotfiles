@@ -132,6 +132,7 @@ present_flatpak_apps: [
 ]
 
 absent_flatpak_apps: [
+  "com.github.Flacon",
   "com.retrodev.blastem",
   "com.slack.Slack",
   "com.sweethome3d.Sweethome3d",
