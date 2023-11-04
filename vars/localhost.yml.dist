@@ -1,7 +1,6 @@
 ---
 enable_tuxedo_keyboard_backlight_controls: false
 enable_xbox_controller: false
-force_tuxedo_keyboard_backlight_controls_reinstall: false
 # @see https://github.com/tuxedocomputers/tuxedo-keyboard/releases
 tuxedo_keyboard_commit: 96e3571e26b20858eb2d8d75fb4acd0ce2ab27fb
 tuxedo_keyboard_version: 3.2.12
