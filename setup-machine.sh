@@ -12,7 +12,10 @@ install_ansible () {
 }
 
 copy_dist_files () {
-    cp -n vars/localhost.yml.dist vars/localhost.yml
+    if [ ! -f vars/localhost.yml ]
+    then
+        cp vars/localhost.yml.dist vars/localhost.yml
+    fi
 }
 
 provision_localhost () {
