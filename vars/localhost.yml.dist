@@ -49,6 +49,7 @@ packages_to_remove: [
   "hplip",
   "hplip-common",
   "hplip-libs",
+  "mediawriter",
   "plymouth",
   "rhythmbox",
   "tmux",
