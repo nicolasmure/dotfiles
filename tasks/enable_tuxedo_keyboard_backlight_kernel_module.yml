@@ -25,23 +25,6 @@
   tags:
     - enable_tuxedo_keyboard_backlight_kernel_module
 
-- name: Delete tuxedo sources
-  become: yes
-  file:
-    path: "/usr/src/tuxedo_keyboard-{{ tuxedo_keyboard_version }}"
-    state: absent
-  when: enable_tuxedo_keyboard_backlight_controls and force_tuxedo_keyboard_backlight_controls_reinstall
-  tags:
-    - enable_tuxedo_keyboard_backlight_kernel_module
-
-- name: Remove previously installed tuxedo_keyboard kernel module
-  become: yes
-  ignore_errors: yes
-  command: "dkms remove -m tuxedo_keyboard -v {{ tuxedo_keyboard_version }} --all"
-  when: enable_tuxedo_keyboard_backlight_controls and force_tuxedo_keyboard_backlight_controls_reinstall
-  tags:
-    - enable_tuxedo_keyboard_backlight_kernel_module
-
 - name: Clone tuxedo repo
   become: yes
   git:
@@ -54,17 +37,20 @@
   tags:
     - enable_tuxedo_keyboard_backlight_kernel_module
 
-- name: Add tuxedo kernel module
+- name: Install tuxedo kernel module (step 1/2)
   become: yes
-  ignore_errors: yes
-  command: "dkms add -m tuxedo_keyboard -v {{ tuxedo_keyboard_version }}"
+  make:
+    chdir: "/usr/src/tuxedo_keyboard-{{ tuxedo_keyboard_version }}"
+    target: clean
   when: enable_tuxedo_keyboard_backlight_controls and tuxedo_cloned is changed
   tags:
     - enable_tuxedo_keyboard_backlight_kernel_module
 
-- name: Install tuxedo kernel module
+- name: Install tuxedo kernel module (step 2/2)
   become: yes
-  command: "dkms install -m tuxedo_keyboard -v {{ tuxedo_keyboard_version }}"
+  make:
+    chdir: "/usr/src/tuxedo_keyboard-{{ tuxedo_keyboard_version }}"
+    target: dkmsinstall
   when: enable_tuxedo_keyboard_backlight_controls and tuxedo_cloned is changed
   tags:
     - enable_tuxedo_keyboard_backlight_kernel_module
@@ -87,5 +73,35 @@
     owner: root
     group: root
   when: enable_tuxedo_keyboard_backlight_controls and tuxedo_cloned is changed
+  tags:
+    - enable_tuxedo_keyboard_backlight_kernel_module
+
+- name: State tuxedo sources directory
+  stat:
+    path: "/usr/src/tuxedo_keyboard-{{ tuxedo_keyboard_version }}"
+  register: src_dir
+  when: not enable_tuxedo_keyboard_backlight_controls
+  tags:
+    - enable_tuxedo_keyboard_backlight_kernel_module
+
+- name: Uninstall tuxedo dkms module
+  become: yes
+  make:
+    chdir: "/usr/src/tuxedo_keyboard-{{ tuxedo_keyboard_version }}"
+    target: dkmsremove
+  when: not enable_tuxedo_keyboard_backlight_controls and src_dir.stat.isdir is defined and src_dir.stat.isdir
+  tags:
+    - enable_tuxedo_keyboard_backlight_kernel_module
+
+- name: Remove tuxedo sources dir and config files
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "/usr/src/tuxedo_keyboard-{{ tuxedo_keyboard_version }}"
+    - /etc/modules-load.d/tuxedo_keyboard.conf
+    - /etc/modprobe.d/tuxedo_keyboard.conf
+  when: not enable_tuxedo_keyboard_backlight_controls
   tags:
     - enable_tuxedo_keyboard_backlight_kernel_module
