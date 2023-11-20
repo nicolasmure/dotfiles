@@ -25,6 +25,10 @@ mountpoints: [
 # {path: "/mountpoint", src: "UUID=abcd-1234", fstype: "ext4", opts: "defaults", dump: 1, passno: 2},
 ]
 
+pipewire_default_clock_rate: 48000
+# space separated values
+pipewire_default_clock_allowed_rates: "44100 48000 96000"
+
 services_to_disable: [
   "crond",
   "dnf-makecache.service",
