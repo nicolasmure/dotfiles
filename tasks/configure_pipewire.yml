@@ -1,0 +1,22 @@
+---
+- name: Ensure pipewire config dir is present
+  become: yes
+  file:
+    path: /etc/pipewire/pipewire.conf.d
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+  tags:
+    - configure_pipewire
+
+- name: Configure pipewire
+  become: yes
+  template:
+    src: ../templates/pipewire/pipewire.conf.j2
+    dest: /etc/pipewire/pipewire.conf.d/pipewire.conf
+    mode: 0644
+    owner: root
+    group: root
+  tags:
+    - configure_pipewire

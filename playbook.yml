@@ -8,9 +8,11 @@
       include_vars:
         file: vars/localhost.yml
       tags:
+        - configure_dnf
         - configure_git
         - configure_grub
         - configure_nvim
+        - configure_pipewire
         - configure_swappiness
         - disable_unneeded_services
         - dotfiles
@@ -71,6 +73,7 @@
 
     - import_tasks: tasks/configure_flatpak.yml
     - import_tasks: tasks/flatpak_apps.yml
+    - import_tasks: tasks/configure_pipewire.yml
     - import_tasks: tasks/install_daw.yml
 
     - import_tasks: tasks/install_chromecast_audio.yml

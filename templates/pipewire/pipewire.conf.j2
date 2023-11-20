@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+
+# see /usr/share/pipewire/pipewire.conf for available options and details
+
+context.properties = {
+    # clock rate can be changed during a session via the following command :
+    # $ pw-metadata -n settings 0 clock.force-rate <rate>
+    default.clock.rate          = {{ pipewire_default_clock_rate }}
+    default.clock.allowed-rates = [ {{ pipewire_default_clock_allowed_rates }} ]
+}
