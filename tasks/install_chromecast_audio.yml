@@ -4,6 +4,7 @@
   dnf:
     name: [
       "ffmpeg",
+      "pulseaudio-utils", # provides `pactl` binary required by mkchromecast
     ]
     state: present
   when: install_chromecast_audio
